@@ -1,0 +1,12 @@
+.modal-container{
+}
+
+#workspace-name{
+}
+.modal-input{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
