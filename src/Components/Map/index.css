@@ -36,6 +36,12 @@ hr {
 }
 
 button {
-    /* text-decoration: none; */
+    font-size: 20px;
+    margin-left: 10px;
+    background-color: transparent;
+    background-repeat: no-repeat;
     border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
 }
