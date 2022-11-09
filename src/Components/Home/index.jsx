@@ -20,7 +20,7 @@ function Home() {
             <em>No misscommunication.</em>
             <em>No stress.</em>
         </Typography>
-        <Button onClick={auth} variant='contained'  id='github-btn'>Sign-Up with Github</Button>
+        <Button onClick={auth} variant='contained'  id='github-btn'>Sign-In with Github</Button>
     </Box>
   )
 }
