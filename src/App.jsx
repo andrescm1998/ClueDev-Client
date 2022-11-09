@@ -7,6 +7,10 @@ function App() {
   return (
     <Routes>
       <Route path='/' element={<Home/>}/>
+
+      <Route path='/' element={<Header />}>
+        <Route index element={<Dashboard/>}/>
+      </Route>
     </Routes>
   )
 }
