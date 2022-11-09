@@ -55,7 +55,9 @@ export const Map = () => {
             <section className='repo-list'>
                 {/* render based on selected */}
                 {/* <People /> */}
-                <File />
+                
+                    <File />
+     
             </section>
         </main>
     )
