@@ -1,0 +1,52 @@
+.map-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    /* background-color: yellow; */
+}
+
+.header {
+    width: 60%;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    /* background-color: blue; */
+    margin-top: 100px;
+    margin-bottom: 13px;
+}
+
+h1 {
+    margin-bottom: 0;
+    font-family: 'Exo', sans-serif;
+    font-size: 30px;
+}
+
+hr {
+    width: 60%;
+    border: 0.2px solid #D2D2D2;
+}
+
+.repo-list {
+    width: 60%;
+}
+
+.mapBtn {
+    font-size: 20px;
+    padding-left: 10px;
+    padding-top: 5px;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+    color: #D2D2D2;
+}
+
+.selected {
+    font-weight: bold;
+    color: black;
+}
