@@ -2,7 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import './index.css';
 
-import { File } from '../File'
+import { File } from '../File';
 import { People } from '../People';
 
 export const Map = () => {
@@ -53,7 +53,9 @@ export const Map = () => {
             <hr/>
 
             <section className='repo-list'>
-                <People />
+                {/* render based on selected */}
+                {/* <People /> */}
+                <File />
             </section>
         </main>
     )

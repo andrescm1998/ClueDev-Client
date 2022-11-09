@@ -1,0 +1,13 @@
+.file-container {
+    display: flex;
+    flex-direction: row;
+    background-color: #F0F0F0;
+    height: 50px;
+    align-items: center;
+    border-radius: 15px;
+}
+
+.icon {
+    padding: 0.5rem;
+    margin: 0 0.5rem;
+}
