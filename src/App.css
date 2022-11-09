@@ -4,3 +4,8 @@ h1 {
     font-family: 'Exo', sans-serif;
     font-size: 30px;
 }
+
+hr {
+    width: 60%;
+    border: 0.2px solid #D2D2D2;
+}

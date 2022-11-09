@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Exo&family=Fruktur&family=Inter:wght@400;500;600&family=Noto+Sans+Mono:wght@400;700&family=PT+Mono&family=Righteous&family=Roboto+Mono:wght@400;600&display=swap');
-
 .map-container {
     display: flex;
     align-items: center;
@@ -28,6 +26,7 @@ h1 {
 
 hr {
     width: 60%;
+    border: 0.2px solid #D2D2D2;
 }
 
 .repo-list {
@@ -35,13 +34,20 @@ hr {
     width: 60%;
 }
 
-button {
+.mapBtn {
     font-size: 20px;
-    margin-left: 10px;
+    padding-left: 10px;
+    padding-top: 5px;
     background-color: transparent;
     background-repeat: no-repeat;
     border: none;
     cursor: pointer;
     overflow: hidden;
     outline: none;
+    color: #D2D2D2;
+}
+
+.selected {
+    font-weight: bold;
+    color: black;
 }
