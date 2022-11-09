@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo&family=Fruktur&family=Inter:wght@400;500;600&family=Noto+Sans+Mono:wght@400;700&family=PT+Mono&family=Righteous&family=Roboto+Mono:wght@400;600&display=swap');
+
 .map-container {
     display: flex;
     align-items: center;
@@ -14,13 +16,26 @@
     justify-content: space-between;
     align-items: flex-end;
     /* background-color: blue; */
-    margin-top: 150px;
+    margin-top: 100px;
+    margin-bottom: 13px;
 }
 
 h1 {
     margin-bottom: 0;
+    font-family: 'Exo', sans-serif;
+    font-size: 30px;
 }
 
 hr {
     width: 60%;
+}
+
+.repo-list {
+    background-color: aquamarine;
+    width: 60%;
+}
+
+button {
+    /* text-decoration: none; */
+    border: none;
 }

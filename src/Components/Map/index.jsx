@@ -15,10 +15,8 @@ export const Map = () => {
             </section>
             <hr/>
 
-            <section>
-                <ul>
-
-                </ul>
+            <section className='repo-list'>
+                <h1>repo list will be here</h1>
             </section>
         </main>
     )
