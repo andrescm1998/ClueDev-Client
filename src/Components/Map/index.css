@@ -1,0 +1,26 @@
+.map-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    /* background-color: yellow; */
+}
+
+.header {
+    width: 60%;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    /* background-color: blue; */
+    margin-top: 150px;
+}
+
+h1 {
+    margin-bottom: 0;
+}
+
+hr {
+    width: 60%;
+}
