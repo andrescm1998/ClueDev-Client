@@ -1,19 +1,25 @@
 import React from "react";
 import { NavLink, Outlet } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEllipsis } from "@fortawesome/free-solid-svg-icons";
+import './index.css'
+
+const dots = <FontAwesomeIcon icon ={faEllipsis} />
 
 const Header = () => {
-    return 
+    return (
     <>
-    <header>
-        <nav>
-            <NavLink to="/">Username</NavLink>
-            <NavLink to="/">ClueDev.</NavLink>
-            <NavLink to="/">...</NavLink>
-        </nav>
-    </header>
+        <header>
+            <nav className="nav-links">
+                <NavLink to="/">Username</NavLink>
+                <NavLink to="/">ClueDev.</NavLink>
+                <NavLink to="/">{dots}</NavLink>
+            </nav>
+        </header>
 
-    <Outlet />
+        <Outlet />
     </>
+    )
 };
 
 export default Header;

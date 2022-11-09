@@ -1,0 +1,88 @@
+/* #dashboard {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+    justify-content: space-around;
+    align-items: center;
+}
+
+h1 {
+    margin: 0;
+    padding: 0;
+}
+
+#title {
+    font-size: 2em;
+    display: flex;  
+    flex-direction: row;
+    justify-content: space-between;
+    width: 60%;
+    margin-top: 200px;
+}
+
+#starter-text{
+    display: flex;
+    text-align: center;
+    font-size: 1em;
+    flex-direction: column;
+    color: #D2D2D2;
+}
+
+#plus {
+    font-size: 1em;
+    color: #000
+}
+
+hr {
+    width: 60%;
+    margin-top: 0;
+} */
+
+.dash-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    /* background-color: yellow; */
+}
+.header {
+    width: 60%;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    /* background-color: blue; */
+    margin-top: 100px;
+    margin-bottom: 13px;
+}
+h1 {
+    margin-bottom: 0;
+    font-family: 'Exo', sans-serif;
+    font-size: 30px;
+}
+hr {
+    width: 60%;
+    border: 0.2px solid #D2D2D2;
+}
+.workspace-list p {
+    display: flex;
+    text-align: center;
+    width: 80%;
+    color: #D2D2D2;
+    padding-left: 10%;
+    margin-top: 10%;
+}
+.addBtn {
+    font-size: 20px;
+    margin-left: 10px;
+    padding-top: 5px;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+    color: #D2D2D2;
+}

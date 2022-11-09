@@ -1,18 +1,17 @@
 import React from 'react'
 import {Routes, Route} from 'react-router-dom'
-import { Home } from './Components';
+import { Home, Header, Dashboard } from './Components';
 import './App.css'
 
 function App() {
   return (
     <Routes>
-      <Route path='/' element={<Home/>}/>
-
-      <Route path='/' element={<Header />}>
-        <Route index element={<Dashboard/>}/>
-      </Route>
+      <Route index element={<Home/>}/>
+      <Route path='/' element={<Header />}> 
+        <Route path='/dashboard' element={<Dashboard/>}/>
+      </Route>  
     </Routes>
   )
 }
 
-export default App
+export default App;
