@@ -2,6 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import './index.css';
 
+import { File } from '../File'
 import { People } from '../People';
 
 export const Map = () => {
@@ -10,23 +11,23 @@ export const Map = () => {
 
 // STATE FOR SELECTED TAB (PEOPLE OR FILES)
     const [peopleSelected, setPeopleSelected] = useState(false);
-    const [filesSelected, setFilesSelected] = useState(false);
+    const [filesSelected, setFilesSelected] = useState(true);
 
     const selectFiles = () => {
-        // e.target.className = 'mapBtn 1 selected'
+        // TOGGLE TAB CSS
         if(filesSelected == false) {
             setFilesSelected(!filesSelected);
         }
 
-
         if(peopleSelected == true) {
             setPeopleSelected(!peopleSelected);
         }
-        console.log(filesSelected);
+
+        // RENDER FILES COMPONENT
     }
 
     const selectPeople = () => {
-        // e.target.className = 'mapBtn 2 selected'
+        // TOGGLE TAB CSS
         if(peopleSelected == false) {
             setPeopleSelected(!peopleSelected);
         }
@@ -34,7 +35,8 @@ export const Map = () => {
         if(filesSelected == true) {
             setFilesSelected(!filesSelected);
         }  
-        console.log(peopleSelected);
+
+        // RENDER PEOPLE COMPONENT
     }
 
 
