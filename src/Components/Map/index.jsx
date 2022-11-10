@@ -52,11 +52,14 @@ export const Map = () => {
                 </section>
             </section>
             <hr/>
-
+            {/* CONDITIONAL - if no files, render no files text, else render folder list */}
+            {/* <h2>
+            There are currently no folders or files in this repository
+            </h2> */}
             <section className='repo-list'>
                 {/* render based on selected (file or people)*/}
                 {/* <People /> */}
-                {filesSelected == true && <><File /><File /></>}
+                {filesSelected == true && <><File /></>}
                 {filesSelected == false && <><People /><People /></>}
      
             </section>

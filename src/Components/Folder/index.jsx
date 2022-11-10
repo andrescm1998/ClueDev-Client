@@ -2,6 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import './index.css';
 import { BackButton } from '../BackButton';
+import { FolderFile } from '../FolderFile';
 
 export const Folder = () => {
 
@@ -25,6 +26,7 @@ export const Folder = () => {
                 </section>
 
                 {/* folder files component */}
+                <FolderFile />
 
             </section>
         </main>
