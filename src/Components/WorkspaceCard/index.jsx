@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEllipsis } from "@fortawesome/free-solid-svg-icons";
 import { Counter } from '../Counter';
 import './index.css';
+import { DeleteModal } from '../DeleteModal';
 
 // hold ellipsis icon 
 const dots = <FontAwesomeIcon icon ={faEllipsis} />
@@ -34,7 +35,8 @@ export const WorkspaceCard = () => {
                             </div>
                             <div id="showBtns" className={showHide ? 'showOptions': 'hideOptions' }> 
                                 <Button>Edit</Button>
-                                <Button>Delete</Button>
+                                {/* <Button>Delete</Button> */}
+                                <DeleteModal />
                             </div>
                         </div>
                     </div>
