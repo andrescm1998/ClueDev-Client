@@ -23,7 +23,7 @@ export const WorkspaceCard = () => {
     <div>
                         <div className="block">
                             <div className="block-header">
-                                <h3>Workspace 1</h3>
+                                <h3>Workspace Name</h3>
                                 <Button onClick={showHidden}>{dots}</Button>
                             </div>
                             <div className="counters">

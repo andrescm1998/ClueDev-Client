@@ -64,12 +64,11 @@ h3 {
 
 /* Workspace Edit and Delete buttons */
 #showBtns {
-
+    text-align: center;
 }
 
 .showOptions{
-
-    color: blue;
+    /* color: red; */
 }
 
 .hideOptions{

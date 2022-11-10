@@ -1,6 +1,6 @@
 import React from 'react'
 import {Routes, Route} from 'react-router-dom'
-import { Home, Header, Dashboard, Map, Folder } from './Components';
+import { Home, Header, Dashboard, Map, Folder, Repositories } from './Components';
 import './App.css'
 
 function App() {
@@ -11,6 +11,8 @@ function App() {
         <Route path='/map' element={<Map/>}/>
         <Route path='/map/folder' element={<Folder/>}/>
         <Route path='/dashboard' element={<Dashboard/>}/>
+        <Route path='/repositories' element={<Repositories/>}/>
+
       </Route>  
     </Routes>
   )

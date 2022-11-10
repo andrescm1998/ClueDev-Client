@@ -10,6 +10,8 @@ import './index.css'
 const Dashboard = () => {
 const [toggle, setToggle] = useState(true)
 
+// Will possibly need a state here to hold repos attached as an array and another state to handle name change of workspace
+
 const buttonToggle = () => {
         setToggle(!toggle)     
 }
@@ -21,6 +23,7 @@ const buttonToggle = () => {
                     <h1>Workspaces</h1>
                     <section className='links'>
                         < Modal />
+                        {/* on click of create button in modal will send data to create workspace card component  */}
                         <Button onClick={buttonToggle}>Toggle</Button>
                     </section>
                 </section>
@@ -39,10 +42,6 @@ const buttonToggle = () => {
                     </section>  
                 </section>
             </main>
-
-            <div>
-
-            </div>
         </>
       )
 
