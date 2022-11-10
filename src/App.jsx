@@ -3,6 +3,7 @@ import {Routes, Route} from 'react-router-dom'
 import { Home, Header, Dashboard, Map } from './Components';
 import './App.css'
 
+import { Folder } from './Components';
 
 function App() {
   return (
