@@ -28,7 +28,7 @@
     margin-top: 8px;
 }
 
-.person-files {
+/* .person-files {
     margin: 0 15px;
     width: 70%;
     height: 100%;
@@ -38,9 +38,17 @@
     display: inline-block;
     right: 0;
     top: 0;
+} */
+
+.person-files {
+    display: flex;
+    flex-direction: column;
+    padding: 11px;
+    gap: 4px;
+    padding-right: 15px;
 }
 
 .file {
-    margin: 11px 0;
+    margin: 0;
     padding: 0;
 }
