@@ -1,9 +1,18 @@
 import React from 'react';
-import './index.css'
+import './index.css';
+
+import { Counter } from '../Counter';
 
 export const People = () => {
     return (
-        <h1>this will be a list of the collaborators in the repo</h1>
-        //FILE COMPONENT
+        <>
+            <section className='people-container'>
+                {/* persons github icon */}
+                <Counter/>
+                <h5 className='name'>Person name</h5>
+                {/* map all files that person has a counter on */}
+                <h5 className='file'>File name</h5>
+            </section>
+        </>
     )
 }

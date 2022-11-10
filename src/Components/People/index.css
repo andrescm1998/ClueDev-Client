@@ -1,0 +1,16 @@
+.people-container {
+    display: flex;
+    flex-direction: row;
+    background-color: #F0F0F0;
+    height: 50px;
+    align-items: center;
+    border-radius: 15px;
+}
+
+.name {
+     margin: 0px 15px;
+}
+
+/* .file {
+
+} */
