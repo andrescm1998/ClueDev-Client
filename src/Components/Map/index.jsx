@@ -56,7 +56,7 @@ export const Map = () => {
             <section className='repo-list'>
                 {/* render based on selected (file or people)*/}
                 {/* <People /> */}
-                {filesSelected == true && <File />}
+                {filesSelected == true && <><File /><File /></>}
                 {filesSelected == false && <><People /><People /></>}
      
             </section>

@@ -5,6 +5,8 @@ export { default as Dashboard } from './Dashboard';
 export { default as Modal } from './Modal';
 export { Counter } from './Counter';
 export { WorkspaceCard } from './WorkspaceCard';
+export { Folder } from './Folder';
+
 
 
 
