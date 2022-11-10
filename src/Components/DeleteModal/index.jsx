@@ -76,6 +76,9 @@ const buttonTheme = createTheme({
       delete: {
         main: '#EE4B2B',
       },
+      title: {
+        main: '#000000',
+      }
     },
     shape: {
         borderRadius: 12,
@@ -93,7 +96,6 @@ export function DeleteModal() {
     setOpen(false);
   };
 
-  
 
   return (
     <ThemeProvider theme={buttonTheme}>
@@ -101,10 +103,10 @@ export function DeleteModal() {
         <Button variant="standard" onClick={handleClickOpen}>
         Delete
         </Button>
-        <BootstrapDialog fullWidth onClose={handleClose} aria-labelledby="customized-dialog-title" open={open} TransitionComponent={Transition}
+        <BootstrapDialog PaperProps={{sx: { width: "350px"}}} fullWidth onClose={handleClose} aria-labelledby="customized-dialog-title" open={open} TransitionComponent={Transition}
             keepMounted >
 
-            <DialogTitle className='delete-modal-text'>Delete Workspace</DialogTitle>
+            <DialogTitle sx={{color: 'title.main'}} className='delete-modal-text'>Delete Workspace</DialogTitle>
 
             <DialogContentText className='delete-modal-text'>
                 Are you sure you want to delete this item?

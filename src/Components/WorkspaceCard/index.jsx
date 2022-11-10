@@ -25,7 +25,7 @@ export const WorkspaceCard = () => {
                         <div className="block">
                             <div className="block-header">
                                 <h3>Workspace Name</h3>
-                                <Button onClick={showHidden}>{dots}</Button>
+                                <Button disableRipple onClick={showHidden}>{dots}</Button>
                             </div>
                             <div className="counters">
                                 <span>< Counter /></span>
