@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react'
-import { useParams, useSearchParams } from 'react-router-dom';
+import React, { useEffect, useState } from 'react'
+import { useSearchParams } from 'react-router-dom';
 // import {Modal} from '@mui/material'
 
 function TestPage() {
@@ -10,6 +10,7 @@ function TestPage() {
     // }
 
     const [params] = useSearchParams();
+    const [data, setData] = useState([]);
     const code = params.get('code');
 
     async function sendCode(){
@@ -26,10 +27,46 @@ function TestPage() {
         
     }
 
+    async function startSSE(){
+        await fetchEventSource(`http://localhost:3000/sse`, {
+              method: "POST",
+              headers: {
+                Accept: "text/event-stream",
+              },
+              onopen(res) {
+                if (res.ok && res.status === 200) {
+                  console.log("Connection made ", res);
+                } else if (
+                  res.status >= 400 &&
+                  res.status < 500 &&
+                  res.status !== 429
+                ) {
+                  console.log("Client side error ", res);
+                }
+              },
+              onmessage(event) {
+                console.log(event.data);
+                const parsedData = JSON.parse(event.data);
+                setData((data) => [...data, parsedData]);
+              },
+              onclose() {
+                console.log("Connection closed by the server");
+              },
+              onerror(err) {
+                console.log("There was an error from server", err);
+              },
+            });
+
+    }
+
     useEffect(() => {
         sendCode();
+        startSSE();
     }, [])
     
+    useEffect(() => {
+        console.log(data);
+    }, [data])
 
 
 
