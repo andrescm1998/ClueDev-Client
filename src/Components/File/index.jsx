@@ -3,6 +3,7 @@ import './index.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFolder } from "@fortawesome/free-solid-svg-icons";
 import { faFile } from "@fortawesome/free-solid-svg-icons";
+import { Link } from 'react-router-dom';
 
 import { Counter } from '../Counter';
 import { useState } from 'react';
@@ -13,6 +14,8 @@ export const File = () => {
     const folder = <FontAwesomeIcon icon={faFolder}/>;
     return (
         <>
+
+
             {/* map against files/folders from repo */}
             {/* if index/key !== 0, render hr element*/}
             <hr className='divider'/>
