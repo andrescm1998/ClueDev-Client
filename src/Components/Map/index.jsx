@@ -44,6 +44,7 @@ export const Map = () => {
         <main className='map-container'>
 
             <section className='header'>
+                {/* repo name rendered from repo */}
                 <h1>Repo name</h1>
                 <section className='links'>
                     <button style={{fontWeight: filesSelected ? 'bold' : '', color: filesSelected ? 'black' : '#D2D2D2'}} className='mapBtn' onClick={selectFiles}>Files</button>
@@ -53,7 +54,7 @@ export const Map = () => {
             <hr/>
 
             <section className='repo-list'>
-                {/* render based on selected */}
+                {/* render based on selected (file or people)*/}
                 {/* <People /> */}
                 {filesSelected == true && <File />}
                 {filesSelected == false && <People />}

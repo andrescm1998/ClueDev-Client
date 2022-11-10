@@ -5,12 +5,25 @@
     height: 50px;
     align-items: center;
     border-radius: 15px;
+    justify-content: space-between;
 }
 
 .name {
      margin: 0px 15px;
 }
 
-/* .file {
+.person-section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
 
-} */
+.person-files {
+    display: flex;
+    flex-direction: column;
+    background-color: darkseagreen;
+    margin: 0 15px;
+    width: 70%;
+    height: 100%;
+    /* padding: 0; */
+}
