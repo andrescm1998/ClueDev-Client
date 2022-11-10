@@ -4,6 +4,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFolder } from "@fortawesome/free-solid-svg-icons";
 import { faFile } from "@fortawesome/free-solid-svg-icons";
 
+import { Counter } from '../Counter';
+
 export const File = () => {
 
     const file = <FontAwesomeIcon icon={faFile}/>;
@@ -16,13 +18,15 @@ export const File = () => {
                     {/* file or folder icon */}
                     {/* <span className='icon'>{file}</span> */}
                     <span className='icon'>{folder}</span>
-                    <h5>File/Folder name</h5>
+                    <h4>File/Folder name</h4>
                 </section>
 
                 <section className='counter-section'>
                     {/* map all collaborators and render counters */}
                     {/* counter component */}
-                    
+                    <Counter />
+                    <Counter />
+                    <Counter />
                 </section>
             </section>
         </>

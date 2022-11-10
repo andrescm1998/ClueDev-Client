@@ -57,7 +57,7 @@ export const Map = () => {
                 {/* render based on selected (file or people)*/}
                 {/* <People /> */}
                 {filesSelected == true && <File />}
-                {filesSelected == false && <People />}
+                {filesSelected == false && <><People /><People /></>}
      
             </section>
         </main>

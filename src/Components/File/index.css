@@ -23,5 +23,9 @@
 .counter-section {
     width: 70%;
     height: 100%;
-    background-color: green;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 8px;
 }
