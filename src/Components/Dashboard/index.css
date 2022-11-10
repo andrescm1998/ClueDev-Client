@@ -12,7 +12,6 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    /* background-color: blue; */
     margin-top: 100px;
     margin-bottom: 13px;
 }
@@ -26,7 +25,7 @@ hr {
     border: 0.2px solid #D2D2D2;
 }
 .workspace-list p {
-    display: flex;
+    /* display: flex; */
     text-align: center;
     width: 80%;
     color: #D2D2D2;
@@ -45,3 +44,61 @@ hr {
     outline: none;
     color: #D2D2D2;
 }
+
+.no-workspace-active{
+
+    display: none;
+    visibility: hidden;
+}
+.workspace-active{
+
+    color: blue;
+}
+
+h3 {
+    margin: 0;
+}
+
+.workspace-list {
+    width: 100%
+}
+
+.workspaces-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    /* justify-content: space-around; */
+    width: 70%;
+    height: 5rem;
+    margin-top: 20px;
+}
+
+.block {
+    background-color: #F0F0F0;
+    border-radius: 10px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 10px;
+    width: 100%;
+    
+}
+
+.block-header {
+    font-size: small;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+/* .counter {
+    background-color: purple;
+    border-radius: 50%;
+    height: 20px;
+    width: 20px;
+} */
+
+
