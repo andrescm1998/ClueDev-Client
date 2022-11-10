@@ -2,10 +2,11 @@
     display: flex;
     flex-direction: row;
     background-color: #F0F0F0;
-    height: 50px;
-    align-items: center;
+    /* height: 50px; */
+    align-items: flex-start;
     border-radius: 15px;
     justify-content: space-between;
+    /* position: relative; */
 }
 
 .name {
@@ -16,15 +17,24 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    height: 100%;
+    position: relative;
 }
 
 .person-files {
-    display: flex;
-    flex-direction: column;
     background-color: darkseagreen;
     margin: 0 15px;
     width: 70%;
     height: 100%;
-    align-items: flex-end;
+    text-align: right;
     justify-content: center;
+    position: relative;
+    display: inline-block;
+    right: 0;
+    top: 0;
+}
+
+.file {
+    margin: 11px 0;
+    padding: 0;
 }
