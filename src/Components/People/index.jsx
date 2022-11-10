@@ -16,9 +16,9 @@ export const People = () => {
 
                 <section className='person-files'>
                     {/* map all files that person has a counter on */}
-                    <h5 className='file'>File name</h5>
-                    {/* <h5 className='file'>File name</h5>
-                    <h5 className='file'>File name</h5> */}
+                    <h5 className='file'>File name1</h5>
+                    <h5 className='file'>File name2</h5>
+                    
                 </section>
             </section>
         </>
