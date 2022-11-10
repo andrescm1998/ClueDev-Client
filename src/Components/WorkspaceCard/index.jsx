@@ -20,7 +20,7 @@ export const WorkspaceCard = () => {
 
     return <>
     
-    <div className="workspaces-container">
+    <div>
                         <div className="block">
                             <div className="block-header">
                                 <h3>Workspace 1</h3>
@@ -32,63 +32,11 @@ export const WorkspaceCard = () => {
                                 <span>< Counter /></span>
 
                             </div>
-                            <div id="" className={showHide ? 'showOptions': 'hideOptions' }> 
+                            <div id="showBtns" className={showHide ? 'showOptions': 'hideOptions' }> 
                                 <Button>Edit</Button>
                                 <Button>Delete</Button>
                             </div>
                         </div>
-                        <div className="block">
-                            <div className="block-header">
-                                <h3>Workspace 2</h3>
-                                <Button>{dots}</Button>
-                            </div>
-                            <div className="counters">
-                                <span>< Counter /></span>
-                                <span>< Counter /></span>
-                                <span>< Counter /></span>
-
-                            </div>
-                        </div>
-
-                        <div className="block">
-                            <div className="block-header">
-                                <h3>Workspace 3</h3>
-                                <Button>{dots}</Button>
-                            </div>
-                            <div className="counters">
-                                <span>< Counter /></span>
-                                <span>< Counter /></span>
-                                <span>< Counter /></span>
-
-                            </div>
-                        </div>
-                        <div className="block">
-                            <div className="block-header">
-                                <h3>Workspace 4</h3>
-                                <Button>{dots}</Button>
-                            </div>
-                            <div className="counters">
-                                <span>< Counter /></span>
-                                <span>< Counter /></span>
-                                <span>< Counter /></span>
-
-                            </div>
-                        </div>
-                        <div className="block">
-                            <div className="block-header">
-                                <h3>Workspace 4</h3>
-                                <Button>{dots}</Button>
-                            </div>
-                            <span>< Counter /></span>
-                        </div>
-                        <div className="block">
-                            <div className="block-header">
-                                <h3>Workspace 4</h3>
-                                <Button>{dots}</Button>
-                            </div>
-                            <span>< Counter /></span>
-                        </div>
-                        
                     </div>
     
     </>

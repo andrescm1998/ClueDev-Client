@@ -63,6 +63,10 @@ h3 {
 }
 
 /* Workspace Edit and Delete buttons */
+#showBtns {
+
+}
+
 .showOptions{
 
     color: blue;
@@ -73,3 +77,5 @@ h3 {
     display: none;
     visibility: hidden;
 }
+
+
