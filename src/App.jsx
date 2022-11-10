@@ -1,9 +1,7 @@
 import React from 'react'
 import {Routes, Route} from 'react-router-dom'
-import { Home, Header, Dashboard, Map } from './Components';
+import { Home, Header, Dashboard, Map, Folder } from './Components';
 import './App.css'
-
-import { Folder } from './Components';
 
 function App() {
   return (
