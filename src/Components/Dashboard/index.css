@@ -6,13 +6,13 @@
     height: 100vh;
     /* background-color: yellow; */
 }
+/* style heading to make it consistent with other pages  */
 .header {
     width: 60%;
     text-align: left;
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    /* background-color: blue; */
     margin-top: 100px;
     margin-bottom: 13px;
 }
@@ -25,14 +25,7 @@ hr {
     width: 60%;
     border: 0.2px solid #D2D2D2;
 }
-.workspace-list p {
-    display: flex;
-    text-align: center;
-    width: 80%;
-    color: #D2D2D2;
-    padding-left: 10%;
-    margin-top: 10%;
-}
+ /* style button for header */
 .addBtn {
     font-size: 20px;
     margin-left: 10px;
@@ -45,3 +38,80 @@ hr {
     outline: none;
     color: #D2D2D2;
 }
+
+/* show p element if no workspaces  */
+.no-workspace-active{
+
+    display: none;
+    visibility: hidden;
+}
+.workspace-active{
+
+    color: blue;
+}
+
+h3 {
+    margin: 0;
+}
+
+.workspace-list {
+    width: 60%
+}
+.workspace-list p {
+    /* display: flex; */
+    text-align: center;
+    width: 50%;
+    color: #D2D2D2;
+    padding-left: 25%;
+    margin-top: 10%;
+}
+
+.workspaces-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(1, 2fr);
+    grid-column-gap: 30px;
+    grid-row-gap: 30px;
+    width: 100%;
+    /* height: 6rem; */
+    margin-top: 20px;
+}
+
+.block {
+    background-color: #F0F0F0;
+    border-radius: 10px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 10px;
+    width: 100%;
+    
+}
+
+.block-header {
+    font-size: small;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+
+.counters {
+    display: flex;
+    flex-direction: row;
+    
+}
+
+.showOptions{
+
+    color: blue;
+}
+
+.hideOptions{
+
+    display: none;
+    visibility: hidden;
+}
+
