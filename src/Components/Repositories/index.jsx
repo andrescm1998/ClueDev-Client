@@ -1,6 +1,9 @@
 import React from 'react';
-import Modal from '../Modal';
 import './index.css'
+import  { RepositoryCard } from '../RepositoryCard';
+import AttachRepoModal from '../AttachRepoModal';
+
+
 
 const Repositories = () => {
 
@@ -9,19 +12,20 @@ const Repositories = () => {
                 <section className='header'>
                     <h1>Repositories</h1>
                     <section className='links'>
-                        < Modal />
+                        < AttachRepoModal />
                         {/* on click of create button in modal will send data to create workspace card component  */}
                     </section>
                 </section>
                 <hr/>
                 <section className='workspace-list'>
                     <section className='workspaces-container'>
-                        {/* <WorkspaceCard /> 
-                        <WorkspaceCard /> 
-                        <WorkspaceCard /> 
-                        <WorkspaceCard />
-                        <WorkspaceCard />
-                        <WorkspaceCard /> */}
+                         <RepositoryCard /> 
+                         <RepositoryCard /> 
+                         <RepositoryCard /> 
+                         <RepositoryCard /> 
+                         <RepositoryCard /> 
+
+                        
                     </section>  
                 </section>
             </main>

@@ -7,7 +7,7 @@ export { Counter } from './Counter';
 export { WorkspaceCard } from './WorkspaceCard';
 export { Folder } from './Folder';
 export { default as Repositories } from './Repositories';
-export { default as RepositoryCard } from './RepositoryCard';
+export { RepositoryCard } from './RepositoryCard';
 
 
 
