@@ -25,6 +25,10 @@ hr {
     border: 0.2px solid #D2D2D2;
 }
 
+p {
+    font-family: 'Exo', sans-serif;
+}
+
 .header {
     width: 60%;
     text-align: left;
