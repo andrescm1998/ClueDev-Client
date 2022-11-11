@@ -16,6 +16,11 @@ import CloseIcon from '@mui/icons-material/Close';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import Slide from '@mui/material/Slide';
+import { FormControl, InputLabel} from '@mui/material';
+
+import Box from '@mui/material/Box';
+import MenuItem from '@mui/material/MenuItem';
+import Select from '@mui/material/Select';
 
 
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -73,6 +78,12 @@ export default function CustomizedDialogs() {
     setOpen(false);
   };
 
+  const [age, setAge] = React.useState('');
+
+  const handleChange = (event) => {
+    setAge(event.target.value);
+  };
+
   return (
     <div>
       <Button variant="standard" onClick={handleClickOpen}>
@@ -85,7 +96,7 @@ export default function CustomizedDialogs() {
         </BootstrapDialogTitle>
         <DialogContent dividers className='modal-input'>
         <TextField sx={{ m: 1.5 }}  dividers required id="workspace-name" label="Workspace Name" variant="outlined" />
-        <TextField
+        {/* <TextField
         //   id="filled-select-currency"
           select
           sx={{ m: 1.5 }}
@@ -94,7 +105,23 @@ export default function CustomizedDialogs() {
           helperText="Please select your repositories"
           variant="filled"
         >
-        </TextField>
+        </TextField> */}
+
+      <FormControl fullWidth>
+        <InputLabel id="demo-simple-select-label">Age</InputLabel>
+        <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          value={age}
+          label="Age"
+          onChange={handleChange}
+        >
+          <MenuItem value={10}>Ten</MenuItem>
+          <MenuItem value={20}>Twenty</MenuItem>
+          <MenuItem value={30}>Thirty</MenuItem>
+        </Select>
+      </FormControl>
+
         </DialogContent>
         <DialogActions>
           <Button autoFocus >

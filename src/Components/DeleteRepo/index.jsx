@@ -93,6 +93,11 @@ export function DeleteRepo() {
     setOpen(false);
   };
 
+  const deleteRepo = (id) => {
+
+    console.log("DELETE")
+  }
+
   const xIcon = <FontAwesomeIcon icon ={faXmark} />
 
   return (
@@ -102,18 +107,18 @@ export function DeleteRepo() {
         <BootstrapDialog PaperProps={{sx: { width: "390px"}}} fullWidth onClose={handleClose} aria-labelledby="customized-dialog-title" open={open} TransitionComponent={Transition}
             keepMounted >
 
-            <DialogTitle sx={{color: 'title.main', paddingBottom: '5px'}} className='delete-modal-text'>Delete Workspace</DialogTitle>
+            <DialogTitle sx={{color: 'title.main', paddingBottom: '5px'}} className='delete-modal-text'>Remove Repository</DialogTitle>
 
             <DialogContentText className='delete-modal-text'>
-                Are you sure you want to delete this repository?
+                Are you sure you want to remove this repository?
             </DialogContentText>
 
             <DialogActions sx={{display: 'flex', justifyContent: 'center', margin: '16px 5px'}}>
                     <Button sx={{backgroundColor: 'cancel.main', fontWeight: 'bold'}} variant="contained">
                     Cancel
                     </Button>
-                    <Button sx={{backgroundColor: 'delete.main', fontWeight: 'bold'}} variant="contained">
-                    Delete
+                    <Button sx={{backgroundColor: 'delete.main', fontWeight: 'bold'}} variant="contained" onClick={deleteRepo}>
+                    Remove
                     </Button>
             </DialogActions>
         </BootstrapDialog>
