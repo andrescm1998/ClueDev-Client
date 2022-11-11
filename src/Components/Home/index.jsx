@@ -5,9 +5,10 @@ import './index.css'
 function Home() {
 
   async function auth(){
-    const response = await fetch('http://localhost:3000/auth');
+    const response = await fetch('http://localhost:3000/users/auth');
     // console.log(response);
     const data = await response.json();
+    // console.log(data.url)
     window.location.assign(data.url);
   }
 

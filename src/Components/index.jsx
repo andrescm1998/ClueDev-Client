@@ -1,6 +1,5 @@
 export { default as Header } from './Header';
 export { default as Home } from './Home';
-export { default as TestPage } from './TestPage';
 export { Map } from './Map';
 export { default as Dashboard } from './Dashboard';
 export { default as Modal } from './Modal';
@@ -9,6 +8,7 @@ export { WorkspaceCard } from './WorkspaceCard';
 export { Folder } from './Folder';
 export { default as Repositories } from './Repositories';
 export { RepositoryCard } from './RepositoryCard';
+export { default as Redirect} from './Redirect'
 
 
 
