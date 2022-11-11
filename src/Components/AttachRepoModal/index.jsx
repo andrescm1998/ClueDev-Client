@@ -78,9 +78,9 @@ export default function CustomizedDialogs() {
       <Button variant="standard" onClick={handleClickOpen}>
       {plus}
       </Button>
-      <BootstrapDialog fullWidth onClose={handleClose} aria-labelledby="customized-dialog-title" open={open} TransitionComponent={Transition}
+      <BootstrapDialog PaperProps={{sx: { width: "390px", borderRadius: '10px'}}} fullWidth onClose={handleClose} aria-labelledby="customized-dialog-title" open={open} TransitionComponent={Transition}
         keepMounted >
-        <BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose}>
+        <BootstrapDialogTitle sx={{color: 'black'}} id="customized-dialog-title" onClose={handleClose}>
             Attach a Repository
         </BootstrapDialogTitle>
         <DialogContent dividers className='modal-input'>
@@ -95,8 +95,9 @@ export default function CustomizedDialogs() {
         >
         </TextField>
         </DialogContent>
-        <DialogActions>
-          <Button autoFocus >
+        <DialogActions sx={{display: 'flex', justifyContent: 'center'}}>
+        <Button sx={{backgroundColor: '#A97FFF', color: 'white', ':hover': {
+      bgcolor: '#8A69CE'},fontWeight: 'bold', borderRadius: '10px', margin: '16px 0px', width: '95%'}} autoFocus >
             Attach
           </Button>
         </DialogActions>
