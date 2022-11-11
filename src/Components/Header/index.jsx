@@ -3,14 +3,14 @@ import {useState} from 'react'
 import { NavLink, Outlet } from "react-router-dom";
 import { Button } from '@mui/material'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEllipsis, faGear } from "@fortawesome/free-solid-svg-icons";
+import { faEllipsis, faGear, faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 import './index.css'
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 
 const dots = <FontAwesomeIcon icon ={faEllipsis} />
 const settings = <FontAwesomeIcon icon ={faGear} />
-// const logout = <FontAwesomeIcon icon ={faLogOut} />
+const logout = <FontAwesomeIcon icon ={faArrowRightFromBracket} />
 
 const Header = () => {
 
@@ -53,9 +53,17 @@ const Header = () => {
                     MenuListProps={{
                     'aria-labelledby': 'nav-button',
                     }}
-                >
-                    <MenuItem onClick={handleClose}>{settings} Settings</MenuItem>
-                    <MenuItem onClick={handleClose}>Logout</MenuItem>
+                    PaperProps={{
+                        style: {
+                         borderRadius: "20px",
+                         width: "10%"
+                        }
+                    }}
+                    >
+                    <MenuItem onClick={handleClose}><span className="settings">{settings}</span>Settings</MenuItem>
+                    <NavLink to="/" className="redirect">
+                        <MenuItem onClick={handleClose}><span className="logout">{logout}</span>Logout</MenuItem>
+                    </NavLink>
                 </Menu>
             </nav>
         </header>
