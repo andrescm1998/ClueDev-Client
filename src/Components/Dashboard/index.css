@@ -40,9 +40,9 @@ hr {
 }
 
 .workspaces-container {
-    display: grid;
+    display: inline-grid;
+    align-items: start;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(1, 2fr);
     grid-column-gap: 30px;
     grid-row-gap: 30px;
     width: 100%;
