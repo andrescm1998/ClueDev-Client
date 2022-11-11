@@ -18,3 +18,16 @@ nav a {
     text-decoration: none;
 
 }
+
+.settings {
+    padding: 5px;
+}
+
+.logout {
+    padding: 5px;
+}
+
+.redirect a {
+    text-decoration: none;
+}
+
