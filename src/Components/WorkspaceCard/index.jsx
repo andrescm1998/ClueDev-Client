@@ -26,7 +26,7 @@ export const WorkspaceCard = () => {
                         <div className="block">
                             <div className="block-header">
                                 <h3>Workspace Name</h3>
-                                <Button sx={{padding: '0', display: 'flex', justifyContent: 'flex-end', alignItems: 'flex-start', color: '#545151', minWidth: '10px'}} disableRipple onClick={showHidden}>{dots}</Button>
+                                <Button sx={{padding: '3px', display: 'flex', justifyContent: 'flex-end', alignItems: 'flex-start', color: '#545151', minWidth: '10px'}} disableRipple onClick={showHidden}>{dots}</Button>
                             </div>
                             <div className="counters">
                                 <span>< Counter /></span>
