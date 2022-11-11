@@ -102,7 +102,7 @@ export default function CustomizedDialogs() {
       <Button variant="standard" onClick={handleClickOpen}>
       {plus}
       </Button>
-      <BootstrapDialog fullWidth onClose={handleClose} aria-labelledby="customized-dialog-title" open={open} TransitionComponent={Transition}
+      <BootstrapDialog PaperProps={{sx: { width: "390px", borderRadius: '10px'}}} fullWidth onClose={handleClose} aria-labelledby="customized-dialog-title" open={open} TransitionComponent={Transition}
         keepMounted >
         <BootstrapDialogTitle sx={{color: 'black'}} id="customized-dialog-title" onClose={handleClose}>
           Create a Workspace 
@@ -130,7 +130,8 @@ export default function CustomizedDialogs() {
 
         </DialogContent>
         <DialogActions sx={{display: 'flex', justifyContent: 'center'}}>
-          <Button sx={{backgroundColor: '#A97FFF', color: 'white', fontWeight: 'bold', borderRadius: '10px', margin: '16px 0px', width: '95%'}} autoFocus >
+          <Button sx={{backgroundColor: '#A97FFF', color: 'white', ':hover': {
+      bgcolor: '#8A69CE'},fontWeight: 'bold', borderRadius: '10px', margin: '16px 0px', width: '95%'}} autoFocus >
             Create
           </Button>
         </DialogActions>
