@@ -6,15 +6,16 @@ header {
     min-height: 10vh;
 }
 
-nav {
-
+.nav-links {
     width: 90%;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: fixed;
+    background-color: #ffffff;
 }
 
-nav a {
+.nav-links a {
     text-decoration: none;
 
 }
