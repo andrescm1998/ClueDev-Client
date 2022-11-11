@@ -24,7 +24,7 @@ const buttonToggle = () => {
                     <section className='links'>
                         < Modal />
                         {/* on click of create button in modal will send data to create workspace card component  */}
-                        <Button onClick={buttonToggle}>Toggle</Button>
+                        {/* <Button onClick={buttonToggle}>Toggle</Button> */}
                     </section>
                 </section>
                 <hr/>
