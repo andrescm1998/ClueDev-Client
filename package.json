@@ -20,7 +20,6 @@
     "@mui/material": "^5.10.13",
     "@redux-devtools/extension": "^3.2.3",
     "@reduxjs/toolkit": "^1.9.0",
-    "particles.js": "^2.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.5",

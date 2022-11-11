@@ -28,6 +28,16 @@ const Header = () => {
         setOpen(null);
     }
 
+    const Logout = async () => {
+        setOpen(null);
+        const options = {
+            credentials: 'include'
+          }
+      
+          const response = await fetch('http://localhost:3000/users/logout', options);
+          
+    }
+
     return (
     <>
         <header>
@@ -62,7 +72,7 @@ const Header = () => {
                     >
                     <MenuItem onClick={handleClose}><span className="settings">{settings}</span>Settings</MenuItem>
                     <NavLink to="/" className="redirect">
-                        <MenuItem onClick={handleClose}><span className="logout">{logout}</span>Logout</MenuItem>
+                        <MenuItem onClick={Logout}><span className="logout">{logout}</span>Logout</MenuItem>
                     </NavLink>
                 </Menu>
             </nav>

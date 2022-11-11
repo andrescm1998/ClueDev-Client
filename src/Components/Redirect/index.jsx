@@ -13,6 +13,7 @@ function Redirect() {
 
     const options = {
       method: 'POST',
+      credentials: 'include',
       headers: { 'Content-Type': 'application/json'},
       body: JSON.stringify({
           code: code
