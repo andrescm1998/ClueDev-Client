@@ -31,6 +31,9 @@ hr {
 
 .repo-list {
     width: 60%;
+    background-color: #F0F0F0;
+    border-radius: 15px;
+    margin-top: 20px;
 }
 
 .mapBtn {

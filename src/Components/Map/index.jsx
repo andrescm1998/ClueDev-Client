@@ -44,18 +44,24 @@ export const Map = () => {
         <main className='map-container'>
 
             <section className='header'>
+                {/* repo name rendered from repo */}
                 <h1>Repo name</h1>
                 <section className='links'>
-                    <button style={{fontWeight: filesSelected ? 'bold' : ''}} className='mapBtn' onClick={selectFiles}>Files</button>
-                    <button style={{fontWeight: peopleSelected ? 'bold' : ''}} className='mapBtn' onClick={selectPeople}>People</button>
+                    <button style={{fontWeight: filesSelected ? 'bold' : '', color: filesSelected ? 'black' : '#D2D2D2'}} className='mapBtn' onClick={selectFiles}>Files</button>
+                    <button style={{fontWeight: peopleSelected ? 'bold' : '', color: peopleSelected ? 'black' : '#D2D2D2'}} className='mapBtn' onClick={selectPeople}>People</button>
                 </section>
             </section>
             <hr/>
-
+            {/* CONDITIONAL - if no files, render no files text, else render folder list */}
+            {/* <h2>
+            There are currently no folders or files in this repository
+            </h2> */}
             <section className='repo-list'>
-                {/* render based on selected */}
+                {/* render based on selected (file or people)*/}
                 {/* <People /> */}
-                <File />
+                {filesSelected == true && <><File /></>}
+                {filesSelected == false && <><People /><People /></>}
+     
             </section>
         </main>
     )

@@ -6,13 +6,13 @@
     height: 100vh;
     /* background-color: yellow; */
 }
+/* style heading to make it consistent with other pages  */
 .header {
     width: 60%;
     text-align: left;
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    /* background-color: blue; */
     margin-top: 100px;
     margin-bottom: 13px;
 }
@@ -25,14 +25,7 @@ hr {
     width: 60%;
     border: 0.2px solid #D2D2D2;
 }
-.workspace-list p {
-    display: flex;
-    text-align: center;
-    width: 80%;
-    color: #D2D2D2;
-    padding-left: 10%;
-    margin-top: 10%;
-}
+ /* style button for header */
 .addBtn {
     font-size: 20px;
     margin-left: 10px;
@@ -45,3 +38,4 @@ hr {
     outline: none;
     color: #D2D2D2;
 }
+

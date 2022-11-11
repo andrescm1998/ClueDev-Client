@@ -5,7 +5,32 @@ h1 {
     font-size: 30px;
 }
 
+h2 {
+    font-family: 'Exo', sans-serif;
+    font-size: 20px;
+    color: #D2D2D2;
+}
+
+h3 {
+    font-family: 'Exo', sans-serif;
+}
+
+h4 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+}
+
 hr {
     width: 60%;
     border: 0.2px solid #D2D2D2;
+}
+
+.header {
+    width: 60%;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: 100px;
+    margin-bottom: 13px;
 }

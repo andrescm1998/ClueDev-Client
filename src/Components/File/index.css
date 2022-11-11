@@ -5,9 +5,27 @@
     height: 50px;
     align-items: center;
     border-radius: 15px;
+    justify-content: space-between;
 }
 
 .icon {
     padding: 0.5rem;
     margin: 0 0.5rem;
+    color: #919191;
+}
+
+.file-section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.counter-section {
+    width: 70%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 8px;
 }

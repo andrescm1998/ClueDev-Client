@@ -1,0 +1,54 @@
+.people-container {
+    display: flex;
+    flex-direction: row;
+    background-color: #F0F0F0;
+    /* height: 50px; */
+    align-items: flex-start;
+    border-radius: 15px;
+    justify-content: space-between;
+    /* position: relative; */
+}
+
+.name {
+     margin: 0px 5px;
+}
+
+.divider {
+    width: 96%;
+    margin: 0 15px;
+}
+
+.person-section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 100%;
+    position: relative;
+    margin-left: 10px;
+    margin-top: 8px;
+}
+
+/* .person-files {
+    margin: 0 15px;
+    width: 70%;
+    height: 100%;
+    text-align: right;
+    justify-content: center;
+    position: relative;
+    display: inline-block;
+    right: 0;
+    top: 0;
+} */
+
+.person-files {
+    display: flex;
+    flex-direction: column;
+    padding: 11px;
+    gap: 4px;
+    padding-right: 15px;
+}
+
+.file {
+    margin: 0;
+    padding: 0;
+}
