@@ -76,12 +76,25 @@ export default function CustomizedDialogs() {
   };
   const handleClose = () => {
     setOpen(false);
+    setSelected('');
   };
 
-  const [age, setAge] = React.useState('');
+  const repos = [
+    {
+      name: "repo1",
+      id: 1
+    },
+    {
+      name: "repo2",
+      id: 2
+    }
+  ]
+
+  const [repositories, setRepositories] = useState(repos);
+  const [selected, setSelected] = useState('')
 
   const handleChange = (event) => {
-    setAge(event.target.value);
+    setSelected(event.target.value);
   };
 
   return (
@@ -91,40 +104,33 @@ export default function CustomizedDialogs() {
       </Button>
       <BootstrapDialog fullWidth onClose={handleClose} aria-labelledby="customized-dialog-title" open={open} TransitionComponent={Transition}
         keepMounted >
-        <BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose}>
+        <BootstrapDialogTitle sx={{color: 'black'}} id="customized-dialog-title" onClose={handleClose}>
           Create a Workspace 
         </BootstrapDialogTitle>
-        <DialogContent dividers className='modal-input'>
-        <TextField sx={{ m: 1.5 }}  dividers required id="workspace-name" label="Workspace Name" variant="outlined" />
-        {/* <TextField
-        //   id="filled-select-currency"
-          select
-          sx={{ m: 1.5 }}
-          label="Attach repositories"
-          required
-          helperText="Please select your repositories"
-          variant="filled"
-        >
-        </TextField> */}
+        <DialogContent sx={{display: 'flex', alignItems: 'center'}} dividers className='modal-input'>
+        <TextField sx={{ m: 1.5, width: '95%' }}  dividers required id="workspace-name" label="Workspace Name" variant="outlined" />
 
-      <FormControl fullWidth>
-        <InputLabel id="demo-simple-select-label">Age</InputLabel>
+      <FormControl fullWidth sx={{display: 'flex', justifyContent: 'center', width: '95%'}}>
+        <InputLabel id="demo-simple-select-label">Attach repositories</InputLabel>
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          value={age}
-          label="Age"
+          value={selected}
+          label="Attach repositories"
           onChange={handleChange}
         >
-          <MenuItem value={10}>Ten</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
+
+          {repositories.map(function (repo, i) {
+            return (
+              <MenuItem key={repo.id} value={repo.name}>{repo.name}</MenuItem> 
+            )
+          })}
         </Select>
       </FormControl>
 
         </DialogContent>
-        <DialogActions>
-          <Button autoFocus >
+        <DialogActions sx={{display: 'flex', justifyContent: 'center'}}>
+          <Button sx={{backgroundColor: '#A97FFF', color: 'white', fontWeight: 'bold', borderRadius: '10px', margin: '16px 0px', width: '95%'}} autoFocus >
             Create
           </Button>
         </DialogActions>
