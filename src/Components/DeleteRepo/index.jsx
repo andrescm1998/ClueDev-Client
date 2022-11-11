@@ -17,6 +17,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import Slide from '@mui/material/Slide';
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
 
 
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -81,7 +82,7 @@ const buttonTheme = createTheme({
       }, 
   });
 
-export function DeleteModal() {
+export function DeleteRepo() {
 
   const [open, setOpen] = useState(false);
 
@@ -92,28 +93,32 @@ export function DeleteModal() {
     setOpen(false);
   };
 
+  const deleteRepo = (id) => {
+
+    console.log("DELETE")
+  }
+
+  const xIcon = <FontAwesomeIcon icon ={faXmark} />
 
   return (
     <ThemeProvider theme={buttonTheme}>
         <div>
-        <Button variant="standard" onClick={handleClickOpen}>
-        Delete
-        </Button>
-        <BootstrapDialog PaperProps={{sx: { width: "350px"}}} fullWidth onClose={handleClose} aria-labelledby="customized-dialog-title" open={open} TransitionComponent={Transition}
+        <Button sx={{padding: '3px', display: 'flex', justifyContent: 'flex-end', alignItems: 'flex-start', color: '#545151', minWidth: '10px'}} disableRipple onClick={handleClickOpen}>{xIcon} </Button>
+        <BootstrapDialog PaperProps={{sx: { width: "390px"}}} fullWidth onClose={handleClose} aria-labelledby="customized-dialog-title" open={open} TransitionComponent={Transition}
             keepMounted >
 
-            <DialogTitle sx={{color: 'title.main', paddingBottom: '5px'}} className='delete-modal-text'>Delete Workspace</DialogTitle>
+            <DialogTitle sx={{color: 'title.main', paddingBottom: '5px'}} className='delete-modal-text'>Remove Repository</DialogTitle>
 
             <DialogContentText className='delete-modal-text'>
-                Are you sure you want to delete this item?
+                Are you sure you want to remove this repository?
             </DialogContentText>
 
             <DialogActions sx={{display: 'flex', justifyContent: 'center', margin: '16px 5px'}}>
                     <Button sx={{backgroundColor: 'cancel.main', fontWeight: 'bold'}} variant="contained">
                     Cancel
                     </Button>
-                    <Button sx={{backgroundColor: 'delete.main', fontWeight: 'bold'}} variant="contained">
-                    Delete
+                    <Button sx={{backgroundColor: 'delete.main', fontWeight: 'bold'}} variant="contained" onClick={deleteRepo}>
+                    Remove
                     </Button>
             </DialogActions>
         </BootstrapDialog>

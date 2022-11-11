@@ -3,6 +3,9 @@ import { Button } from '@mui/material'
 import { DeleteModal } from '../DeleteModal';
 
 export const WorkspaceSettings = ({showHide}) => {
+
+    const icon = "delete";
+    
     return (
         <>
         {showHide == true && 

@@ -9,6 +9,8 @@ export { Folder } from './Folder';
 export { default as Repositories } from './Repositories';
 export { RepositoryCard } from './RepositoryCard';
 export { Particle } from './Particle';
+export { default as Redirect} from './Redirect'
+
 
 
 

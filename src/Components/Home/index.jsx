@@ -10,9 +10,10 @@ const github = <FontAwesomeIcon icon ={ Brands.faGithub } />
 function Home() {
 
   async function auth(){
-    const response = await fetch('http://localhost:3000/auth');
+    const response = await fetch('http://localhost:3000/users/auth');
     // console.log(response);
     const data = await response.json();
+    // console.log(data.url)
     window.location.assign(data.url);
   }
 
@@ -20,7 +21,7 @@ function Home() {
   return (
     <>
       <Particle />
-      {/* <Box id='home'>
+      <Box id='home'>
           <h1 id='logo-name'>ClueDev.</h1>
           <section id='moto'>
               <p>Less merge conflicts.</p>
@@ -28,8 +29,9 @@ function Home() {
               <p>No stress.</p>
           </section>
           <Button onClick={auth} variant='contained'  id='github-btn'><span >{github}</span>Sign in with GitHub</Button>
-      </Box> */}
+      </Box> 
     </>
+
   )
 }
 
