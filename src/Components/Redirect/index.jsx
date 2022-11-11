@@ -20,12 +20,19 @@ function Redirect() {
     }
 
     const response = await fetch('http://localhost:3000/users/code', options);
+    if(response.status === 200){
+      // alert('✅✅✅')
+      window.location.assign('/dashboard');
+    }
+    else{
+      alert('❌❌❌')
+      window.location.asign('/')
+    }
     
   }
 
   useEffect(() => {
     sendCode();
-    // startSSE();
 }, [])
 
 
