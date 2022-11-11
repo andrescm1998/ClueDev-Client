@@ -68,9 +68,11 @@ const buttonTheme = createTheme({
     palette: {
       cancel: {
         main: '#9A9A9A',
+        secondary: '#787878'
       },
       delete: {
         main: '#EE4B2B',
+        secondary: '#AF341C'
       },
       title: {
         main: '#000000',
@@ -109,10 +111,15 @@ export function DeleteModal() {
             </DialogContentText>
 
             <DialogActions sx={{display: 'flex', justifyContent: 'center', margin: '16px 5px'}}>
-                    <Button sx={{backgroundColor: 'cancel.main', fontWeight: 'bold'}} variant="contained">
+                    <Button sx={{backgroundColor: 'cancel.main', fontWeight: 'bold', ':hover': {
+      bgcolor: 'cancel.secondary', // theme.palette.primary.main
+      color: 'white'},}} variant="contained">
                     Cancel
                     </Button>
-                    <Button sx={{backgroundColor: 'delete.main', fontWeight: 'bold'}} variant="contained">
+                    <Button sx={{backgroundColor: 'delete.main', fontWeight: 'bold', ':hover': {
+      bgcolor: 'delete.secondary', // theme.palette.primary.main
+      color: 'white',
+    },}} variant="contained">
                     Delete
                     </Button>
             </DialogActions>

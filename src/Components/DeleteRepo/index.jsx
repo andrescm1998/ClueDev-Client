@@ -66,21 +66,23 @@ BootstrapDialogTitle.propTypes = {
 };
 
 const buttonTheme = createTheme({
-    palette: {
-      cancel: {
-        main: '#9A9A9A',
-      },
-      delete: {
-        main: '#EE4B2B',
-      },
-      title: {
-        main: '#000000',
-      }
+  palette: {
+    cancel: {
+      main: '#9A9A9A',
+      secondary: '#787878'
     },
-    shape: {
-        borderRadius: 12,
-      }, 
-  });
+    delete: {
+      main: '#EE4B2B',
+      secondary: '#AF341C'
+    },
+    title: {
+      main: '#000000',
+    }
+  },
+  shape: {
+      borderRadius: 12,
+    }, 
+});
 
 export function DeleteRepo() {
 
@@ -114,10 +116,12 @@ export function DeleteRepo() {
             </DialogContentText>
 
             <DialogActions sx={{display: 'flex', justifyContent: 'center', margin: '16px 5px'}}>
-                    <Button sx={{backgroundColor: 'cancel.main', fontWeight: 'bold'}} variant="contained">
+                    <Button sx={{backgroundColor: 'cancel.main', ':hover': {
+      bgcolor: 'cancel.secondary'}, fontWeight: 'bold'}} variant="contained">
                     Cancel
                     </Button>
-                    <Button sx={{backgroundColor: 'delete.main', fontWeight: 'bold'}} variant="contained" onClick={deleteRepo}>
+                    <Button sx={{backgroundColor: 'delete.main', ':hover': {
+      bgcolor: 'delete.secondary'}, fontWeight: 'bold'}} variant="contained" onClick={deleteRepo}>
                     Remove
                     </Button>
             </DialogActions>
