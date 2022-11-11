@@ -8,6 +8,7 @@ export { WorkspaceCard } from './WorkspaceCard';
 export { Folder } from './Folder';
 export { default as Repositories } from './Repositories';
 export { RepositoryCard } from './RepositoryCard';
+export { default as Redirect} from './Redirect'
 
 
 

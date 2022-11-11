@@ -5,9 +5,10 @@ import './index.css'
 function Home() {
 
   async function auth(){
-    const response = await fetch('http://localhost:3000/auth');
+    const response = await fetch('http://localhost:3000/users/auth');
     // console.log(response);
     const data = await response.json();
+    // console.log(data.url)
     window.location.assign(data.url);
   }
 
@@ -20,7 +21,7 @@ function Home() {
             <em>No misscommunication.</em>
             <em>No stress.</em>
         </Typography>
-        <Button onClick={auth} variant='contained'  id='github-btn'>Sign-Up with Github</Button>
+        <Button onClick={auth} variant='contained'  id='github-btn'>Sign-In with Github</Button>
     </Box>
   )
 }
