@@ -4,15 +4,15 @@ import { Button } from '@mui/material'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { Counter } from '../Counter';
+import { DeleteRepo } from '../DeleteRepo';
 import './index.css';
 
 // hold ellipsis icon 
-const dots = <FontAwesomeIcon icon ={faXmark} />
+const xIcon = <FontAwesomeIcon icon ={faXmark} />
 
  export const RepositoryCard = () => {
 
     const [showHide, setShowHide] = useState(false)
-
     
     const showHidden = () => {
         setShowHide(!showHide)     
@@ -24,17 +24,12 @@ const dots = <FontAwesomeIcon icon ={faXmark} />
                         <div className="block">
                             <div className="block-header">
                                 <h3>Repo Name</h3>
-                                <Button onClick={showHidden}>{dots}</Button>
+                                <DeleteRepo />
                             </div>
                             <div className="counters">
                                 <span>< Counter /></span>
                                 <span>< Counter /></span>
                                 <span>< Counter /></span>
-
-                            </div>
-                            <div id="showBtns" className={showHide ? 'showOptions': 'hideOptions' }> 
-                                <Button>Edit</Button>
-                                <Button>Delete</Button>
                             </div>
                         </div>
                     </div>
