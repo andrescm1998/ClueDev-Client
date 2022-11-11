@@ -48,7 +48,7 @@ export function Particle() {
                         quantity: 4,
                     },
                     repulse: {
-                        distance: 200,
+                        distance: 20,
                         duration: 0.4,
                     },
                 },
@@ -61,7 +61,7 @@ export function Particle() {
                     color: "#A9A9A9",
                     distance: 150,
                     enable: true,
-                    opacity: 0.5,
+                    opacity: 0.4,
                     width: 1,
                 },
                 collisions: {

@@ -6,6 +6,7 @@
     width: 100vw;
     justify-content: space-evenly;
     align-items: center;
+    position: absolute;
 }
 
 #logo-name {
@@ -28,11 +29,10 @@
 }
 
 #github-btn span {
-    padding: 5px;
+    padding: 10px;
 }
 
 .bg-wrapper {
-    position: fixed;
     width: 100%;
     z-index: -1;
 }
