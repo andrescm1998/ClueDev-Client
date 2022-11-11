@@ -83,3 +83,17 @@ h3 {
     display: none;
     visibility: hidden;
 }
+
+.expandable {
+    background: #fff;
+    overflow: hidden;
+    color: #000;   
+    line-height: 50px;
+  
+    transition: all .5s ease-in-out;
+    height: 0;
+   }
+   
+   .expandable:target {
+    height: 50px;
+  }

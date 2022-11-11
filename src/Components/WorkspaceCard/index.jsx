@@ -34,8 +34,9 @@ export const WorkspaceCard = () => {
                                 <span>< Counter /></span>
                             </div>
                         </div>
-                
-                        <WorkspaceSettings showHide={showHide}/>
+
+                            <WorkspaceSettings showHide={showHide}/>
+                        
                 </div>
         </div>
     
