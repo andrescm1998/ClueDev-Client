@@ -96,7 +96,7 @@ export function DeleteModal() {
   return (
     <ThemeProvider theme={buttonTheme}>
         <div>
-        <Button variant="standard" onClick={handleClickOpen}>
+        <Button sx={{color: '#EE4B2B', paddingLeft: '10px'}} variant="standard" onClick={handleClickOpen}>
         Delete
         </Button>
         <BootstrapDialog PaperProps={{sx: { width: "350px"}}} fullWidth onClose={handleClose} aria-labelledby="customized-dialog-title" open={open} TransitionComponent={Transition}

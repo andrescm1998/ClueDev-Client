@@ -67,7 +67,7 @@ h3 {
     text-align: center;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
     background-color: #DDDDDD;
     width: 100%;
