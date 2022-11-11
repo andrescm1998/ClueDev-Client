@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useSearchParams } from 'react-router-dom';
+import { fetchEventSource } from "@microsoft/fetch-event-source";
 // import {Modal} from '@mui/material'
 
 function TestPage() {
@@ -28,7 +29,7 @@ function TestPage() {
     }
 
     async function startSSE(){
-        await fetchEventSource(`http://localhost:3000/sse`, {
+      await fetchEventSource(`http://localhost:3000/sse`, {
               method: "POST",
               headers: {
                 Accept: "text/event-stream",
@@ -65,7 +66,7 @@ function TestPage() {
     }, [])
     
     useEffect(() => {
-        console.log(data);
+        // console.log(data);
     }, [data])
 
 
