@@ -1,6 +1,11 @@
 import React from 'react'
-import {Typography, Button, Box} from '@mui/material'
+import {Button, Box} from '@mui/material'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import * as Brands from '@fortawesome/fontawesome-free-brands';
+import { Particle } from '../Particle';
 import './index.css'
+
+const github = <FontAwesomeIcon icon ={ Brands.faGithub } />
 
 function Home() {
 
@@ -14,15 +19,19 @@ function Home() {
 
 
   return (
-    <Box id='home'>
-        <Typography id='logo-name'>ClueDev</Typography>
-        <Typography id='moto'>
-            <em>Less merge conflicts.</em>
-            <em>No misscommunication.</em>
-            <em>No stress.</em>
-        </Typography>
-        <Button onClick={auth} variant='contained'  id='github-btn'>Sign-In with Github</Button>
-    </Box>
+    <>
+      <Particle />
+      <Box id='home'>
+          <h1 id='logo-name'>ClueDev.</h1>
+          <section id='moto'>
+              <p>Less merge conflicts.</p>
+              <p>No miscommunication.</p>
+              <p>No stress.</p>
+          </section>
+          <Button onClick={auth} variant='contained'  id='github-btn'><span >{github}</span>Sign in with GitHub</Button>
+      </Box> 
+    </>
+
   )
 }
 
