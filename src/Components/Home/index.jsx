@@ -2,6 +2,7 @@ import React from 'react'
 import {Button, Box} from '@mui/material'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import * as Brands from '@fortawesome/fontawesome-free-brands';
+import { Particle } from '../Particle';
 import './index.css'
 
 const github = <FontAwesomeIcon icon ={ Brands.faGithub } />
@@ -17,15 +18,18 @@ function Home() {
 
 
   return (
-    <Box id='home'>
-        <h1 id='logo-name'>ClueDev.</h1>
-        <section id='moto'>
-            <p>Less merge conflicts.</p>
-            <p>No miscommunication.</p>
-            <p>No stress.</p>
-        </section>
-        <Button onClick={auth} variant='contained'  id='github-btn'><span >{github}</span>Sign in with GitHub</Button>
-    </Box>
+    <>
+      <Particle />
+      {/* <Box id='home'>
+          <h1 id='logo-name'>ClueDev.</h1>
+          <section id='moto'>
+              <p>Less merge conflicts.</p>
+              <p>No miscommunication.</p>
+              <p>No stress.</p>
+          </section>
+          <Button onClick={auth} variant='contained'  id='github-btn'><span >{github}</span>Sign in with GitHub</Button>
+      </Box> */}
+    </>
   )
 }
 
