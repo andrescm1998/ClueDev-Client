@@ -106,17 +106,17 @@ export function DeleteModal() {
         <BootstrapDialog PaperProps={{sx: { width: "350px"}}} fullWidth onClose={handleClose} aria-labelledby="customized-dialog-title" open={open} TransitionComponent={Transition}
             keepMounted >
 
-            <DialogTitle sx={{color: 'title.main'}} className='delete-modal-text'>Delete Workspace</DialogTitle>
+            <DialogTitle sx={{color: 'title.main', paddingBottom: '5px'}} className='delete-modal-text'>Delete Workspace</DialogTitle>
 
             <DialogContentText className='delete-modal-text'>
                 Are you sure you want to delete this item?
             </DialogContentText>
 
-            <DialogActions sx={{display: 'flex', justifyContent: 'center', margin: '10px 5px'}}>
-                    <Button sx={{backgroundColor: 'cancel.main'}} variant="contained">
+            <DialogActions sx={{display: 'flex', justifyContent: 'center', margin: '16px 5px'}}>
+                    <Button sx={{backgroundColor: 'cancel.main', fontWeight: 'bold'}} variant="contained">
                     Cancel
                     </Button>
-                    <Button sx={{backgroundColor: 'delete.main'}} variant="contained">
+                    <Button sx={{backgroundColor: 'delete.main', fontWeight: 'bold'}} variant="contained">
                     Delete
                     </Button>
             </DialogActions>
