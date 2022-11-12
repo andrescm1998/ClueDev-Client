@@ -1,5 +1,5 @@
 import React from 'react';
-import {useState} from 'react'
+import { useState, useEffect } from 'react'
 import { Button } from '@mui/material'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
@@ -8,13 +8,21 @@ import { WorkspaceCard } from '../WorkspaceCard';
 import './index.css'
 
 const Dashboard = () => {
-const [toggle, setToggle] = useState(true)
+    const [workspaces, setWorkspaces] = useState([])
+    console.log(workspaces.length > 0)
 
-// Will possibly need a state here to hold repos attached as an array and another state to handle name change of workspace
+    useEffect(() => {
+        getWorkspaces();
+    }, [])
 
-const buttonToggle = () => {
-        setToggle(!toggle)     
-}
+    const getWorkspaces = async () => {
+        const options = {
+            credentials: 'include'
+          }
+        const response = await fetch('http://localhost:3000/workspace/user', options);
+        const data = response.status === 200 ? await response.json() : [];
+        setWorkspaces(data)
+    }
 
     return (
         <>
@@ -29,16 +37,9 @@ const buttonToggle = () => {
                 </section>
                 <hr/>
                 <section className='workspace-list'>
-                    <p className={toggle ? 'workspace-active': 'no-workspace-active' }>
-                    There are no workspaces, click the plus icon to add a new workspace
-                    </p>
+                    { workspaces.length === 0 && <p>There are no workspaces, click the plus icon to add a new workspace</p> }
                     <section className='workspaces-container'>
-                        <WorkspaceCard /> 
-                        <WorkspaceCard /> 
-                        <WorkspaceCard /> 
-                        <WorkspaceCard />
-                        <WorkspaceCard />
-                        <WorkspaceCard />
+                        { workspaces.map(workspace => <WorkspaceCard key={workspace.id} data={workspace} />)}
                     </section>  
                 </section>
             </main>
