@@ -82,9 +82,7 @@ export default function CustomizedDialogs() {
     setSelected([]);
   };
 
-
-
-  const [repositories, setRepositories] = useState(repos);
+  const [repositories, setRepositories] = useState([]);
   const [selected, setSelected] = useState([])
 
   const handleChange = (event) => {
@@ -105,7 +103,7 @@ export default function CustomizedDialogs() {
     const response = await fetch('http://localhost:3000/repo/user', options);
     const repos = await response.json()
     setRepositories(repos);
-    // console.log(repos);
+    console.log(repos);
   }
 
   return (
@@ -129,6 +127,7 @@ export default function CustomizedDialogs() {
           multiple
           value={selected}
           label="Attach repositories"
+          MenuProps={{ PaperProps: { sx: { maxHeight: 200 } } }}
           onChange={handleChange}
         >
 
