@@ -17,6 +17,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import Slide from '@mui/material/Slide';
 import { FormControl, InputLabel} from '@mui/material';
+import Chip from '@mui/material/Chip';
 
 import Box from '@mui/material/Box';
 import MenuItem from '@mui/material/MenuItem';
@@ -78,15 +79,23 @@ export default function CustomizedDialogs() {
   };
   const handleClose = () => {
     setOpen(false);
-    setSelected('');
+    setSelected([]);
   };
 
 
-  const [repositories, setRepositories] = useState([]);
-  const [selected, setSelected] = useState('')
+
+  const [repositories, setRepositories] = useState(repos);
+  const [selected, setSelected] = useState([])
 
   const handleChange = (event) => {
-    setSelected(event.target.value);
+    // setSelected(event.target.value);
+    const {
+      target: { value },
+    } = event;
+    setSelected(
+      // On autofill we get a stringified value.
+      typeof value === 'string' ? value.split(',') : value,
+    );
   };
 
   async function getRepos() {
@@ -117,6 +126,7 @@ export default function CustomizedDialogs() {
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
+          multiple
           value={selected}
           label="Attach repositories"
           onChange={handleChange}
