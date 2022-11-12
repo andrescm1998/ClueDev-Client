@@ -69,7 +69,7 @@ BootstrapDialogTitle.propTypes = {
   onClose: PropTypes.func.isRequired,
 };
 
-export default function CustomizedDialogs() {
+export default function CustomizedDialogs({ setWorkspaces }) {
   const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
@@ -113,8 +113,9 @@ export default function CustomizedDialogs() {
 
   const handleSubmit = async () => {
     const workspace = await addWorkspace();
-    console.log(workspace.id)
     await addRepos(workspace.id)
+    await getWorkspaces();
+    setOpen(false);
   }
 
 
@@ -142,7 +143,9 @@ export default function CustomizedDialogs() {
   }
 
   const addRepos = async (wsId) => {
-    selected.forEach(async (repo) => {
+
+
+    for (const repo of selected) {
       // Format the request data
       const data = {
         repoName: repo,
@@ -161,7 +164,16 @@ export default function CustomizedDialogs() {
 
       // Send the post request
       await fetch('http://localhost:3000/repo', options);
-    })
+    }
+  }
+
+  const getWorkspaces = async () => {
+    const options = {
+        credentials: 'include'
+      }
+    const response = await fetch('http://localhost:3000/workspace/user', options);
+    const data = response.status === 200 ? await response.json() : [];
+    setWorkspaces(data)
   }
 
 
