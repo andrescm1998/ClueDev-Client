@@ -74,22 +74,15 @@ export default function CustomizedDialogs() {
 
   const handleClickOpen = () => {
     setOpen(true);
+    console.log('hello')
+    getRepos();
   };
   const handleClose = () => {
     setOpen(false);
     setSelected([]);
   };
 
-  const repos = [
-    {
-      name: "repo1",
-      id: 1
-    },
-    {
-      name: "repo2",
-      id: 2
-    }
-  ]
+
 
   const [repositories, setRepositories] = useState(repos);
   const [selected, setSelected] = useState([])
@@ -104,6 +97,16 @@ export default function CustomizedDialogs() {
       typeof value === 'string' ? value.split(',') : value,
     );
   };
+
+  async function getRepos() {
+    const options = {
+      credentials: 'include'
+    }
+    const response = await fetch('http://localhost:3000/repo/user', options);
+    const repos = await response.json()
+    setRepositories(repos);
+    // console.log(repos);
+  }
 
   return (
     <div>
