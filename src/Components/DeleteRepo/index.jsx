@@ -88,7 +88,8 @@ export function DeleteRepo() {
 
   const [open, setOpen] = useState(false);
 
-  const handleClickOpen = () => {
+  const handleClickOpen = (e) => {
+    e.stopPropagation();
     setOpen(true);
   };
   const handleClose = () => {
