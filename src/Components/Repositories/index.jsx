@@ -7,8 +7,23 @@ import { useParams } from 'react-router-dom';
 
 
 const Repositories = () => {
-
+    const [repos, setRepos] = useState([]);
     const { workspace } = useParams();
+
+    useEffect(() => {
+        getRepos()
+    }, [])
+
+    console.log(repos)
+
+    const getRepos = async () => {
+        const options = {
+            credentials: 'include'
+          }
+        const response = await fetch(`http://localhost:3000/repo/workspace?wsName=${workspace}`, options);
+        const data = response.status === 200 ? await response.json() : [];
+        setRepos(data)
+    }
 
 
     return <>
