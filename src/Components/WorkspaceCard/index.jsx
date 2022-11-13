@@ -18,12 +18,18 @@ export const WorkspaceCard = ({ data }) => {
     console.log(data)
 
     
-    const showHidden = () => {
+    const showHidden = (e) => {
+        e.stopPropagation();
         setShowHide(!showHide)     
     }
 
+    const handleCLick = () => {
+        window.location.assign(`/${data.name}`)
+        console.log('test')
+    }
+
     return <>
-        <div className='main-container'>
+        <div className='main-container' onClick={handleCLick} on>
             <div className='workspace-card-container'>
                         <div className="block">
                             <div className="block-header">
