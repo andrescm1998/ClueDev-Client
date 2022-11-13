@@ -14,7 +14,10 @@ function App() {
         <Route path='/dashboard' element={<Dashboard/>}/>
         <Route path='/:wsid/:workspace'>
           <Route index element={<Repositories/>}/>
-          <Route path=':repoid/:repo' element={<Map/>}/>
+          <Route path=':repoid/:repo'>
+            <Route index element={<Map/>}/>
+            <Route path=':folder/:sha' element={<Folder/>}/>
+          </Route>
         </Route>
       </Route>  
     </Routes>

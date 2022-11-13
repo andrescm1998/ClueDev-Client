@@ -6,6 +6,8 @@
     align-items: center;
     border-radius: 15px;
     justify-content: space-between;
+    text-decoration: none;
+    color: black;
 }
 
 .icon {
