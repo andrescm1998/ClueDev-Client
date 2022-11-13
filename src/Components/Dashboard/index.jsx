@@ -9,7 +9,6 @@ import './index.css'
 
 const Dashboard = () => {
     const [workspaces, setWorkspaces] = useState([])
-    console.log(workspaces.length > 0)
 
     useEffect(() => {
         getWorkspaces();
@@ -23,6 +22,7 @@ const Dashboard = () => {
         const data = response.status === 200 ? await response.json() : [];
         setWorkspaces(data)
     }
+    console.log(workspaces)
 
     return (
         <>
@@ -30,7 +30,7 @@ const Dashboard = () => {
                 <section className='header'>
                     <h1>Workspaces</h1>
                     <section className='links'>
-                        < Modal />
+                        < Modal setWorkspaces={setWorkspaces} />
                         {/* on click of create button in modal will send data to create workspace card component  */}
                         {/* <Button onClick={buttonToggle}>Toggle</Button> */}
                     </section>

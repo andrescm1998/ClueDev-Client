@@ -69,7 +69,7 @@ BootstrapDialogTitle.propTypes = {
   onClose: PropTypes.func.isRequired,
 };
 
-export default function CustomizedDialogs() {
+export default function CustomizedDialogs({ setWorkspaces }) {
   const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
@@ -83,7 +83,8 @@ export default function CustomizedDialogs() {
   };
 
   const [repositories, setRepositories] = useState([]);
-  const [selected, setSelected] = useState([])
+  const [selected, setSelected] = useState([]);
+  const [title, setTitle] = useState("");
 
   const handleChange = (event) => {
     // setSelected(event.target.value);
@@ -96,6 +97,10 @@ export default function CustomizedDialogs() {
     );
   };
 
+  const handleTitleChange = (e) => {
+    setTitle(e.target.value)
+  }
+
   async function getRepos() {
     const options = {
       credentials: 'include'
@@ -105,6 +110,76 @@ export default function CustomizedDialogs() {
     setRepositories(repos);
     console.log(repos);
   }
+
+  const handleSubmit = async () => {
+    const workspace = await addWorkspace();
+    await addRepos(workspace.id)
+    await getWorkspaces();
+    setOpen(false);
+  }
+
+
+  const addWorkspace = async () => {
+    // Format the request data
+    const data = {
+      wsName: title
+    }
+
+    // Set the request metadata
+    const options = {
+      method: "POST",
+      credentials: 'include',
+      headers: {
+          "Content-type": "application/json",
+      },
+      body: JSON.stringify(data),
+    };
+
+    // Send the post request
+    const response = await fetch('http://localhost:3000/workspace', options);
+    const workspace = await response.json();
+    console.log(workspace)
+    return workspace;
+  }
+
+  const addRepos = async (wsId) => {
+
+
+    for (const repo of selected) {
+      // Format the request data
+      const data = {
+        repoName: repo,
+        wsId: wsId
+      }
+
+      // Set the request metadata
+      const options = {
+        method: "POST",
+        credentials: 'include',
+        headers: {
+            "Content-type": "application/json",
+        },
+        body: JSON.stringify(data),
+      };
+
+      // Send the post request
+      await fetch('http://localhost:3000/repo', options);
+    }
+  }
+
+  const getWorkspaces = async () => {
+    const options = {
+        credentials: 'include'
+      }
+    const response = await fetch('http://localhost:3000/workspace/user', options);
+    const data = response.status === 200 ? await response.json() : [];
+    setWorkspaces(data)
+  }
+
+
+
+  console.log(selected)
+  console.log(title)
 
   return (
     <div>
@@ -117,7 +192,7 @@ export default function CustomizedDialogs() {
           Create a Workspace 
         </BootstrapDialogTitle>
         <DialogContent sx={{display: 'flex', alignItems: 'center'}} dividers className='modal-input'>
-        <TextField sx={{ m: 1.5, width: '95%' }}  dividers required id="workspace-name" label="Workspace Name" variant="outlined" />
+        <TextField onChange={handleTitleChange} sx={{ m: 1.5, width: '95%' }}  dividers required id="workspace-name" label="Workspace Name" variant="outlined" />
 
       <FormControl fullWidth sx={{display: 'flex', justifyContent: 'center', width: '95%'}}>
         <InputLabel id="demo-simple-select-label">Attach repositories</InputLabel>
@@ -141,7 +216,7 @@ export default function CustomizedDialogs() {
 
         </DialogContent>
         <DialogActions sx={{display: 'flex', justifyContent: 'center'}}>
-          <Button sx={{backgroundColor: '#A97FFF', color: 'white', ':hover': {
+          <Button onClick={handleSubmit} sx={{backgroundColor: '#A97FFF', color: 'white', ':hover': {
       bgcolor: '#8A69CE'},fontWeight: 'bold', borderRadius: '10px', margin: '16px 0px', width: '95%'}} autoFocus >
             Create
           </Button>
