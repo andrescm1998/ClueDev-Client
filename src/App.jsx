@@ -12,7 +12,7 @@ function App() {
         <Route path='/map' element={<Map/>}/>
         <Route path='/map/folder' element={<Folder/>}/>
         <Route path='/dashboard' element={<Dashboard/>}/>
-        <Route path='/:workspace' element={<Repositories/>}/>
+        <Route path='/:wsid/:workspace' element={<Repositories/>}/>
       </Route>  
     </Routes>
   )

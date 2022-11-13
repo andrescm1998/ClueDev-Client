@@ -24,7 +24,7 @@ export const WorkspaceCard = ({ data }) => {
     }
 
     const handleCLick = () => {
-        window.location.assign(`/${data.name}`)
+        window.location.assign(`/${data.id}/${data.name}`)
         console.log('test')
     }
 

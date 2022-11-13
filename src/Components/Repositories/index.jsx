@@ -3,12 +3,14 @@ import './index.css'
 import  { RepositoryCard } from '../RepositoryCard';
 import AttachRepoModal from '../AttachRepoModal';
 import { useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 
 
 const Repositories = () => {
+    const { ws } = useSelector((state) => state.ws.value)
     const [repos, setRepos] = useState([]);
-    const { workspace } = useParams();
+    const { workspace, wsid } = useParams();
 
     useEffect(() => {
         getRepos()
