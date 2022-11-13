@@ -6,13 +6,27 @@ import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import Modal from '../Modal';
 import { WorkspaceCard } from '../WorkspaceCard';
 import './index.css'
+import { useDispatch } from 'react-redux';
+import { setUser } from '../../store/user';
+import { setWs } from '../../store/workspaces';
 
 const Dashboard = () => {
     const [workspaces, setWorkspaces] = useState([])
+    const dispatch = useDispatch();
 
     useEffect(() => {
+        getUser();
         getWorkspaces();
     }, [])
+
+    const getUser = async () => {
+        const options = {
+            credentials: 'include'
+          }
+        const response = await fetch('http://localhost:3000/users', options);
+        const data = response.status === 200 ? await response.json() : [];
+        dispatch(setUser(data))
+    }
 
     const getWorkspaces = async () => {
         const options = {
@@ -21,8 +35,8 @@ const Dashboard = () => {
         const response = await fetch('http://localhost:3000/workspace/user', options);
         const data = response.status === 200 ? await response.json() : [];
         setWorkspaces(data)
+        dispatch(setWs(data))
     }
-    console.log(workspaces)
 
     return (
         <>

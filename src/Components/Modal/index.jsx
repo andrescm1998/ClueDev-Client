@@ -18,10 +18,11 @@ import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import Slide from '@mui/material/Slide';
 import { FormControl, InputLabel} from '@mui/material';
 import Chip from '@mui/material/Chip';
-
 import Box from '@mui/material/Box';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
+import { useSelector, useDispatch } from 'react-redux';
+import { setWs } from '../../store/workspaces';
 
 
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -70,6 +71,7 @@ BootstrapDialogTitle.propTypes = {
 };
 
 export default function CustomizedDialogs({ setWorkspaces }) {
+  const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
@@ -173,6 +175,7 @@ export default function CustomizedDialogs({ setWorkspaces }) {
       }
     const response = await fetch('http://localhost:3000/workspace/user', options);
     const data = response.status === 200 ? await response.json() : [];
+    dispatch(setWs(data));
     setWorkspaces(data)
   }
 
