@@ -22,7 +22,7 @@ const Repositories = () => {
         const options = {
             credentials: 'include'
           }
-        const response = await fetch(`http://localhost:3000/repo/workspace?wsName=${workspace}`, options);
+        const response = await fetch(`http://localhost:3000/repo/workspace?wsid=${wsid}`, options);
         const data = response.status === 200 ? await response.json() : [];
         setRepos(data)
     }
@@ -39,14 +39,14 @@ const Repositories = () => {
                 </section>
                 <hr/>
                 <section className='workspace-list'>
+                    { repos.length === 0 && <p>There are no repositories, click the plus icon to add a new repository</p> }
                     <section className='workspaces-container'>
+                        { repos.map(repo => <RepositoryCard key={repo.id} data={repo} />)}
+                         {/* <RepositoryCard /> 
                          <RepositoryCard /> 
                          <RepositoryCard /> 
                          <RepositoryCard /> 
-                         <RepositoryCard /> 
-                         <RepositoryCard /> 
-
-                        
+                         <RepositoryCard />  */}
                     </section>  
                 </section>
             </main>
