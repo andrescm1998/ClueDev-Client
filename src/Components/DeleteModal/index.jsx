@@ -83,9 +83,10 @@ const buttonTheme = createTheme({
       }, 
   });
 
-export function DeleteModal(e) {
-
+export function DeleteModal({id}) {
+  const [userId, setUserId] = useState(id)
   const [open, setOpen] = useState(false);
+
 
   const handleClickOpen = (e) => {
     e.stopPropagation();
@@ -96,8 +97,14 @@ export function DeleteModal(e) {
     setOpen(false);
   };
 
-  const handleDelete = (e) => {
+  async function handleDelete(e) {
     e.stopPropagation();
+    const options = {method: 'DELETE'}
+    const response = await fetch(`http://localhost:3000/workspace/${id}`, options);
+    console.log(response)
+    if(response.status == 200) {
+      window.location.reload
+    }
   }
 
 
@@ -118,14 +125,14 @@ export function DeleteModal(e) {
 
             <DialogActions sx={{display: 'flex', justifyContent: 'center', margin: '16px 5px'}}>
                     <Button sx={{backgroundColor: 'cancel.main', fontWeight: 'bold', ':hover': {
-      bgcolor: 'cancel.secondary', // theme.palette.primary.main
-      color: 'white'},}} variant="contained">
+                        bgcolor: 'cancel.secondary', // theme.palette.primary.main
+                        color: 'white'},}} variant="contained">
                     Cancel
                     </Button>
                     <Button onClick={handleDelete} sx={{backgroundColor: 'delete.main', fontWeight: 'bold', ':hover': {
-      bgcolor: 'delete.secondary', // theme.palette.primary.main
-      color: 'white',
-    },}} variant="contained">
+                      bgcolor: 'delete.secondary', // theme.palette.primary.main
+                      color: 'white',
+                      },}} variant="contained">
                     Delete
                     </Button>
             </DialogActions>
