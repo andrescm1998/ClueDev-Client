@@ -84,7 +84,7 @@ const buttonTheme = createTheme({
     }, 
 });
 
-export function DeleteRepo() {
+export function DeleteRepo({id}) {
 
   const [open, setOpen] = useState(false);
 
@@ -97,9 +97,15 @@ export function DeleteRepo() {
     setOpen(false);
   };
 
-  const deleteRepo = (e, id) => {
+  async function deleteRepo(e) {
     e.stopPropagation();
     console.log("DELETE")
+    const options = {method: 'DELETE'}
+    const response = await fetch(`http://localhost:3000/repo/${id}`, options);
+    console.log(response)
+    if(response.status == 200) {
+      window.location.reload()
+    }
   }
 
   const xIcon = <FontAwesomeIcon icon ={faXmark} />

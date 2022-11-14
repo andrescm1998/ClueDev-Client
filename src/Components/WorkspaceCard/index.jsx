@@ -18,6 +18,7 @@ export const WorkspaceCard = ({ data }) => {
     const [counterLimit, setCounterLimit] = useState(5)
 
     // console.log("Length",data.collaborators.length);
+    console.log(data)
 
     
     const showHidden = (e) => {
@@ -27,7 +28,7 @@ export const WorkspaceCard = ({ data }) => {
 
     const handleCLick = () => {
         window.location.assign(`/${data.id}/${data.name}`)
-        // console.log('test')
+        console.log('test')
     }
 
     return <>
@@ -48,7 +49,7 @@ export const WorkspaceCard = ({ data }) => {
                             </AvatarGroup>
                         </div>
 
-                            <WorkspaceSettings id={data.id} showHide={showHide}/>
+                            <WorkspaceSettings showHide={showHide}/>
                         
                 </div>
         </div>
