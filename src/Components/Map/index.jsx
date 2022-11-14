@@ -64,6 +64,7 @@ export const Map = () => {
                     <hr className='header-hr'/>
                 </section>
             </section>
+            
             {/* CONDITIONAL - if no files, render no files text, else render folder list */}
             {/* <h2>
             There are currently no folders or files in this repository
