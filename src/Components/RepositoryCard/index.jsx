@@ -29,7 +29,7 @@ export const RepositoryCard = ({ data }) => {
             <div className="block">
                 <div className="block-header">
                     <h3>{data.name}</h3>
-                    <DeleteRepo />
+                    <DeleteRepo id={data.id} />
                 </div>
                 <div className="counters">
                     {data.collaborators.map(collaborator => {
