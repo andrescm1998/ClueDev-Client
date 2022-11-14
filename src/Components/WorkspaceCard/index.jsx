@@ -17,10 +17,7 @@ export const WorkspaceCard = ({ data }) => {
     const [showHide, setShowHide] = useState(false)
     const [counterLimit, setCounterLimit] = useState(5)
 
-    // console.log("Length",data.collaborators.length);
-    console.log(data)
-
-    
+        
     const showHidden = (e) => {
         e.stopPropagation();
         setShowHide(!showHide)     
