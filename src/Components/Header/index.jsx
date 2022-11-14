@@ -1,5 +1,5 @@
 import React from "react";
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { Button } from '@mui/material'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -7,12 +7,19 @@ import { faEllipsis, faGear, faArrowRightFromBracket } from "@fortawesome/free-s
 import './index.css'
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
+import { useDispatch, useSelector } from 'react-redux';
+import { setUser } from '../../store/user';
+// import Breadcrumb from "./breadcrumb";
 
 const dots = <FontAwesomeIcon icon ={faEllipsis} />
 const settings = <FontAwesomeIcon icon ={faGear} />
 const logout = <FontAwesomeIcon icon ={faArrowRightFromBracket} />
 
 const Header = () => {
+    
+    // Get username of the user currently logged in
+    const loggedUser = useSelector(state => state.user.value);
+    const dispatch = useDispatch();
 
     const [ open, setOpen ] = useState(null);
     const navigate = useNavigate();
@@ -40,11 +47,24 @@ const Header = () => {
           
     }
 
+    useEffect(() => {
+        getUser(); 
+    }, []);
+
+    async function getUser() {
+        const options = {
+            credentials: 'include'
+          }
+        const response = await fetch('http://localhost:3000/users', options);
+        const data = response.status === 200 ? await response.json() : [];
+        dispatch(setUser(data))
+    }
+
     return (
     <>
         <header>
             <nav className="nav-links">
-                <NavLink to="/dashboard">Username</NavLink>
+                <NavLink to="/dashboard">{loggedUser.ghUsername}</NavLink>
                 <NavLink to="/dashboard">ClueDev.</NavLink>
                 <Button id="nav-button"  
                 aria-controls={opened ? 'nav-menu' : undefined}
@@ -79,6 +99,8 @@ const Header = () => {
                 </Menu>
             </nav>
         </header>
+
+        {/* <Breadcrumb /> */}
 
         <Outlet />
     </>
