@@ -92,12 +92,13 @@ export function DeleteRepo() {
     e.stopPropagation();
     setOpen(true);
   };
-  const handleClose = () => {
+  const handleClose = (e) => {
+    e.stopPropagation();
     setOpen(false);
   };
 
-  const deleteRepo = (id) => {
-
+  const deleteRepo = (e, id) => {
+    e.stopPropagation();
     console.log("DELETE")
   }
 

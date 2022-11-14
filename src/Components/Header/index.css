@@ -13,6 +13,9 @@ header {
     align-items: center;
     position: fixed;
     background-color: #ffffff;
+    top: 0;
+    padding-top: 1rem;
+    /* background-color: blue; */
 }
 
 .nav-links a {

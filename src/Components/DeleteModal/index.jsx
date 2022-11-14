@@ -83,16 +83,22 @@ const buttonTheme = createTheme({
       }, 
   });
 
-export function DeleteModal() {
+export function DeleteModal(e) {
 
   const [open, setOpen] = useState(false);
 
-  const handleClickOpen = () => {
+  const handleClickOpen = (e) => {
+    e.stopPropagation();
     setOpen(true);
   };
-  const handleClose = () => {
+  const handleClose = (e) => {
+    e.stopPropagation();
     setOpen(false);
   };
+
+  const handleDelete = (e) => {
+    e.stopPropagation();
+  }
 
 
   return (
@@ -116,7 +122,7 @@ export function DeleteModal() {
       color: 'white'},}} variant="contained">
                     Cancel
                     </Button>
-                    <Button sx={{backgroundColor: 'delete.main', fontWeight: 'bold', ':hover': {
+                    <Button onClick={handleDelete} sx={{backgroundColor: 'delete.main', fontWeight: 'bold', ':hover': {
       bgcolor: 'delete.secondary', // theme.palette.primary.main
       color: 'white',
     },}} variant="contained">
