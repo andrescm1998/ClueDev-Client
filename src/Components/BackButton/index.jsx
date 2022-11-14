@@ -12,7 +12,7 @@ export const BackButton = () => {
 
     return (
         <>
-        <Link to="/map">
+        <Link to="..">
             <button>
                 <section className='back-button'>
                     <section className='circle back'/>

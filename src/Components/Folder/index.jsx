@@ -1,10 +1,30 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import './index.css';
 import { BackButton } from '../BackButton';
 import { FolderFile } from '../FolderFile';
 
 export const Folder = () => {
+
+    const { repoid, repo, folder, sha } = useParams();
+    const [contents, setContents] = useState([]);
+
+    console.log(contents)
+
+    useEffect(() => {
+        getContents()
+    }, [])
+
+    const getContents = async () => {
+        const options = {
+            credentials: 'include'
+          }
+        const response = await fetch(`http://localhost:3000/folder/?sha=${sha}&repoid=${repoid}`, options);
+        const data = response.status === 200 ? await response.json() : [];
+        data.tree.sort((a, b) => a.mode - b.mode)
+        setContents(data.tree)
+    }
 
     return (
         <main className='folder-container'>
