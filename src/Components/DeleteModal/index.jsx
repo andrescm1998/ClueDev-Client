@@ -103,7 +103,7 @@ export function DeleteModal({id}) {
     const response = await fetch(`http://localhost:3000/workspace/${id}`, options);
     console.log(response)
     if(response.status == 200) {
-      window.location.reload
+      window.location.reload()
     }
   }
 
