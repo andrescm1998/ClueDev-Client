@@ -4,10 +4,25 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import * as Brands from '@fortawesome/fontawesome-free-brands';
 import { Particle } from '../Particle';
 import './index.css'
+import { useEffect } from 'react';
 
 const github = <FontAwesomeIcon icon ={ Brands.faGithub } />
 
 function Home() {
+
+
+  useEffect(() => {
+    let cookies = document.cookie.split(';');
+    cookies = cookies.map(el => el.trim());
+    
+    cookies.map(cookie => {
+      if (cookie.includes('ClueDev')){
+        window.location.assign('/dashboard');
+      }
+    })
+    
+    
+  },[])
 
   async function auth(){
     const response = await fetch('http://localhost:3000/users/auth');
