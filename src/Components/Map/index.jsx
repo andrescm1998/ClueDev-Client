@@ -50,7 +50,7 @@ export const Map = () => {
     return (
         <main className='map-container'>
 
-            <section className='container'>
+            <section className='wrapper'>
                 {/* repo name rendered from repo */}
                 <section className='map-header'>
                     <h1>{repo}</h1>

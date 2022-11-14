@@ -46,7 +46,7 @@ export const WorkspaceCard = ({ data }) => {
                             </AvatarGroup>
                         </div>
 
-                            <WorkspaceSettings showHide={showHide}/>
+                            <WorkspaceSettings id={data.id} showHide={showHide}/>
                         
                 </div>
         </div>
