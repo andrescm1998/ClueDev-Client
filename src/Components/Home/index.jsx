@@ -14,8 +14,9 @@ function Home() {
   useEffect(() => {
     let cookies = document.cookie.split(';');
     cookies = cookies.map(el => el.trim());
+    console.log("cookies", cookies);
     
-    cookies.map(cookie => {
+    cookies.forEach(cookie => {
       if (cookie.includes('ClueDev')){
         window.location.assign('/dashboard');
       }

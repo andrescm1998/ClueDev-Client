@@ -34,6 +34,7 @@ const Dashboard = () => {
           }
         const response = await fetch('http://localhost:3000/workspace/user', options);
         const data = response.status === 200 ? await response.json() : [];
+        console.log(data);
         setWorkspaces(data)
         dispatch(setWs(data))
     }
