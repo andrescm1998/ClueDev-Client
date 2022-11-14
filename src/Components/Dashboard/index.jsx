@@ -29,9 +29,9 @@ const buttonToggle = () => {
                 </section>
                 <hr/>
                 <section className='workspace-list'>
-                    <p className={toggle ? 'workspace-active': 'no-workspace-active' }>
+                    {/* <p className={toggle ? 'workspace-active': 'no-workspace-active' }>
                     There are no workspaces, click the plus icon to add a new workspace
-                    </p>
+                    </p> */}
                     <section className='workspaces-container'>
                         <WorkspaceCard /> 
                         <WorkspaceCard /> 
