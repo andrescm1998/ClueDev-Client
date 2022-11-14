@@ -1,20 +1,42 @@
 import React from 'react';
-import {useState} from 'react'
+import { useState, useEffect } from 'react'
 import { Button } from '@mui/material'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import Modal from '../Modal';
 import { WorkspaceCard } from '../WorkspaceCard';
 import './index.css'
+import { useDispatch } from 'react-redux';
+import { setUser } from '../../store/user';
+import { setWs } from '../../store/workspaces';
 
 const Dashboard = () => {
-const [toggle, setToggle] = useState(true)
+    const [workspaces, setWorkspaces] = useState([])
+    const dispatch = useDispatch();
 
-// Will possibly need a state here to hold repos attached as an array and another state to handle name change of workspace
+    useEffect(() => {
+        getUser();
+        getWorkspaces();
+    }, [])
 
-const buttonToggle = () => {
-        setToggle(!toggle)     
-}
+    const getUser = async () => {
+        const options = {
+            credentials: 'include'
+          }
+        const response = await fetch('http://localhost:3000/users', options);
+        const data = response.status === 200 ? await response.json() : [];
+        dispatch(setUser(data))
+    }
+
+    const getWorkspaces = async () => {
+        const options = {
+            credentials: 'include'
+          }
+        const response = await fetch('http://localhost:3000/workspace/user', options);
+        const data = response.status === 200 ? await response.json() : [];
+        setWorkspaces(data)
+        dispatch(setWs(data))
+    }
 
     return (
         <>
@@ -22,23 +44,17 @@ const buttonToggle = () => {
                 <section className='header'>
                     <h1>Workspaces</h1>
                     <section className='links'>
-                        < Modal />
+                        < Modal setWorkspaces={setWorkspaces} />
                         {/* on click of create button in modal will send data to create workspace card component  */}
                         {/* <Button onClick={buttonToggle}>Toggle</Button> */}
                     </section>
                 </section>
                 <hr/>
                 <section className='workspace-list'>
-                    {/* <p className={toggle ? 'workspace-active': 'no-workspace-active' }>
-                    There are no workspaces, click the plus icon to add a new workspace
-                    </p> */}
+                    { workspaces.length === 0 && <p>There are no workspaces, click the plus icon to add a new workspace</p> }
+
                     <section className='workspaces-container'>
-                        <WorkspaceCard /> 
-                        <WorkspaceCard /> 
-                        <WorkspaceCard /> 
-                        <WorkspaceCard />
-                        <WorkspaceCard />
-                        <WorkspaceCard />
+                        { workspaces.map(workspace => <WorkspaceCard key={workspace.id} data={workspace} />)}
                     </section>  
                 </section>
             </main>
