@@ -1,6 +1,6 @@
 import React from "react";
 import {useState} from 'react'
-import { NavLink, Outlet } from "react-router-dom";
+import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { Button } from '@mui/material'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEllipsis, faGear, faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons";
@@ -15,6 +15,7 @@ const logout = <FontAwesomeIcon icon ={faArrowRightFromBracket} />
 const Header = () => {
 
     const [ open, setOpen ] = useState(null);
+    const navigate = useNavigate();
 
     const opened = Boolean(open);
 
@@ -35,6 +36,7 @@ const Header = () => {
           }
       
           const response = await fetch('http://localhost:3000/users/logout', options);
+          navigate('/');
           
     }
 
@@ -71,9 +73,9 @@ const Header = () => {
                     }}
                     >
                     <MenuItem onClick={handleClose}><span className="settings">{settings}</span>Settings</MenuItem>
-                    <NavLink to="/" className="redirect">
-                        <MenuItem onClick={Logout}><span className="logout">{logout}</span>Logout</MenuItem>
-                    </NavLink>
+                    {/* <NavLink to="/" className="redirect"> */}
+                    <MenuItem onClick={Logout}><span className="logout">{logout}</span>Logout</MenuItem>
+                    {/* </NavLink> */}
                 </Menu>
             </nav>
         </header>

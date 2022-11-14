@@ -5,19 +5,24 @@ import * as Brands from '@fortawesome/fontawesome-free-brands';
 import { Particle } from '../Particle';
 import './index.css'
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 
 const github = <FontAwesomeIcon icon ={ Brands.faGithub } />
 
 function Home() {
 
+  const navigate = useNavigate();
 
   useEffect(() => {
     let cookies = document.cookie.split(';');
     cookies = cookies.map(el => el.trim());
+
+    console.log("cookies", cookies);
     
-    cookies.map(cookie => {
+    cookies.forEach(cookie => {
       if (cookie.includes('ClueDev')){
-        window.location.assign('/dashboard');
+        navigate('/dashboard')
       }
     })
     
@@ -29,7 +34,7 @@ function Home() {
     // console.log(response);
     const data = await response.json();
     // console.log(data.url)
-    window.location.assign(data.url);
+    navigate(data.url);
   }
 
 

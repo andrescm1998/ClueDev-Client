@@ -15,7 +15,7 @@ export const WorkspaceCard = ({ data }) => {
 
     const [showHide, setShowHide] = useState(false)
 
-    console.log(data)
+    // console.log(data)
 
     
     const showHidden = (e) => {
@@ -25,7 +25,7 @@ export const WorkspaceCard = ({ data }) => {
 
     const handleCLick = () => {
         window.location.assign(`/${data.id}/${data.name}`)
-        console.log('test')
+        // console.log('test')
     }
 
     return <>
