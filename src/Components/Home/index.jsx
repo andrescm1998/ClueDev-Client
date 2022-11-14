@@ -7,16 +7,17 @@ import './index.css'
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+
 const github = <FontAwesomeIcon icon ={ Brands.faGithub } />
 
 function Home() {
 
   const navigate = useNavigate();
 
-
   useEffect(() => {
     let cookies = document.cookie.split(';');
     cookies = cookies.map(el => el.trim());
+
     console.log("cookies", cookies);
     
     cookies.forEach(cookie => {
