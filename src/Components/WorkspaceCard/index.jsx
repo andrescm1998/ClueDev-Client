@@ -1,9 +1,10 @@
 import React from 'react';
 import {useState} from 'react'
 import { Button } from '@mui/material'
+import AvatarGroup from '@mui/material/AvatarGroup';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEllipsis } from "@fortawesome/free-solid-svg-icons";
-import { Counter } from '../Counter';
+import Avatar from '@mui/material/Avatar';
 import './index.css';
 import { DeleteModal } from '../DeleteModal';
 import { WorkspaceSettings } from '../WorkspaceSettings';
@@ -14,8 +15,7 @@ const dots = <FontAwesomeIcon icon ={faEllipsis} />
 export const WorkspaceCard = ({ data }) => {
 
     const [showHide, setShowHide] = useState(false)
-
-    console.log(data)
+    const [counterLimit, setCounterLimit] = useState(5)
 
     
     const showHidden = (e) => {
@@ -36,14 +36,14 @@ export const WorkspaceCard = ({ data }) => {
                                 <h3>{data.name}</h3>
                                 <Button sx={{padding: '3px', display: 'flex', justifyContent: 'flex-end', alignItems: 'flex-start', color: '#545151', minWidth: '10px'}} disableRipple onClick={showHidden}>{dots}</Button>
                             </div>
-                            <div className="counters">
-                                {data.collaborators.map(collaborator => {
-                                    return <><span>< Counter avatar={collaborator.ghAvatar}/></span></>
-                                })}
-                                {/* <span>< Counter /></span>
-                                <span>< Counter /></span>
-                                <span>< Counter /></span> */}
-                            </div>
+                            <AvatarGroup spacing={5} sx={{'& .MuiAvatar-root': { width: 28, height: 28, fontSize: 14, border: 0 }}} max={6} className="counters">
+                                {data.collaborators.map((collaborator) => 
+
+                                    <Avatar src={collaborator.ghAvatar} />
+                                    
+                                )}
+
+                            </AvatarGroup>
                         </div>
 
                             <WorkspaceSettings id={data.id} showHide={showHide}/>

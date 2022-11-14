@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useSearchParams } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import './index.css'
 
 function Redirect() {
@@ -7,6 +7,7 @@ function Redirect() {
   const [params] = useSearchParams();
     const [data, setData] = useState([]);
     const code = params.get('code');
+    const navigate = useNavigate();
 
 
   async function sendCode() {
@@ -22,12 +23,12 @@ function Redirect() {
 
     const response = await fetch('http://localhost:3000/users/code', options);
     if(response.status === 200){
-      // alert('✅✅✅')
-      window.location.assign('/dashboard');
+      
+      navigate('/dashboard');
     }
     else{
-      alert('❌❌❌')
-      window.location.asign('/')
+      
+      navigate('/')
     }
     
   }
