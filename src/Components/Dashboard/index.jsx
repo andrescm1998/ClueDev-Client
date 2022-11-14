@@ -42,15 +42,21 @@ const Dashboard = () => {
     return (
         <>
             <main className='dash-container'>
-                <section className='header'>
-                    <h1>Workspaces</h1>
-                    <section className='links'>
-                        < Modal setWorkspaces={setWorkspaces} />
-                        {/* on click of create button in modal will send data to create workspace card component  */}
-                        {/* <Button onClick={buttonToggle}>Toggle</Button> */}
+                <section className='dash-wrapper'>
+                    <section className='dash-header'>
+                        <h1>Workspaces</h1>
+                        <section className='links'>
+                            < Modal setWorkspaces={setWorkspaces} />
+                            {/* on click of create button in modal will send data to create workspace card component  */}
+                            {/* <Button onClick={buttonToggle}>Toggle</Button> */}
+                        </section>
+                    </section>
+
+                    <section>
+                        <hr className='dash-hr'/>
                     </section>
                 </section>
-                <hr/>
+
                 <section className='workspace-list'>
                     { workspaces.length === 0 && <p>There are no workspaces, click the plus icon to add a new workspace</p> }
 

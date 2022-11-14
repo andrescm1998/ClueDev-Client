@@ -29,15 +29,22 @@ const Repositories = () => {
 
 
     return <>
-        <main className='dash-container'>
-                <section className='header'>
+        <main className='repo-container'>
+            <section className='repo-wrapper'>
+                <section className='repo-header'>
                     <h1>{workspace}</h1>
                     <section className='links'>
                         < AttachRepoModal />
                         {/* on click of create button in modal will send data to create workspace card component  */}
                     </section>
                 </section>
-                <hr/>
+
+                <section>
+                    <hr className='repo-hr'/>
+                </section>
+            </section>
+
+
                 <section className='workspace-list'>
                     { repos.length === 0 && <p>There are no repositories, click the plus icon to add a new repository</p> }
                     <section className='workspaces-container'>

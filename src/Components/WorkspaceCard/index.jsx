@@ -17,8 +17,6 @@ export const WorkspaceCard = ({ data }) => {
     const [showHide, setShowHide] = useState(false)
     const [counterLimit, setCounterLimit] = useState(5)
 
-    // console.log("Length",data.collaborators.length);
-
     
     const showHidden = (e) => {
         e.stopPropagation();
@@ -27,7 +25,7 @@ export const WorkspaceCard = ({ data }) => {
 
     const handleCLick = () => {
         window.location.assign(`/${data.id}/${data.name}`)
-        // console.log('test')
+        console.log('test')
     }
 
     return <>
