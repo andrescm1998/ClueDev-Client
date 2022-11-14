@@ -2,25 +2,30 @@
 #home {
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    height: 300vh;
     width: 100vw;
-    justify-content: space-evenly;
+    /* justify-content: center; */
     align-items: center;
     position: absolute;
 }
 
 #logo-name {
     font-size: 6em;
+    padding: 70px 0;
 }
 
 #moto p {
     display: flex;
     text-align: center;
-    font-size: 1.5em;
+    font-size: 1.2em;
     flex-direction: column;
-    color: #6429B0;
+    /* color: #6429B0; */
     font-style: italic;
-    margin: 10px;
+    margin: 5px 10px;
+}
+
+#moto {
+    padding-bottom: 50px;
 }
 
 #github-btn {

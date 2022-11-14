@@ -97,6 +97,7 @@ export default function CustomizedDialogs({ setWorkspaces }) {
       // On autofill we get a stringified value.
       typeof value === 'string' ? value.split(',') : value,
     );
+    console.log('selected',selected)
   };
 
   const handleTitleChange = (e) => {
@@ -197,7 +198,9 @@ export default function CustomizedDialogs({ setWorkspaces }) {
         <DialogContent sx={{display: 'flex', alignItems: 'center'}} dividers className='modal-input'>
         <TextField onChange={handleTitleChange} sx={{ m: 1.5, width: '95%' }}  dividers required id="workspace-name" label="Workspace Name" variant="outlined" />
 
-      <FormControl fullWidth sx={{display: 'flex', justifyContent: 'center', width: '95%'}}>
+      <FormControl 
+        // action=
+        fullWidth sx={{display: 'flex', justifyContent: 'center', width: '95%'}}>
         <InputLabel id="demo-simple-select-label">Attach repositories</InputLabel>
         <Select
           labelId="demo-simple-select-label"

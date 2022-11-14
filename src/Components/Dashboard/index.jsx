@@ -52,6 +52,7 @@ const Dashboard = () => {
                 <hr/>
                 <section className='workspace-list'>
                     { workspaces.length === 0 && <p>There are no workspaces, click the plus icon to add a new workspace</p> }
+
                     <section className='workspaces-container'>
                         { workspaces.map(workspace => <WorkspaceCard key={workspace.id} data={workspace} />)}
                     </section>  
