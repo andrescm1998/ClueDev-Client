@@ -34,7 +34,7 @@ function Home() {
     // console.log(response);
     const data = await response.json();
     // console.log(data.url)
-    navigate(data.url);
+    window.location.assign(data.url);
   }
 
 
