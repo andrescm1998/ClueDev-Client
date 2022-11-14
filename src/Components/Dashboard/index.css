@@ -1,13 +1,25 @@
 .dash-container {
     display: flex;
     align-items: center;
+    justify-content: center;
     flex-direction: column;
     width: 100vw;
-    height: 100vh;
+}
+
+.workspace-list {
+    margin-top: 180px;
+}
+
+.dash-wrapper {
+    width: 60%;
+    position: fixed;
+    padding-top: 2.2rem;
+    top: 5vh;
+    background-color: white;
 }
 /* style heading to make it consistent with other pages  */
-.header {
-    width: 60%;
+.dash-header {
+    width: 100%;
     text-align: left;
     display: flex;
     justify-content: space-between;
@@ -45,6 +57,9 @@ hr {
     grid-column-gap: 30px;
     grid-row-gap: 30px;
     width: 100%;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
+.dash-hr {
+    width: 100%;
+}
