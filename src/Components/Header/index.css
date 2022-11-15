@@ -7,7 +7,7 @@ header {
 }
 
 .nav-links {
-    width: 90%;
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -18,13 +18,17 @@ header {
     padding-top: 1rem;
 }
 
-.logo {
-    font-size: 1.5rem;
-}
-
 .nav-links a {
     text-decoration: none;
 
+}
+
+.username {
+    padding-left: 20px;
+}
+
+.logo {
+    font-size: 1.5rem;
 }
 
 .settings {
@@ -37,5 +41,9 @@ header {
 
 .redirect a {
     text-decoration: none;
+}
+
+#nav-button {
+    margin-right: 20px;
 }
 
