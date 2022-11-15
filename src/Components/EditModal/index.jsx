@@ -165,8 +165,8 @@ export function EditModal({id}) {
                         color: 'white'},}} variant="contained">
                     Cancel
                     </Button>
-                    <Button onClick={handleSubmit} sx={{backgroundColor: 'delete.main', fontWeight: 'bold', ':hover': {
-                      bgcolor: 'delete.secondary', // theme.palette.primary.main
+                    <Button onClick={handleSubmit} sx={{bgcolor: '#A97FFF', fontWeight: 'bold', ':hover': {
+                      bgcolor: '#8A69CE', // theme.palette.primary.main
                       color: 'white',
                       },}} variant="contained">
                     Update
