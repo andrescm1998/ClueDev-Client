@@ -64,7 +64,7 @@ const Header = () => {
     <>
         <header>
             <nav className="nav-links">
-                <NavLink to="/dashboard">{loggedUser.ghUsername}</NavLink>
+                <NavLink to="/dashboard" className="username">{loggedUser.ghUsername}</NavLink>
                 <NavLink to="/dashboard" className="logo">ClueDev</NavLink>
                 <Button id="nav-button"  
                 aria-controls={opened ? 'nav-menu' : undefined}
