@@ -64,9 +64,9 @@ const Header = () => {
     <>
         <header>
             <nav className="nav-links">
-                <NavLink to="/dashboard" className="username">{loggedUser.ghUsername}</NavLink>
-                <NavLink to="/dashboard" className="logo">ClueDev</NavLink>
-                <Button id="nav-button"  
+                <NavLink to="/dashboard" style={{color: '#747bff'}} className="username">{loggedUser.ghUsername}</NavLink>
+                <NavLink to="/dashboard" style={{color: '#747bff'}} className="logo">ClueDev</NavLink>
+                <Button sx={{color: '#747bff'}} id="nav-button"  
                 aria-controls={opened ? 'nav-menu' : undefined}
                 aria-haspopup="true"
                 aria-expanded={opened ? 'true' : undefined}
