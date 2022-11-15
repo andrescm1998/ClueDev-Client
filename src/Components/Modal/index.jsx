@@ -200,7 +200,7 @@ export default function CustomizedDialogs({ setWorkspaces }) {
           Create a Workspace 
         </BootstrapDialogTitle>
         <DialogContent sx={{display: 'flex', alignItems: 'center'}} dividers className='modal-input'>
-        <TextField onChange={handleTitleChange} sx={{ m: 1.5, width: '95%' }}  dividers required id="workspace-name" label="Workspace Name" variant="outlined" />
+        <TextField inputProps={{ maxLength: 20 }} onChange={handleTitleChange} sx={{ m: 1.5, width: '95%' }}  dividers required id="workspace-name" label="Workspace Name" variant="outlined"/>
 
       <FormControl 
         // action=
