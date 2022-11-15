@@ -55,8 +55,8 @@ export const Map = () => {
                 <section className='map-header'>
                     <h1>{repo}</h1>
                     <section className='links'>
-                        <button style={ filesSelected ? {fontWeight: 'bold', color: '#213547'} : { color: '#C8C8C8'}} className='mapBtn' onClick={selectFiles}>Files</button>
-                        <button style={ peopleSelected ? {fontWeight: 'bold', color: '#213547'} : { color: '#C8C8C8' }} className='mapBtn' onClick={selectPeople}>People</button>
+                        <button style={ filesSelected ? {fontWeight: 'bold', color: '#213547'} : { color: '#A0A0A0'}} className='mapBtn' onClick={selectFiles}>Files</button>
+                        <button style={ peopleSelected ? {fontWeight: 'bold', color: '#213547'} : { color: '#A0A0A0' }} className='mapBtn' onClick={selectPeople}>People</button>
                     </section>
                 </section>
                 

@@ -4,6 +4,7 @@
     height: 300vh;
     width: 100vw;
     align-items: center;
+    /* justify-content: center; */
     position: absolute;
 }
 
