@@ -75,7 +75,7 @@ const buttonTheme = createTheme({
         secondary: '#AF341C'
       },
       title: {
-        main: '#000000',
+        main: '#010001',
       }
     },
     shape: {
@@ -83,8 +83,10 @@ const buttonTheme = createTheme({
       }, 
   });
 
-export function DeleteModal({id}) {
+export function EditModal({id}) {
   const [open, setOpen] = useState(false);
+  const [newTitle, setNewTitle] = useState("");
+
 
 
   const handleClickOpen = (e) => {
@@ -96,31 +98,59 @@ export function DeleteModal({id}) {
     setOpen(false);
   };
 
-  async function handleDelete(e) {
-    e.stopPropagation();
-    const options = {method: 'DELETE'}
-    const response = await fetch(`http://localhost:3000/workspace/${id}`, options);
-    console.log(response)
-    if(response.status == 200) {
-      window.location.reload()
-    }
+  const handleTitleChange = (e) => {
+     setNewTitle(e.target.value)
+     console.log(newTitle)
   }
+
+  //stop modal onclick from propagating new event 
+  const stopProp =(e) => {
+    e.stopPropagation()
+
+  }
+    // PATCH method to edit workspace title 
+
+    const editWorkspace = async (e) => {
+        e.stopPropagation()
+        // Format the request data
+        const data = {
+          wsName: newTitle,
+          id: id
+        }
+        console.log(id)
+    
+        // Set the request metadata
+        const options = {
+          method: "PATCH",
+          credentials: 'include',
+          headers: {
+              "Content-type": "application/json",
+          },
+          body: JSON.stringify(data),
+        };
+    
+        // Send the post request
+        const response = await fetch(`http://localhost:3000/workspace/${id}`, options);
+        const workspace = await response.json();
+        console.log(workspace)
+        return workspace;
+      }
 
 
   return (
     <ThemeProvider theme={buttonTheme}>
         <div>
-        <Button sx={{color: '#EE4B2B', paddingLeft: '10px'}} variant="standard" onClick={handleClickOpen}>
-        Delete
+        <Button sx={{color: '#A020F0', paddingLeft: '10px'}} variant="standard" onClick={handleClickOpen}>
+        Edit
         </Button>
         <BootstrapDialog PaperProps={{sx: { width: "350px"}}} fullWidth onClose={handleClose} aria-labelledby="customized-dialog-title" open={open} TransitionComponent={Transition}
             keepMounted >
 
-            <DialogTitle sx={{color: 'title.main', paddingBottom: '5px'}} className='delete-modal-text'>Delete Workspace</DialogTitle>
+            <DialogTitle sx={{color: 'title.main', paddingBottom: '5px'}} className='delete-modal-text'>Edit Workspace Name:</DialogTitle>
 
             <DialogContentText className='delete-modal-text'>
-                Are you sure you want to delete this item?
-            </DialogContentText>
+            <TextField onChange={handleTitleChange} onClick={stopProp} sx={{ m: 1.5, width: '95%' }}  dividers required id="workspace-name" label="Workspace Name" variant="outlined" />
+             </DialogContentText>
 
             <DialogActions sx={{display: 'flex', justifyContent: 'center', margin: '16px 5px'}}>
                     <Button sx={{backgroundColor: 'cancel.main', fontWeight: 'bold', ':hover': {
@@ -128,11 +158,11 @@ export function DeleteModal({id}) {
                         color: 'white'},}} variant="contained">
                     Cancel
                     </Button>
-                    <Button onClick={handleDelete} sx={{backgroundColor: 'delete.main', fontWeight: 'bold', ':hover': {
+                    <Button onClick={editWorkspace} sx={{backgroundColor: 'delete.main', fontWeight: 'bold', ':hover': {
                       bgcolor: 'delete.secondary', // theme.palette.primary.main
                       color: 'white',
                       },}} variant="contained">
-                    Delete
+                    Update
                     </Button>
             </DialogActions>
         </BootstrapDialog>
