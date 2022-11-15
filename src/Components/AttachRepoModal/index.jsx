@@ -2,7 +2,7 @@
 import './index.css'
 
 import * as React from 'react';
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import PropTypes from 'prop-types';
 import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
@@ -16,6 +16,13 @@ import CloseIcon from '@mui/icons-material/Close';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import Slide from '@mui/material/Slide';
+import { FormControl, InputLabel} from '@mui/material';
+import MenuItem from '@mui/material/MenuItem';
+import Select from '@mui/material/Select';
+import { useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+
+
 
 
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -65,13 +72,78 @@ BootstrapDialogTitle.propTypes = {
 
 export default function CustomizedDialogs() {
   const [open, setOpen] = useState(false);
+  const [repositories, setRepositories] = useState([]);
+  const [selected, setSelected] = useState([]);
+  
+
+
+
+  
+  // console.log(setRepos)
+
+  const handleChange = (event) => {
+    // setSelected(event.target.value);
+    const {
+      target: { value },
+    } = event;
+    setSelected(
+      // On autofill we get a stringified value.
+      typeof value === 'string' ? value.split(',') : value,
+    );
+    console.log('selected',selected)
+  };
 
   const handleClickOpen = () => {
     setOpen(true);
+    getRepos()
   };
   const handleClose = () => {
     setOpen(false);
   };
+
+  
+  // get repos 
+  async function getRepos() {
+    const options = {
+      credentials: 'include'
+    }
+    const response = await fetch('http://localhost:3000/repo/user', options);
+    const repos = await response.json()
+    setRepositories(repos);
+    console.log(repos);
+  }
+
+  const handleSubmit = async () => {
+    await addRepository();
+    await getRepos();
+    setOpen(false);
+  }
+
+  const addRepository = async () => {
+
+
+    for (const repo of selected) {
+      // Format the request data
+      const data = {
+        repoName: repo,
+        
+      }
+      console.log(data)
+
+      // Set the request metadata
+      const options = {
+        method: "POST",
+        credentials: 'include',
+        headers: {
+            "Content-type": "application/json",
+        },
+        body: JSON.stringify(data),
+      };
+        console.log(options)
+      // Send the post request
+      await fetch('http://localhost:3000/repo', options);
+    }
+  }
 
   return (
     <div>
@@ -84,19 +156,32 @@ export default function CustomizedDialogs() {
             Attach a Repository
         </BootstrapDialogTitle>
         <DialogContent dividers className='modal-input'>
-        <TextField
-        //   id="filled-select-currency"
-          select
-          sx={{ m: 1.5 }}
-          label="Attach repositories"
-          required
-          helperText="Please select your repositories"
-          variant="filled"
-        >
-        </TextField>
+
+          <FormControl 
+            // action=
+            fullWidth sx={{display: 'flex', justifyContent: 'center', width: '95%'}}>
+            <InputLabel id="demo-simple-select-label">Attach repositories</InputLabel>
+            <Select
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                multiple
+                value={selected}
+                label="Attach repositories"
+                helperText="Please select repositories to attach"
+                MenuProps={{ PaperProps: { sx: { maxHeight: 200 } } }}
+                onChange={handleChange}
+              >
+
+                {repositories.map(function (repo, i) {
+                  return (
+                    <MenuItem key={repo.id} value={repo.name}>{repo.name}</MenuItem> 
+                  )
+              })}
+              </Select>
+          </FormControl>
         </DialogContent>
         <DialogActions sx={{display: 'flex', justifyContent: 'center'}}>
-        <Button sx={{backgroundColor: '#A97FFF', color: 'white', ':hover': {
+        <Button onClick={handleSubmit} sx={{backgroundColor: '#A97FFF', color: 'white', ':hover': {
       bgcolor: '#8A69CE'},fontWeight: 'bold', borderRadius: '10px', margin: '16px 0px', width: '95%'}} autoFocus >
             Attach
           </Button>

@@ -100,20 +100,24 @@ export default function CustomizedDialogs({ setWorkspaces }) {
     console.log('selected',selected)
   };
 
+
   const handleTitleChange = (e) => {
     setTitle(e.target.value)
   }
 
+
+  // fetch repos from users github 
   async function getRepos() {
     const options = {
       credentials: 'include'
     }
     const response = await fetch('http://localhost:3000/repo/user', options);
     const repos = await response.json()
+    console.log(repos)
     setRepositories(repos);
     console.log(repos);
   }
-
+  // on submit, add workspace to database and close modal 
   const handleSubmit = async () => {
     const workspace = await addWorkspace();
     await addRepos(workspace.id)
