@@ -4,11 +4,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFolder } from "@fortawesome/free-solid-svg-icons";
 import { faFile } from "@fortawesome/free-solid-svg-icons";
 import { Link, useLocation } from 'react-router-dom';
-
 import { Counter } from '../Counter';
 import { useState } from 'react';
 
 export const File = ({ id, data }) => {
+
     const url = useLocation().pathname;
     const file = <FontAwesomeIcon icon={faFile}/>;
     const folder = <FontAwesomeIcon icon={faFolder}/>;

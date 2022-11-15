@@ -4,13 +4,21 @@ import './index.css';
 import { useParams } from 'react-router-dom';
 import { File } from '../File';
 import { People } from '../People';
+import io from 'socket.io-client';
 
 export const Map = () => {
+    // const [socket, setSocket] = useState(null)
     const { repoid, repo } = useParams();
     const selectedButton = 'selected';
     const [contents, setContents] = useState([]);
-    console.log(contents)
-    //
+
+    const newSocket = io('http:localhost:3000');
+    newSocket.emit('create', `${repoid}`)
+
+    newSocket.on('test', (payload) => {
+        console.log(payload);
+    })
+
     useEffect(() => {
         getContents()
     }, [])
