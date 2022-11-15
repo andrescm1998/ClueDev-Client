@@ -1,10 +1,8 @@
-
 #home {
     display: flex;
     flex-direction: column;
     height: 300vh;
     width: 100vw;
-    /* justify-content: center; */
     align-items: center;
     position: absolute;
 }
@@ -12,6 +10,7 @@
 #logo-name {
     font-size: 6em;
     padding: 70px 0;
+    color: #5a3e7d;
 }
 
 #moto p {
@@ -30,11 +29,11 @@
 
 #github-btn {
     background-color: #2F3337;
-    font-size: 1.5em;
+    font-size: 1em;
 }
 
 #github-btn span {
-    padding: 10px;
+    padding-right: 10px;
 }
 
 .bg-wrapper {
