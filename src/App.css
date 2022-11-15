@@ -1,23 +1,42 @@
 @import url('https://fonts.googleapis.com/css2?family=Exo&family=Fruktur&family=Inter:wght@400;500;600&family=Noto+Sans+Mono:wght@400;700&family=PT+Mono&family=Righteous&family=Roboto+Mono:wght@400;600&display=swap');
 
+:root {
+    --main-bg-color: #FFFAFA;
+    --main-font-color: #213547;
+    --sub-font-color: #D2D2D2;
+    --main-font-family: 'Exo', sans-serif;
+    --sub-font-family: 'Inter', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--main-bg-color);
+    font-family: var(--main-font-family);
+}
+
 h1 {
-    font-family: 'Exo', sans-serif;
     font-size: 30px;
+    color: var(--main-font-color);
 }
 
 h2 {
-    font-family: 'Exo', sans-serif;
     font-size: 20px;
-    color: #D2D2D2;
+    color: var(--sub-font-color);
 }
 
 h3 {
-    font-family: 'Exo', sans-serif;
+    color: var(--main-font-color);
 }
 
 h4 {
-    font-family: 'Inter', sans-serif;
+    font-family: var(--sub-font-style);
     font-weight: 400;
+    color: var(--main-font-color);
 }
 
 hr {
@@ -26,7 +45,7 @@ hr {
 }
 
 p {
-    font-family: 'Exo', sans-serif;
+    font-family: var(--sub-font-family);
 }
 
 .header {
