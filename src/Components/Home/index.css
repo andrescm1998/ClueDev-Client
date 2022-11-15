@@ -1,11 +1,12 @@
-#home {
+#home-container {
     display: flex;
     flex-direction: column;
-    height: 300vh;
     width: 100vw;
+    /* height: 50vw; */
     align-items: center;
-    /* justify-content: center; */
-    position: absolute;
+    justify-content: center;
+    position: relative;
+    margin-top: 200px;
 }
 
 #logo-name {
@@ -19,7 +20,6 @@
     text-align: center;
     font-size: 1.2em;
     flex-direction: column;
-    /* color: #6429B0; */
     font-style: italic;
     margin: 5px 10px;
 }
