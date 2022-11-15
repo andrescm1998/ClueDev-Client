@@ -12,7 +12,7 @@ export const Map = () => {
     const selectedButton = 'selected';
     const [contents, setContents] = useState([]);
 
-    const newSocket = io('http:localhost:3000');
+    const newSocket = io('http://localhost:3000');
     newSocket.emit('create', `${repoid}`)
 
     newSocket.on('test', (payload) => {
@@ -82,7 +82,7 @@ export const Map = () => {
                 {/* <People /> */}
                 {filesSelected && <>
                     {contents.map((item, idx) => {
-                        return <><File key={idx} id={idx} data={item}/></>
+                        return <><File key={idx} id={idx} data={item} socket={newSocket}/></>
                     })}
                     {/* <File /> */}
                 </>}
