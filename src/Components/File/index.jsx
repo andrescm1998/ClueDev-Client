@@ -13,6 +13,26 @@ export const File = ({ id, data }) => {
     const file = <FontAwesomeIcon icon={faFile}/>;
     const folder = <FontAwesomeIcon icon={faFolder}/>;
 
+    const [counters, setCounters] = useState([]);
+    const [hasCounter, setHasCounter] = useState(false);
+
+    const handleClick = (e) => {
+        e.stopPropagation();
+        if(!hasCounter) {
+            setCounters(counters.concat(<Counter key={(counters.length)}/>));
+            setHasCounter(true);
+        }
+
+        if(hasCounter) {
+            setCounters([]);
+            setHasCounter(false)
+        }
+        //emit click event
+        //set counters
+        // console.log("counters", counters);
+        console.log("clicked"); 
+    }
+
     if (data.mode === "040000") {
         return (
             <>
@@ -32,9 +52,7 @@ export const File = ({ id, data }) => {
                 <section className='counter-section'>
                     {/* map all collaborators and render counters */}
                     {/* counter component */}
-                    <Counter />
-                    <Counter />
-                    <Counter />
+                    {counters}
                 </section>
             </Link>
         </>
@@ -55,41 +73,13 @@ export const File = ({ id, data }) => {
                     <h4>{data.path}</h4>
                 </section>
 
-                <section className='counter-section'>
+                <section onClick={handleClick} className='counter-section'>
                     {/* map all collaborators and render counters */}
                     {/* counter component */}
-                    <Counter />
-                    <Counter />
-                    <Counter />
+                    {counters}
                 </section>
             </section>
             </>
         )
     }
-
-    return (
-        <>
-            {/* map against files/folders from repo */}
-            {/* if index/key !== 0, render hr element*/}
-            { id !== 0 && <hr className='divider'/>}
-            <section className='file-container'>
-
-                <section className='file-section'>
-                    {/* file or folder icon rendered depending on repo */}
-                    {/* <span className='icon'>{file}</span> */}
-                    <span className='icon'>{ data.mode === "040000" ? folder : file }</span>
-                    {/* folder name rendered from repo */}
-                    <h4>{data.path}</h4>
-                </section>
-
-                <section className='counter-section'>
-                    {/* map all collaborators and render counters */}
-                    {/* counter component */}
-                    <Counter />
-                    <Counter />
-                    <Counter />
-                </section>
-            </section>
-        </>
-    )
 }
