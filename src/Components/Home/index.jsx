@@ -42,13 +42,13 @@ function Home() {
     <>
         <Particle className='bg-wrapper'/>
         <section id='home'>
-            <h1 id='logo-name'>ClueDev.</h1>
+            <h1 id='logo-name'>ClueDev</h1>
             <section id='moto'>
                 <p>Less merge conflicts.</p>
                 <p>No miscommunication.</p>
                 <p>No stress.</p>
             </section>
-            <Button onClick={auth} variant='contained'  id='github-btn'><span >{github}</span>Sign in with GitHub</Button>
+            <Button onClick={auth} variant='contained' id='github-btn'><span >{github}</span>Sign in with GitHub</Button>
         </section> 
     </>
 
