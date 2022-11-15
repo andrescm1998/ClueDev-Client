@@ -111,7 +111,6 @@ export function EditModal({id}) {
     // PATCH method to edit workspace title 
 
     const editWorkspace = async (e) => {
-        e.stopPropagation()
         // Format the request data
         const data = {
           wsName: newTitle,
@@ -134,7 +133,15 @@ export function EditModal({id}) {
         const workspace = await response.json();
         console.log(workspace)
         return workspace;
+      } 
+
+      const handleSubmit = async () => {
+        await editWorkspace();
+        setOpen(false);
+        window.location.reload()
+
       }
+    
 
 
   return (
@@ -143,7 +150,7 @@ export function EditModal({id}) {
         <Button sx={{color: '#A020F0', paddingLeft: '10px'}} variant="standard" onClick={handleClickOpen}>
         Edit
         </Button>
-        <BootstrapDialog PaperProps={{sx: { width: "350px"}}} fullWidth onClose={handleClose} aria-labelledby="customized-dialog-title" open={open} TransitionComponent={Transition}
+        <BootstrapDialog onClick={stopProp} PaperProps={{sx: { width: "350px"}}} fullWidth onClose={handleClose} aria-labelledby="customized-dialog-title" open={open} TransitionComponent={Transition}
             keepMounted >
 
             <DialogTitle sx={{color: 'title.main', paddingBottom: '5px'}} className='delete-modal-text'>Edit Workspace Name:</DialogTitle>
@@ -158,7 +165,7 @@ export function EditModal({id}) {
                         color: 'white'},}} variant="contained">
                     Cancel
                     </Button>
-                    <Button onClick={editWorkspace} sx={{backgroundColor: 'delete.main', fontWeight: 'bold', ':hover': {
+                    <Button onClick={handleSubmit} sx={{backgroundColor: 'delete.main', fontWeight: 'bold', ':hover': {
                       bgcolor: 'delete.secondary', // theme.palette.primary.main
                       color: 'white',
                       },}} variant="contained">
