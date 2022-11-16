@@ -12,7 +12,8 @@
 #logo-name {
     font-size: 6em;
     padding: 70px 0;
-    color: #5a3e7d;
+    /* color: #5a3e7d; */
+    color: black
 }
 
 #moto p {

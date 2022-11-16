@@ -28,6 +28,10 @@ export const RepositoryCard = ({ data }) => {
 
     return <>
         <div onClick={handleCLick}>
+            <div className="block workspace-card-container">
+                <div className="block-header">
+                    <h3>{data.name}</h3>
+                    <DeleteRepo id={data.id} />
             <div className="workspace-card-container">
                 <div className="block">
                     <div className="block-header">
