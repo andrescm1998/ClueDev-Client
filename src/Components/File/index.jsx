@@ -7,6 +7,8 @@ import { Link, useLocation } from 'react-router-dom';
 import { Counter } from '../Counter';
 import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import Avatar from '@mui/material/Avatar';
+import AvatarGroup from '@mui/material/AvatarGroup';
 
 export const File = ({ id, data, socket, repoid }) => {
     const user = useSelector(state => state.user.value);
@@ -14,7 +16,8 @@ export const File = ({ id, data, socket, repoid }) => {
     const counterData = {
         userId: user.id,
         sha: data.sha,
-        repoId: repoid
+        repoId: repoid,
+        counterImg: user.ghAvatar
     }
 
     const url = useLocation().pathname;
@@ -30,8 +33,8 @@ export const File = ({ id, data, socket, repoid }) => {
         let test = false
         const filtered = counters.reduce((acc, counter) => {
             if (counter.sha === data.sha) {
-                if (counter.user_id === user.id) test = true;
-                return acc.concat(<Counter/>)
+                if (counter.userId === user.id) test = true;
+                return acc.concat(<Avatar src={counter.counterImg}/>)
             } else {
                 return acc
             }
@@ -102,7 +105,10 @@ export const File = ({ id, data, socket, repoid }) => {
                 <section onClick={handleClick} className='counter-section' >
                     {/* map all collaborators and render counters */}
                     {/* counter component */}
-                    {counters}
+                    <AvatarGroup spacing={-5} sx={{'& .MuiAvatar-root': { width: 28, height: 28, fontSize: 14, border: 0 }}} max={6} className="counters">
+                        {counters}
+                    </AvatarGroup>
+                    {/* {counters} */}
                     {/* {counters.map(counter => <Counter/>)} */}
                     {/* {counters.map(counter => <Counter/>)} */}
                 </section>
