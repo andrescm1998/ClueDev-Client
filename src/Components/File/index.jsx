@@ -5,9 +5,17 @@ import { faFolder } from "@fortawesome/free-solid-svg-icons";
 import { faFile } from "@fortawesome/free-solid-svg-icons";
 import { Link, useLocation } from 'react-router-dom';
 import { Counter } from '../Counter';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 
-export const File = ({ id, data }) => {
+export const File = ({ id, data, socket, repoid }) => {
+    const user = useSelector(state => state.user.value);
+
+    const counterData = {
+        userId: user.id,
+        sha: data.sha,
+        repoId: repoid
+    }
 
     const url = useLocation().pathname;
     const file = <FontAwesomeIcon icon={faFile}/>;
@@ -16,17 +24,35 @@ export const File = ({ id, data }) => {
     const [counters, setCounters] = useState([]);
     const [hasCounter, setHasCounter] = useState(false);
 
+    console.log(counters, hasCounter)
+
+    socket.on('updateCounters', (counters) => {
+        let test = false
+        const filtered = counters.reduce((acc, counter) => {
+            if (counter.sha === data.sha) {
+                if (counter.user_id === user.id) test = true;
+                return acc.concat(<Counter/>)
+            } else {
+                return acc
+            }
+        }, [])
+
+        setCounters(filtered)
+        setHasCounter(test)
+    })
+
     const handleClick = (e) => {
         e.stopPropagation();
-        if(!hasCounter) {
-            setCounters(counters.concat(<Counter key={(counters.length)}/>));
-            setHasCounter(true);
-        }
+        hasCounter ? socket.emit('deleteCounter', counterData) : socket.emit('addCounter', counterData)
+        // if(!hasCounter) {
+        //     socket.emit('addCounter', counterData)
+        // }
 
-        if(hasCounter) {
-            setCounters([]);
-            setHasCounter(false)
-        }
+        // if(hasCounter) {
+        //     socket.emit('deleteCounter', counterData)
+        //     // setCounters([]);
+        //     // setHasCounter(false)
+        // }
         //emit click event
         //set counters
         // console.log("counters", counters);
@@ -52,7 +78,7 @@ export const File = ({ id, data }) => {
                 <section className='counter-section'>
                     {/* map all collaborators and render counters */}
                     {/* counter component */}
-                    {counters}
+                    {/* {counters} */}
                 </section>
             </Link>
         </>
@@ -68,15 +94,17 @@ export const File = ({ id, data }) => {
                 <section className='file-section'>
                     {/* file or folder icon rendered depending on repo */}
                     {/* <span className='icon'>{file}</span> */}
-                    <span className='icon'>{ file }</span>
+                    <span className='icon' style={ counters.length > 1 ? { color: '#EE4B2B' } : null}>{ file }</span>
                     {/* folder name rendered from repo */}
-                    <h4>{data.path}</h4>
+                    <h4 style={ counters.length > 1 ? { color: '#EE4B2B' } : null}>{data.path}</h4>
                 </section>
 
-                <section onClick={handleClick} className='counter-section'>
+                <section onClick={handleClick} className='counter-section' >
                     {/* map all collaborators and render counters */}
                     {/* counter component */}
                     {counters}
+                    {/* {counters.map(counter => <Counter/>)} */}
+                    {/* {counters.map(counter => <Counter/>)} */}
                 </section>
             </section>
             </>

@@ -11,13 +11,23 @@ export const Map = () => {
     const { repoid, repo } = useParams();
     const selectedButton = 'selected';
     const [contents, setContents] = useState([]);
+    // const [counters, setCounters] = useState([]);
 
     const newSocket = io('http://localhost:3000');
     newSocket.emit('create', `${repoid}`)
 
-    newSocket.on('test', (payload) => {
-        console.log(payload);
+    // newSocket.on('test', (payload) => {
+    //     console.log(payload);
+    // })
+
+    newSocket.on('notification', (notification) => {
+        alert(notification)
+        // console.log(notification)
     })
+
+    // newSocket.on('updateCounters', (counters) => {
+    //     console.log(counters)
+    // })
 
     useEffect(() => {
         getContents()
@@ -82,7 +92,7 @@ export const Map = () => {
                 {/* <People /> */}
                 {filesSelected && <>
                     {contents.map((item, idx) => {
-                        return <><File key={idx} id={idx} data={item} socket={newSocket}/></>
+                        return <><File key={idx} id={idx} data={item} socket={newSocket} repoid={repoid}/></>
                     })}
                     {/* <File /> */}
                 </>}
