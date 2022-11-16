@@ -21,7 +21,8 @@ html, body {
 
 h1 {
     font-size: 30px;
-    color: var(--main-font-color);
+    /* color: var(--main-font-color); */
+    color: black;
 }
 
 h2 {
