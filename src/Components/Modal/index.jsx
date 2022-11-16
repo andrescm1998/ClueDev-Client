@@ -199,8 +199,8 @@ export default function CustomizedDialogs({ setWorkspaces }) {
         <BootstrapDialogTitle sx={{color: 'black'}} id="customized-dialog-title" onClose={handleClose}>
           Create a Workspace 
         </BootstrapDialogTitle>
-        <DialogContent sx={{display: 'flex', alignItems: 'center'}} dividers="true" className='modal-input'>
-        <TextField onChange={handleTitleChange} sx={{ m: 1.5, width: '95%' }} required id="workspace-name" label="Workspace Name" variant="outlined" />
+        <DialogContent sx={{display: 'flex', alignItems: 'center'}} dividers className='modal-input'>
+        <TextField inputProps={{maxLength: 20}}onChange={handleTitleChange} sx={{ m: 1.5, width: '95%' }}  dividers="true" required id="workspace-name" label="Workspace Name" variant="outlined" />
 
       <FormControl 
         // action=
