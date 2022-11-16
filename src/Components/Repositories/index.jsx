@@ -34,7 +34,7 @@ const Repositories = () => {
                 <section className='repo-header'>
                     <h1>{workspace}</h1>
                     <section className='links'>
-                        < AttachRepoModal />
+                        < AttachRepoModal repos={repos} setRepos={setRepos}/>
                         {/* on click of create button in modal will send data to create workspace card component  */}
                     </section>
                 </section>

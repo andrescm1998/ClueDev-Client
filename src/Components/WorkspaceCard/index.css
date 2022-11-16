@@ -27,8 +27,9 @@ h3 {
     text-align: center;
     width: 50%;
     /* color: #D2D2D2; */
-    padding-left: 25%;
+    /* padding-left: 25%; */
     margin-top: 10%;
+    margin-left: 25%;
 }
 
 .workspace-card-container {
