@@ -7,11 +7,13 @@ import { People } from '../People';
 import io from 'socket.io-client';
 import { useSelector } from 'react-redux';
 import FolderBackButton from '../FolderBackButton';
+import loadSvg from '../../assets/loading.svg'
 
 export const NewMap = () => {
 
     const { repoid, repo } = useParams();
     const [folderClick, setFolderClick] = useState(false);
+    const [loading, setLoading] = useState(true);
     const [contents, setContents] = useState([]);
     const treeUrl = useSelector(state => state.treeUrl.value)
 
@@ -19,6 +21,7 @@ export const NewMap = () => {
     newSocket.emit('create', `${repoid}`)
 
     useEffect(() => {
+        setLoading(true);
         console.log('This is current tree:', treeUrl)
         if(treeUrl.length === 0){
             getContents()
@@ -38,6 +41,7 @@ export const NewMap = () => {
         data.tree.sort((a, b) => a.mode - b.mode)
         console.log(data.tree)
         setContents(data.tree)
+        setLoading(false)
     }
 
     const getFolderContents = async (treeL) => {
@@ -53,6 +57,7 @@ export const NewMap = () => {
         const data = response.status === 200 ? await response.json() : [];
         data.tree.sort((a, b) => a.mode - b.mode)
         setContents(data.tree)
+        setLoading(false)
     }
 
     // STATE FOR SELECTED TAB (PEOPLE OR FILES)
@@ -91,14 +96,19 @@ export const NewMap = () => {
                 </section>
             </section>
             <section className='repo-list'>
-                {Boolean(treeUrl.length) && <><FolderBackButton setFolderClick={setFolderClick}/></>}
-                {filesSelected && <>
-                    {contents.map((item, idx) => {
+                
+                {filesSelected && 
+                <>
+                    {Boolean(treeUrl.length) && <><FolderBackButton setFolderClick={setFolderClick}/></>}
+                    { !loading ? contents.map((item, idx) => {
                         return <><NewFile key={idx} id={idx} data={item} setFolderClick={setFolderClick} socket={newSocket} repoid={repoid}/></>
-                    })}
+                    }) : <></>}
+                    
                 </>}
                 {peopleSelected && <><People /><People /></>}
             </section>
+            {loading ? <><img src={loadSvg} alt="load SVG" /></> : <></> }
+
         </main>
     )
 }
