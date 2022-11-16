@@ -26,7 +26,7 @@ const Header = () => {
 
     // States for dropdown menu
     const [ anchorEl, setAnchorEl ] = useState(null);
-    const open = Boolean(anchorEl);
+    let open = Boolean(anchorEl);
 
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -37,7 +37,7 @@ const Header = () => {
     }
 
     const Logout = async () => {
-        setOpen(null);
+        open = null;
         const options = {
             credentials: 'include'
           }
