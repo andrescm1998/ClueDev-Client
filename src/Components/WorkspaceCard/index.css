@@ -27,15 +27,29 @@ h3 {
     text-align: center;
     width: 50%;
     /* color: #D2D2D2; */
-    padding-left: 25%;
+    /* padding-left: 25%; */
     margin-top: 10%;
+    margin-left: 25%;
 }
 
 .workspace-card-container {
     width: 100%;
     background-color: #DDDDDD;
     border-radius: 10px;
+    position: relative;
+    top: 0;
+    transition: top ease 0.5s;
 }
+
+.workspace-card-container:hover {
+    top: -2px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.8);
+    cursor: pointer;
+  }
+  .workspace-card-container:active {
+   top: 0 
+
+  }
 
 .block {
     background-color: #F0F0F0;

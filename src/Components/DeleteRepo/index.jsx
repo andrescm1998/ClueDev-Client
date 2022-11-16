@@ -113,7 +113,7 @@ export function DeleteRepo({id}) {
   return (
     <ThemeProvider theme={buttonTheme}>
         <div>
-        <Button sx={{padding: '3px', display: 'flex', justifyContent: 'flex-end', alignItems: 'flex-start', color: '#545151', minWidth: '10px'}} disableRipple onClick={handleClickOpen}>{xIcon} </Button>
+        <Button sx={{padding: '3px', display: 'flex', justifyContent: 'flex-end', alignItems: 'flex-start', color: '#545151', minWidth: '10px' }} disableRipple onClick={handleClickOpen}>{xIcon} </Button>
         <BootstrapDialog PaperProps={{sx: { width: "390px"}}} fullWidth onClose={handleClose} aria-labelledby="customized-dialog-title" open={open} TransitionComponent={Transition}
             keepMounted >
 

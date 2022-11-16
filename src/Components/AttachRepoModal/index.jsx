@@ -70,12 +70,12 @@ BootstrapDialogTitle.propTypes = {
   onClose: PropTypes.func.isRequired,
 };
 
-export default function CustomizedDialogs() {
+export default function CustomizedDialogs({repos, setRepos}) {
   const [open, setOpen] = useState(false);
   const [repositories, setRepositories] = useState([]);
   const [selected, setSelected] = useState([]);
   
-
+console.log(repos)
 
 
   
@@ -115,7 +115,6 @@ export default function CustomizedDialogs() {
 
   const handleSubmit = async () => {
     await addRepository();
-    await getRepos();
     setOpen(false);
   }
 
