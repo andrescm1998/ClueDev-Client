@@ -1,0 +1,21 @@
+button {
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    margin-left: 5px;
+    /* padding: 0; */
+}
+
+.back {
+    background-color: #919191;
+    padding: 0.08rem;
+    margin: 0 0.1rem;
+}
+
+.back-button {
+    display: flex;
+    flex-direction: row;
+    margin-left: 15px;
+    /* background-color: blue; */
+    margin: 10px;
+}

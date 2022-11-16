@@ -27,8 +27,9 @@ h3 {
     text-align: center;
     width: 50%;
     /* color: #D2D2D2; */
-    padding-left: 25%;
+    /* padding-left: 25%; */
     margin-top: 10%;
+    margin-left: 25%;
 }
 
 .workspace-card-container {
@@ -38,6 +39,7 @@ h3 {
     position: relative;
     top: 0;
     transition: top ease 0.2s;
+
 }
 
 .workspace-card-container:hover {
@@ -45,6 +47,7 @@ h3 {
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     cursor: pointer;
   }
+
 
 .block {
     background-color: #F0F0F0;

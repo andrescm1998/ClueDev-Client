@@ -1,6 +1,6 @@
 import React from 'react'
 import {Routes, Route} from 'react-router-dom'
-import { Home, Header, Dashboard, Map, Folder, Repositories, Redirect } from './Components';
+import { Home, Header, Dashboard, NewMap, Folder, Repositories, Redirect } from './Components';
 import './App.css'
 
 function App() {
@@ -16,8 +16,7 @@ function App() {
         <Route path='/:wsid/:workspace'>
           <Route index element={<Repositories/>}/>
           <Route path=':repoid/:repo'>
-            <Route index element={<Map/>}/>
-            <Route path=':folder/:sha' element={<Folder/>}/>
+            <Route index element={<NewMap/>}/>
           </Route>
         </Route>
       </Route>  

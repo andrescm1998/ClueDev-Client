@@ -1,6 +1,7 @@
 export { default as Header } from './Header';
 export { default as Home } from './Home';
-export { Map } from './Map';
+// export { Map } from './Map';
+export { NewMap } from './Map';
 export { default as Dashboard } from './Dashboard';
 export { default as Modal } from './Modal';
 export { Counter } from './Counter';
@@ -10,6 +11,7 @@ export { default as Repositories } from './Repositories';
 export { RepositoryCard } from './RepositoryCard';
 export { Particle } from './Particle';
 export { default as Redirect} from './Redirect'
+export { default as FolderBackButton} from './FolderBackButton'
 
 
 

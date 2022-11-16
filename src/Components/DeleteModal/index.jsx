@@ -105,6 +105,10 @@ export function DeleteModal({id}) {
       window.location.reload()
     }
   }
+  const stopProp =(e) => {
+    e.stopPropagation()
+
+  }
 
 
   return (
@@ -113,17 +117,17 @@ export function DeleteModal({id}) {
         <Button sx={{color: '#EE4B2B', paddingLeft: '10px'}} variant="standard" onClick={handleClickOpen}>
         Delete
         </Button>
-        <BootstrapDialog PaperProps={{sx: { width: "350px"}}} fullWidth onClose={handleClose} aria-labelledby="customized-dialog-title" open={open} TransitionComponent={Transition}
+        <BootstrapDialog onClick={stopProp} PaperProps={{sx: { width: "350px"}}} fullWidth onClose={handleClose} aria-labelledby="customized-dialog-title" open={open} TransitionComponent={Transition}
             keepMounted >
 
             <DialogTitle sx={{color: 'title.main', paddingBottom: '5px'}} className='delete-modal-text'>Delete Workspace</DialogTitle>
 
             <DialogContentText className='delete-modal-text'>
-                Are you sure you want to delete this item?
+                Are you sure you want to delete this workspace?
             </DialogContentText>
 
             <DialogActions sx={{display: 'flex', justifyContent: 'center', margin: '16px 5px'}}>
-                    <Button sx={{backgroundColor: 'cancel.main', fontWeight: 'bold', ':hover': {
+                    <Button onClick={handleClose} sx={{backgroundColor: 'cancel.main', fontWeight: 'bold', ':hover': {
                         bgcolor: 'cancel.secondary', // theme.palette.primary.main
                         color: 'white'},}} variant="contained">
                     Cancel

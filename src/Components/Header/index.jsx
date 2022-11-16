@@ -1,43 +1,43 @@
-import React from "react";
+import * as React from "react";
 import {useState, useEffect} from 'react'
-import { NavLink, Outlet, useNavigate } from "react-router-dom";
-import { Button } from '@mui/material'
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEllipsis, faGear, faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons";
-import './index.css'
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
+import { NavLink, Outlet, useNavigate, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
+import { Button, Menu, MenuItem, Breadcrumbs, Link, Typography } from '@mui/material'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEllipsis, faGear, faArrowRightFromBracket, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { setUser } from '../../store/user';
-// import Breadcrumb from "./breadcrumb";
+import './index.css'
 
 const dots = <FontAwesomeIcon icon ={faEllipsis} />
 const settings = <FontAwesomeIcon icon ={faGear} />
 const logout = <FontAwesomeIcon icon ={faArrowRightFromBracket} />
+const goBack = <FontAwesomeIcon icon ={faArrowLeft} />
 
 const Header = () => {
+
+    const navigate = useNavigate();
+    const { pathname } = useLocation();
+    const pathnames = pathname.split("/").filter(Boolean);
+    //const pathnames = pathname.split("/").filter(id => isNaN(id) && Boolean);
     
     // Get username of the user currently logged in
     const loggedUser = useSelector(state => state.user.value);
     const dispatch = useDispatch();
 
-    const [ open, setOpen ] = useState(null);
-    const navigate = useNavigate();
-
-    const opened = Boolean(open);
+    // States for dropdown menu
+    const [ anchorEl, setAnchorEl ] = useState(null);
+    let open = Boolean(anchorEl);
 
     const handleClick = (event) => {
-
-        setOpen(event.currentTarget);
+        setAnchorEl(event.currentTarget);
     }
 
     const handleClose = () => {
-
-        setOpen(null);
+        setAnchorEl(null);
     }
 
     const Logout = async () => {
-        setOpen(null);
+        open = null;
         const options = {
             credentials: 'include'
           }
@@ -64,31 +64,53 @@ const Header = () => {
     <>
         <header>
             <nav className="nav-links">
-                <NavLink to="/dashboard" style={{color: '#747bff'}} className="username">{loggedUser.ghUsername}</NavLink>
+                {/* Breadcrumb navigation*/}
+                <Breadcrumbs>
+                {pathnames.length ? (
+                    <Link onClick={() => navigate("/dashboard")} style={{color: '#747bff'}} className="username">{loggedUser.ghUsername}</Link>
+                ) : (
+                    <Button onClick={() => navigate(-1)}>{goBack}</Button> 
+                )}
+                {pathnames.map((name, index) => {
+                    const routeTo = `/${pathnames.slice(0, index + 1).join("/")}`;
+                    const isLast = index === pathnames.length - 1;
+                    return isLast ? (
+                    <Typography key={name}>{name}</Typography>
+                    ) : (
+                    <Link key={name} onClick={() => navigate(routeTo)}>
+                        {name}
+                    </Link>
+                    );
+                })}
+                </Breadcrumbs>
+
+                {/* Navigation bar */}
                 <NavLink to="/dashboard" style={{color: '#747bff'}} className="logo">ClueDev</NavLink>
-                <Button sx={{color: '#747bff'}} id="nav-button"  
-                aria-controls={opened ? 'nav-menu' : undefined}
+                <Button id="nav-button"  
+                aria-controls={open ? 'nav-menu' : undefined}
                 aria-haspopup="true"
-                aria-expanded={opened ? 'true' : undefined}
+                aria-expanded={open ? 'true' : undefined}
                 onClick={handleClick}
+                sx={{color: '#747bff'}}
                 >{dots}</Button>
 
+                {/* Dropdown menu on navigation bar */}
                 <Menu
                     id="nav-menu"
-                    sx={{ mt: 5,  ml: -10  }}
+                    anchorEl={anchorEl}
                     open={open}
-                    opened={opened}
                     onClose={handleClose}
-                    keepMounted={false}
-                    anchorOrigin={{ vertical: "top", horizontal: "right" }}
-                    transformOrigin={{ vertical: "top", horizontal: "right" }}
                     MenuListProps={{
                     'aria-labelledby': 'nav-button',
                     }}
                     PaperProps={{
                         style: {
-                         borderRadius: "20px",
-                         width: "10%"
+                         borderRadius: "10px",
+                         borderStyle: "solid",
+                         borderWidth: "1px",
+                         borderColor: "#AAA6A6",
+                         backgroundColor: "#F8F8F8",
+                         boxShadow:"none"
                         }
                     }}
                     >
@@ -99,9 +121,6 @@ const Header = () => {
                 </Menu>
             </nav>
         </header>
-
-        {/* <Breadcrumb /> */}
-
         <Outlet />
     </>
     )

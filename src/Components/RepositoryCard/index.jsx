@@ -32,16 +32,24 @@ export const RepositoryCard = ({ data }) => {
                 <div className="block-header">
                     <h3>{data.name}</h3>
                     <DeleteRepo id={data.id} />
+            <div className="workspace-card-container">
+                <div className="block">
+                    <div className="block-header">
+                        <h3>{data.name}</h3>
+                        <DeleteRepo id={data.id}/>
+                    </div>
+                    <AvatarGroup spacing={5} sx={{'& .MuiAvatar-root': { width: 28, height: 28, fontSize: 14, border: 0 }}} max={6} className="counters">
+                        {data.collaborators.map((collaborator) => 
+
+                            <Avatar src={collaborator.ghAvatar} />
+                                        
+                        )}
+
+                        </AvatarGroup>
                 </div>
-                <AvatarGroup spacing={5} sx={{'& .MuiAvatar-root': { width: 28, height: 28, fontSize: 14, border: 0 }}} max={6} className="counters">
-                    {data.collaborators.map((collaborator) => 
 
-                        <Avatar src={collaborator.ghAvatar} />
-                                    
-                    )}
-
-                    </AvatarGroup>
             </div>
+            
         </div>
     </>
 }
