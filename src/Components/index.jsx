@@ -1,7 +1,7 @@
 export { default as Header } from './Header';
 export { default as Home } from './Home';
-export { Map } from './Map';
-export { NewMap } from './NewMap';
+// export { Map } from './Map';
+export { NewMap } from './Map';
 export { default as Dashboard } from './Dashboard';
 export { default as Modal } from './Modal';
 export { Counter } from './Counter';

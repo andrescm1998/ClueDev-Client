@@ -4,13 +4,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFolder } from "@fortawesome/free-solid-svg-icons";
 import { faFile } from "@fortawesome/free-solid-svg-icons";
 import { Link, useLocation } from 'react-router-dom';
-import { Counter } from '../Counter';
-import { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { setTreeUrl } from '../../store/treeUrl'
+import { useState } from 'react';
 import Avatar from '@mui/material/Avatar';
 import AvatarGroup from '@mui/material/AvatarGroup';
 
-export const File = ({ id, data, socket, repoid }) => {
+export const NewFile = ({ id, data, socket, setFolderClick, repoid }) => {
     const user = useSelector(state => state.user.value);
 
     const counterData = {
@@ -20,9 +20,9 @@ export const File = ({ id, data, socket, repoid }) => {
         counterImg: user.ghAvatar
     }
 
-    const url = useLocation().pathname;
     const file = <FontAwesomeIcon icon={faFile}/>;
     const folder = <FontAwesomeIcon icon={faFolder}/>;
+    const dispatch = useDispatch()
 
     const [counters, setCounters] = useState([]);
     const [hasCounter, setHasCounter] = useState(false);
@@ -46,42 +46,26 @@ export const File = ({ id, data, socket, repoid }) => {
 
     const handleClick = (e) => {
         e.stopPropagation();
-        hasCounter ? socket.emit('deleteCounter', counterData) : socket.emit('addCounter', counterData)
-        // if(!hasCounter) {
-        //     socket.emit('addCounter', counterData)
-        // }
+        hasCounter ? socket.emit('deleteCounter', counterData) : socket.emit('addCounter', counterData);
+    }
 
-        // if(hasCounter) {
-        //     socket.emit('deleteCounter', counterData)
-        //     // setCounters([]);
-        //     // setHasCounter(false)
-        // }
-        //emit click event
-        //set counters
-        // console.log("counters", counters);
-        console.log("clicked"); 
+    function handleFolder(){
+        dispatch(setTreeUrl(data.url))
+        setFolderClick(prev => !prev)
     }
 
     if (data.mode === "040000") {
         return (
             <>
-            {/* map against files/folders from repo */}
-            {/* if index/key !== 0, render hr element*/}
             { id !== 0 && <hr className='divider' />}
-            <Link to={`${url}/${data.path}/${data.sha}`} className='file-container'>
+            <Link onClick={handleFolder} className='file-container'>
 
                 <section className='file-section'>
-                    {/* file or folder icon rendered depending on repo */}
-                    {/* <span className='icon'>{file}</span> */}
                     <span className='icon'>{ folder }</span>
-                    {/* folder name rendered from repo */}
                     <h4>{data.path}</h4>
                 </section>
 
                 <section className='counter-section'>
-                    {/* map all collaborators and render counters */}
-                    {/* counter component */}
-                    {/* {counters} */}
                 </section>
             </Link>
         </>
@@ -89,28 +73,18 @@ export const File = ({ id, data, socket, repoid }) => {
     } else {
         return (
             <>
-            {/* map against files/folders from repo */}
-            {/* if index/key !== 0, render hr element*/}
             { id !== 0 && <hr className='divider'/>}
-            <section className='file-container'>
+            <section onClick={handleClick} className='file-container'>
 
                 <section className='file-section'>
-                    {/* file or folder icon rendered depending on repo */}
-                    {/* <span className='icon'>{file}</span> */}
                     <span className='icon' style={ counters.length > 1 ? { color: '#EE4B2B' } : null}>{ file }</span>
-                    {/* folder name rendered from repo */}
                     <h4 style={ counters.length > 1 ? { color: '#EE4B2B' } : null}>{data.path}</h4>
                 </section>
 
-                <section onClick={handleClick} className='counter-section' >
-                    {/* map all collaborators and render counters */}
-                    {/* counter component */}
+                <section className='counter-section' >
                     <AvatarGroup spacing={-5} sx={{'& .MuiAvatar-root': { width: 28, height: 28, fontSize: 14, border: 0 }}} max={6} className="counters">
                         {counters}
                     </AvatarGroup>
-                    {/* {counters} */}
-                    {/* {counters.map(counter => <Counter/>)} */}
-                    {/* {counters.map(counter => <Counter/>)} */}
                 </section>
             </section>
             </>
