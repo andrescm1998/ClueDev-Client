@@ -7,6 +7,8 @@ import { Counter } from '../Counter';
 import { DeleteRepo } from '../DeleteRepo';
 import './index.css';
 import { useLocation } from 'react-router-dom';
+import AvatarGroup from '@mui/material/AvatarGroup';
+import Avatar from '@mui/material/Avatar';
 
 // hold ellipsis icon 
 const xIcon = <FontAwesomeIcon icon ={faXmark} />
@@ -26,18 +28,27 @@ export const RepositoryCard = ({ data }) => {
 
     return <>
         <div onClick={handleCLick}>
-            <div className="block">
-                <div className="block-header">
-                    <h3>{data.name}</h3>
-                    <DeleteRepo id={data.id} />
+            <div className="workspace-card-container">
+                <div className="block">
+                    <div className="block-header">
+                        <h3>{data.name}</h3>
+                        <DeleteRepo id={data.id}/>
+                    </div>
+                    <AvatarGroup spacing={5} sx={{'& .MuiAvatar-root': { width: 28, height: 28, fontSize: 14, border: 0 }}} max={6} className="counters">
+                        {data.collaborators.map((collaborator) => 
+
+                            <Avatar src={collaborator.ghAvatar} />
+                                        
+                        )}
+
+                        </AvatarGroup>
                 </div>
-                <div className="counters">
-                    {data.collaborators.map(collaborator => {
-                        return <><span>< Counter avatar={collaborator.ghAvatar}/></span></>
-                    })}
-                </div>
+
             </div>
+            
         </div>
     </>
 }
+
+
 

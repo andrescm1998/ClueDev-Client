@@ -10,20 +10,12 @@ export const WorkspaceSettings = ({showHide, id}) => {
 
     const icon = "delete";
     
-    function handleEdit(e) {
-        e.stopPropagation()
-        return(
-            <>
-            <h1>hi</h1>
-            </>
-        )
-    }
      return (
         <>
         {showHide == true && 
             <section id="showBtns" className='container'>
                 <EditModal id={id} />
-                <div class="vl"></div>
+                <div className="vl"></div>
                 <DeleteModal id={id} />
             </section>}
             

@@ -128,7 +128,7 @@ export function EditModal({id}) {
           body: JSON.stringify(data),
         };
     
-        // Send the post request
+        // Send the patch request
         const response = await fetch(`http://localhost:3000/workspace/${id}`, options);
         const workspace = await response.json();
         console.log(workspace)
@@ -156,17 +156,17 @@ export function EditModal({id}) {
             <DialogTitle sx={{color: 'title.main', paddingBottom: '5px'}} className='delete-modal-text'>Edit Workspace Name:</DialogTitle>
 
             <DialogContentText className='delete-modal-text'>
-            <TextField onChange={handleTitleChange} onClick={stopProp} sx={{ m: 1.5, width: '95%' }}  dividers required id="workspace-name" label="Workspace Name" variant="outlined" />
+            <TextField onChange={handleTitleChange} onClick={stopProp} sx={{ m: 1.5, width: '95%' }} required id="workspace-name" label="Workspace Name" variant="outlined" />
              </DialogContentText>
 
             <DialogActions sx={{display: 'flex', justifyContent: 'center', margin: '16px 5px'}}>
-                    <Button sx={{backgroundColor: 'cancel.main', fontWeight: 'bold', ':hover': {
+                    <Button onClick={handleClose} sx={{backgroundColor: 'cancel.main', fontWeight: 'bold', ':hover': {
                         bgcolor: 'cancel.secondary', // theme.palette.primary.main
                         color: 'white'},}} variant="contained">
                     Cancel
                     </Button>
-                    <Button onClick={handleSubmit} sx={{backgroundColor: 'delete.main', fontWeight: 'bold', ':hover': {
-                      bgcolor: 'delete.secondary', // theme.palette.primary.main
+                    <Button onClick={handleSubmit} sx={{bgcolor: '#A97FFF', fontWeight: 'bold', ':hover': {
+                      bgcolor: '#8A69CE', // theme.palette.primary.main
                       color: 'white',
                       },}} variant="contained">
                     Update

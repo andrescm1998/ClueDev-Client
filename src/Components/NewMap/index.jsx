@@ -2,42 +2,57 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import './index.css';
 import { useParams } from 'react-router-dom';
-import { File } from '../File';
+import { NewFile } from '../NewFile';
 import { People } from '../People';
-import io from 'socket.io-client';
+import { useDispatch, useSelector } from 'react-redux';
+import { setTreeUrl } from '../../store/treeUrl'
+import FolderBackButton from '../FolderBackButton';
 
-export const Map = () => {
-    // const [socket, setSocket] = useState(null)
+export const NewMap = () => {
     const { repoid, repo } = useParams();
+    const [folderClick, setFolderClick] = useState(false);
     const selectedButton = 'selected';
     const [contents, setContents] = useState([]);
-    // const [counters, setCounters] = useState([]);
+    const [displayData, setDisplayData] = useState([]);
+    const dispatch = useDispatch();
+    const treeUrl = useSelector(state => state.treeUrl.value)
+    console.log(contents)
+    //
 
-    const newSocket = io('http://localhost:3000');
-    newSocket.emit('create', `${repoid}`)
-
-    // newSocket.on('test', (payload) => {
-    //     console.log(payload);
-    // })
-
-    newSocket.on('notification', (notification) => {
-        alert(notification)
-        // console.log(notification)
-    })
-
-    // newSocket.on('updateCounters', (counters) => {
-    //     console.log(counters)
-    // })
-
+    // const url = useSelector(state => state.treeUrl.value);
+    // console.log(url);
     useEffect(() => {
-        getContents()
-    }, [])
+        console.log('This is current tree:', treeUrl)
+        if(treeUrl.length === 0){
+            getContents()
+        }else{
+            
+            getFolderContents(treeUrl.length)
+        }
+        
+    }, [folderClick])
 
     const getContents = async () => {
         const options = {
             credentials: 'include'
           }
         const response = await fetch(`http://localhost:3000/repo/${repoid}`, options);
+        const data = response.status === 200 ? await response.json() : [];
+        data.tree.sort((a, b) => a.mode - b.mode)
+        console.log(data.tree)
+        setContents(data.tree)
+    }
+
+    const getFolderContents = async (treeL) => {
+        const options = {
+            method: 'POST',
+            credentials: 'include',
+            headers: { 'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                url: treeUrl[(treeL-1)]
+            })
+        }
+        const response = await fetch(`http://localhost:3000/folder/`, options);
         const data = response.status === 200 ? await response.json() : [];
         data.tree.sort((a, b) => a.mode - b.mode)
         setContents(data.tree)
@@ -73,8 +88,8 @@ export const Map = () => {
                 <section className='map-header'>
                     <h1>{repo}</h1>
                     <section className='links'>
-                        <button style={ filesSelected ? {fontWeight: 'bold', color: '#213547'} : { color: '#A0A0A0'}} className='mapBtn' onClick={selectFiles}>Files</button>
-                        <button style={ peopleSelected ? {fontWeight: 'bold', color: '#213547'} : { color: '#A0A0A0' }} className='mapBtn' onClick={selectPeople}>People</button>
+                        <button style={ filesSelected ? {fontWeight: 'bold', color: 'black'} : { color: '#D2D2D2'}} className='mapBtn' onClick={selectFiles}>Files</button>
+                        <button style={ peopleSelected ? {fontWeight: 'bold', color: 'black'} : { color: '#D2D2D2' }} className='mapBtn' onClick={selectPeople}>People</button>
                     </section>
                 </section>
                 
@@ -90,9 +105,10 @@ export const Map = () => {
             <section className='repo-list'>
                 {/* render based on selected (file or people)*/}
                 {/* <People /> */}
+                {Boolean(treeUrl.length) && <><FolderBackButton setFolderClick={setFolderClick}/></>}
                 {filesSelected && <>
                     {contents.map((item, idx) => {
-                        return <><File key={idx} id={idx} data={item} socket={newSocket} repoid={repoid}/></>
+                        return <><NewFile key={idx} id={idx} data={item} setFolderClick={setFolderClick}/></>
                     })}
                     {/* <File /> */}
                 </>}

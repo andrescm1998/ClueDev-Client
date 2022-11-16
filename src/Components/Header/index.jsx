@@ -1,39 +1,35 @@
-import React from "react";
+import * as React from "react";
 import {useState, useEffect} from 'react'
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
-import { Button } from '@mui/material'
+import { useDispatch, useSelector } from 'react-redux';
+import { Button, Menu, MenuItem } from '@mui/material'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEllipsis, faGear, faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons";
-import './index.css'
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
-import { useDispatch, useSelector } from 'react-redux';
 import { setUser } from '../../store/user';
 // import Breadcrumb from "./breadcrumb";
+import './index.css'
 
 const dots = <FontAwesomeIcon icon ={faEllipsis} />
 const settings = <FontAwesomeIcon icon ={faGear} />
 const logout = <FontAwesomeIcon icon ={faArrowRightFromBracket} />
 
 const Header = () => {
+
+    const navigate = useNavigate();
     
     // Get username of the user currently logged in
     const loggedUser = useSelector(state => state.user.value);
     const dispatch = useDispatch();
 
-    const [ open, setOpen ] = useState(null);
-    const navigate = useNavigate();
-
-    const opened = Boolean(open);
+    const [ anchorEl, setAnchorEl ] = useState(null);
+    const open = Boolean(anchorEl);
 
     const handleClick = (event) => {
-
-        setOpen(event.currentTarget);
+        setAnchorEl(event.currentTarget);
     }
 
     const handleClose = () => {
-
-        setOpen(null);
+        setAnchorEl(null);
     }
 
     const Logout = async () => {
@@ -64,31 +60,32 @@ const Header = () => {
     <>
         <header>
             <nav className="nav-links">
-                <NavLink to="/dashboard">{loggedUser.ghUsername}</NavLink>
-                <NavLink to="/dashboard">ClueDev</NavLink>
+                <NavLink to="/dashboard" style={{color: '#747bff'}} className="username">{loggedUser.ghUsername}</NavLink>
+                <NavLink to="/dashboard" style={{color: '#747bff'}} className="logo">ClueDev</NavLink>
                 <Button id="nav-button"  
-                aria-controls={opened ? 'nav-menu' : undefined}
+                aria-controls={open ? 'nav-menu' : undefined}
                 aria-haspopup="true"
-                aria-expanded={opened ? 'true' : undefined}
+                aria-expanded={open ? 'true' : undefined}
                 onClick={handleClick}
+                sx={{color: '#747bff'}}
                 >{dots}</Button>
 
                 <Menu
                     id="nav-menu"
-                    sx={{ mt: 5,  ml: -10  }}
+                    anchorEl={anchorEl}
                     open={open}
-                    opened={opened}
                     onClose={handleClose}
-                    keepMounted={false}
-                    anchorOrigin={{ vertical: "top", horizontal: "right" }}
-                    transformOrigin={{ vertical: "top", horizontal: "right" }}
                     MenuListProps={{
                     'aria-labelledby': 'nav-button',
                     }}
                     PaperProps={{
                         style: {
-                         borderRadius: "20px",
-                         width: "10%"
+                         borderRadius: "10px",
+                         borderStyle: "solid",
+                         borderWidth: "1px",
+                         borderColor: "#AAA6A6",
+                         backgroundColor: "#F8F8F8",
+                         boxShadow:"none"
                         }
                     }}
                     >

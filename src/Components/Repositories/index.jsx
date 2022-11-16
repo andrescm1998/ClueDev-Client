@@ -11,8 +11,11 @@ const Repositories = () => {
     const { ws } = useSelector((state) => state.ws.value)
     const [repos, setRepos] = useState([]);
     const { workspace, wsid } = useParams();
+    const [loading, setLoading] = useState(false)
+
 
     useEffect(() => {
+        setLoading(true)
         getRepos()
     }, [])
 
@@ -25,16 +28,17 @@ const Repositories = () => {
         const response = await fetch(`http://localhost:3000/repo/workspace?wsid=${wsid}`, options);
         const data = response.status === 200 ? await response.json() : [];
         setRepos(data)
+        setLoading(false)
     }
 
-
-    return <>
+    function showRepositories() {
+        return <>
         <main className='repo-container'>
             <section className='repo-wrapper'>
                 <section className='repo-header'>
                     <h1>{workspace}</h1>
                     <section className='links'>
-                        < AttachRepoModal />
+                        < AttachRepoModal repos={repos} setRepos={setRepos}/>
                         {/* on click of create button in modal will send data to create workspace card component  */}
                     </section>
                 </section>
@@ -58,6 +62,9 @@ const Repositories = () => {
                 </section>
             </main>
     </>
+    }
+    return loading ? <h2><em>loading...</em></h2> : showRepositories();
+
 }
 
 export default Repositories

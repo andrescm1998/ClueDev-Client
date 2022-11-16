@@ -7,20 +7,28 @@ header {
 }
 
 .nav-links {
-    width: 90%;
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     position: fixed;
-    background-color: #ffffff;
+    background-color: #FFFAFA;
     top: 0;
-    /* padding-top: 1rem; */
-    /* background-color: blue; */
+    z-index: 2;
+    padding-top: 1rem;
 }
 
 .nav-links a {
     text-decoration: none;
 
+}
+
+.username {
+    padding-left: 20px;
+}
+
+.logo {
+    font-size: 1.5rem;
 }
 
 .settings {
@@ -34,4 +42,8 @@ header {
 .redirect a {
     text-decoration: none;
 }
+
+/* #nav-button {
+    margin-right: 20px;
+} */
 
