@@ -26,9 +26,36 @@
     position: fixed;
     padding-top: 2.2rem;
     top: 5vh;
-    background-color: white;
+    background-color: #FFFAFA;
 }
 
 .repo-hr {
     width: 100%;
 }
+
+/* tablet view */
+@media only screen and (max-width: 900px) {
+    .repo-wrapper {
+        width: 80%;
+    }
+
+    .workspace-list {
+        width: 80%;
+    }
+  }
+
+  /* mobile view */
+  @media only screen and (max-width: 800px) {
+    .workspaces-container {
+      grid-template-columns: 1fr;
+      grid-row-gap: 10px;
+    }
+
+    .repo-wrapper {
+        width: 90%;
+    }
+
+    .workspace-list {
+        width: 90%;
+    }
+  }

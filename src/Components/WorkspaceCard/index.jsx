@@ -17,6 +17,7 @@ export const WorkspaceCard = ({ data }) => {
     const [showHide, setShowHide] = useState(false)
     const [counterLimit, setCounterLimit] = useState(5)
 
+
     
     const showHidden = (e) => {
         e.stopPropagation();
@@ -29,7 +30,7 @@ export const WorkspaceCard = ({ data }) => {
     }
 
     return <>
-        <div className='main-container' onClick={handleCLick} on>
+        <div className='main-container' onClick={handleCLick} on="true">
             <div className='workspace-card-container'>
                         <div className="block">
                             <div className="block-header">
@@ -37,9 +38,9 @@ export const WorkspaceCard = ({ data }) => {
                                 <Button sx={{padding: '3px', display: 'flex', justifyContent: 'flex-end', alignItems: 'flex-start', color: '#545151', minWidth: '10px'}} disableRipple onClick={showHidden}>{dots}</Button>
                             </div>
                             <AvatarGroup spacing={5} sx={{'& .MuiAvatar-root': { width: 28, height: 28, fontSize: 14, border: 0 }}} max={6} className="counters">
-                                {data.collaborators.map((collaborator) => 
+                                {data.collaborators.map((collaborator, key) => 
 
-                                    <Avatar src={collaborator.ghAvatar} />
+                                    <Avatar src={collaborator.ghAvatar} key={key} />
                                     
                                 )}
 

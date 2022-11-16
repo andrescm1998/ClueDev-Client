@@ -6,8 +6,9 @@ import './App.css'
 function App() {
   return (
     <Routes>
+      <Route index element={<Home/>}/>
+      {/* Header route needs to be below Home route, so it won't show on the page */}
       <Route path='/' element={<Header />}>
-        <Route index element={<Home/>}/>
         <Route path='/redirect' element={<Redirect/>}/>
         {/* <Route path='/map' element={<Map/>}/>
         <Route path='/map/folder' element={<Folder/>}/> */}

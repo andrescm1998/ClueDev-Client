@@ -1,17 +1,18 @@
-
-#home {
+#home-container {
     display: flex;
     flex-direction: column;
-    height: 300vh;
     width: 100vw;
-    /* justify-content: center; */
+    /* height: 50vw; */
     align-items: center;
-    position: absolute;
+    justify-content: center;
+    position: relative;
+    margin-top: 200px;
 }
 
 #logo-name {
     font-size: 6em;
     padding: 70px 0;
+    color: #5a3e7d;
 }
 
 #moto p {
@@ -19,7 +20,6 @@
     text-align: center;
     font-size: 1.2em;
     flex-direction: column;
-    /* color: #6429B0; */
     font-style: italic;
     margin: 5px 10px;
 }
@@ -30,11 +30,11 @@
 
 #github-btn {
     background-color: #2F3337;
-    font-size: 1.5em;
+    font-size: 1em;
 }
 
 #github-btn span {
-    padding: 10px;
+    padding-right: 10px;
 }
 
 .bg-wrapper {

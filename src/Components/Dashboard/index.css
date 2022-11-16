@@ -4,10 +4,11 @@
     justify-content: center;
     flex-direction: column;
     width: 100vw;
+    z-index: 1;
 }
 
 .workspace-list {
-    margin-top: 180px;
+    margin-top: 150px;
 }
 
 .dash-wrapper {
@@ -15,7 +16,7 @@
     position: fixed;
     padding-top: 2.2rem;
     top: 5vh;
-    background-color: white;
+    background-color: #FFFAFA;
 }
 /* style heading to make it consistent with other pages  */
 .dash-header {
@@ -63,3 +64,29 @@ hr {
 .dash-hr {
     width: 100%;
 }
+
+/* tablet view */
+@media only screen and (max-width: 900px) {
+    .dash-wrapper {
+        width: 80%;
+    }
+
+    .workspace-list {
+        width: 80%;
+    }
+  }
+/* mobile view */
+  @media only screen and (max-width: 800px) {
+    .workspaces-container {
+      grid-template-columns: 1fr;
+      grid-row-gap: 10px;
+    }
+
+    .dash-wrapper {
+        width: 90%;
+    }
+
+    .workspace-list {
+        width: 90%;
+    }
+  }

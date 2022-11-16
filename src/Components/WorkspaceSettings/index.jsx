@@ -1,20 +1,21 @@
 import React from 'react';
 import { Button } from '@mui/material'
 import { DeleteModal } from '../DeleteModal';
+import {useState} from 'react'
+import { EditModal } from '../EditModal';
+
+
 
 export const WorkspaceSettings = ({showHide, id}) => {
-    console.log(id)
+
     const icon = "delete";
     
-    function handleEdit(e) {
-        e.stopPropagation()
-    }
      return (
         <>
         {showHide == true && 
             <section id="showBtns" className='container'>
-                <Button onClick={handleEdit} sx={{color: '#6429B0', padding: '6px 16px'}}>Edit</Button>
-                <div class="vl"></div>
+                <EditModal id={id} />
+                <div className="vl"></div>
                 <DeleteModal id={id} />
             </section>}
             

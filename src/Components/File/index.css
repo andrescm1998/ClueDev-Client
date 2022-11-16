@@ -1,13 +1,14 @@
 .file-container {
     display: flex;
     flex-direction: row;
-    background-color: #F0F0F0;
+    /* background-color: #F0F0F0; */
     height: 50px;
     align-items: center;
     border-radius: 15px;
     justify-content: space-between;
     text-decoration: none;
     color: black;
+    /* border: solid 1px #919191; */
 }
 
 .icon {
@@ -23,11 +24,13 @@
 }
 
 .counter-section {
-    width: 70%;
+    width: 60%;
     height: 100%;
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
     align-items: center;
     padding-right: 8px;
+    /* border: solid 1px #919191; */
+    cursor: pointer;
 }
