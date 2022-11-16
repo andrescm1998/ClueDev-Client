@@ -5,12 +5,14 @@
     width: 100vw;
     align-items: center;
     position: absolute;
+    margin-top: 150px;
 }
 
 #logo-name {
     font-size: 6em;
     padding: 70px 0;
-    color: #5a3e7d;
+    /* color: #5a3e7d; */
+    color: black
 }
 
 #moto p {
