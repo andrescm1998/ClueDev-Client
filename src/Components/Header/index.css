@@ -1,11 +1,11 @@
-/* header {
+header {
     display: flex;
     justify-content: space-around;
     align-items: center;
     min-height: 10vh;
-} */
+} 
 
-/* .nav-links {
+.nav-links {
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -37,10 +37,10 @@
     display: flex;
     flex-direction: row;
     align-items: flex-end;
-} */
-
+}
+/* 
 .nav-links {
-    /* background: pink; */
+    background: pink;
     display: inline-grid;
     grid-template-rows: auto;
     grid-template-columns: 1fr;
@@ -58,13 +58,13 @@
 }
 
 .nav-left {
-    /* background: green; */
+    background: green;
     width: 100%;
     grid-column:-3;
 }
 
 .nav-centre {
-    /* background: lightsalmon; */
+    background: lightsalmon;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -73,9 +73,9 @@
 }
 
 .nav-right {
-    /* background: lightskyblue; */
+    background: lightskyblue;
     grid-column:2;
-}
+} */
 
 .username {
     padding-left: 20px;
