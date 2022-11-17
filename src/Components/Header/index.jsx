@@ -63,8 +63,13 @@ const Header = () => {
     <>
         <header>
             <nav className="nav-links">
+                {/* Navigation bar */}
+                <NavLink to="/dashboard" style={{color: '#747bff'}} className="logo">
+                    ClueDev
+                </NavLink>
+
                 {/* Breadcrumb navigation*/}
-                <Breadcrumbs className="nav-left">
+                <Breadcrumbs>
                 {pathnames.length ? (
                     <Link onClick={() => navigate("/dashboard")} style={{color: '#747bff'}} className="username">{loggedUser.ghUsername}</Link>
                 ) : (
@@ -88,22 +93,15 @@ const Header = () => {
                 }, [])}
                 </Breadcrumbs>
 
-                {/* Navigation bar */}
-                <div className="nav-center">
-                    <NavLink to="/dashboard" style={{color: '#747bff'}} className="logo">
-                        ClueDev
-                    </NavLink>
-                </div>
-                <div className="nav-right">
-                    <Button id="nav-button"  
-                    aria-controls={open ? 'nav-menu' : undefined}
-                    aria-haspopup="true"
-                    aria-expanded={open ? 'true' : undefined}
-                    onClick={handleClick}
-                    sx={{color: '#747bff'}}
-                    >{dots}</Button>
-                </div>
-
+                {/* Menu button */}
+                <Button id="nav-button"  
+                aria-controls={open ? 'nav-menu' : undefined}
+                aria-haspopup="true"
+                aria-expanded={open ? 'true' : undefined}
+                onClick={handleClick}
+                sx={{color: '#747bff'}}
+                >{dots}</Button>
+              
                 {/* Dropdown menu on navigation bar */}
                 <Menu
                     id="nav-menu"
