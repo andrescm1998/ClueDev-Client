@@ -9,6 +9,8 @@ import { setTreeUrl } from '../../store/treeUrl'
 import { useState, useEffect } from 'react';
 import Avatar from '@mui/material/Avatar';
 import AvatarGroup from '@mui/material/AvatarGroup';
+import {ConflictModal} from '../ConflictModal';
+
 
 export const NewFile = ({ id, data, socket, setFolderClick, repoid }) => {
     const user = useSelector(state => state.user.value);
@@ -23,14 +25,17 @@ export const NewFile = ({ id, data, socket, setFolderClick, repoid }) => {
     const file = <FontAwesomeIcon icon={faFile}/>;
     const folder = <FontAwesomeIcon icon={faFolder}/>;
     const dispatch = useDispatch()
-
     const [counters, setCounters] = useState([]);
     const [hasCounter, setHasCounter] = useState(false);
     const [notify, setNotify] = useState(false);
+    const [open, setOpen] = useState(false)
+    
+
 
     if (notify) {
-        alert('conflict')
         setNotify(false)
+        setOpen(true)
+        console.log("conflict")
     }
 
     socket.on('notification', (conflicts) => {
@@ -99,6 +104,7 @@ export const NewFile = ({ id, data, socket, setFolderClick, repoid }) => {
                     </AvatarGroup>
                 </section>
             </section>
+            <ConflictModal open={open} setOpen={setOpen}></ConflictModal>
             </>
         )
     }
