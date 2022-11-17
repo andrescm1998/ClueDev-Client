@@ -19,7 +19,7 @@ import Slide from '@mui/material/Slide';
 import { FormControl, InputLabel} from '@mui/material';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
-import { useParams } from 'react-router-dom';
+import { Navigate, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 
@@ -71,6 +71,9 @@ BootstrapDialogTitle.propTypes = {
 };
 
 export default function CustomizedDialogs({repos, setRepos}) {
+  const navigate = useNavigate()
+  const {wsid, workspace} = useParams();
+  // console.log(params)
   const [open, setOpen] = useState(false);
   const [repositories, setRepositories] = useState([]);
   const [selected, setSelected] = useState([]);
@@ -118,14 +121,23 @@ console.log(repos)
     setOpen(false);
   }
 
+  const getAllRepos = async () => {
+    const options = {
+      credentials: 'include'
+    }
+    const response = await fetch(`http://localhost:3000/repo/workspace?wsid=${wsid}`, options);
+    const data = response.status === 200 ? await response.json() : [];
+    setRepos(data);
+  }
+
   const addRepository = async () => {
 
-
+    let res;
     for (const repo of selected) {
       // Format the request data
       const data = {
         repoName: repo,
-        
+        wsId: wsid
       }
       console.log(data)
 
@@ -140,8 +152,10 @@ console.log(repos)
       };
         console.log(options)
       // Send the post request
-      await fetch('http://localhost:3000/repo', options);
+      res = await fetch('http://localhost:3000/repo', options);
     }
+
+    res.status == 200 ? getAllRepos() : '';
   }
 
   return (

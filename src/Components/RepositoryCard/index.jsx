@@ -13,7 +13,7 @@ import Avatar from '@mui/material/Avatar';
 // hold ellipsis icon 
 const xIcon = <FontAwesomeIcon icon ={faXmark} />
 
-export const RepositoryCard = ({ data }) => {
+export const RepositoryCard = ({ data, setRepos }) => {
     const url = useLocation().pathname
     const [showHide, setShowHide] = useState(false)
     
@@ -31,7 +31,7 @@ export const RepositoryCard = ({ data }) => {
             <div className="block workspace-card-container">
                 <div className="block-header">
                     <h3>{data.name}</h3>
-                    <DeleteRepo id={data.id} />
+                    <DeleteRepo id={data.id} setRepos={setRepos} />
                 </div>
                 <AvatarGroup spacing={5} sx={{'& .MuiAvatar-root': { width: 28, height: 28, fontSize: 14, border: 0 }}} max={6} className="counters">
                     {data.collaborators.map((collaborator) => 
