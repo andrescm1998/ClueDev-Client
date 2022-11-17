@@ -39,7 +39,6 @@ export const RepositoryCard = ({ data }) => {
                         <Avatar src={collaborator.ghAvatar} />
                                     
                     )}
-
                 </AvatarGroup>
             </div>
         </div>
