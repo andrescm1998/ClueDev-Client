@@ -18,6 +18,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import Slide from '@mui/material/Slide';
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import { useParams } from 'react-router-dom';
 
 
 
@@ -85,8 +86,9 @@ const buttonTheme = createTheme({
     }, 
 });
 
-export function DeleteRepo({id}) {
-
+export function DeleteRepo({id, setRepos}) {
+  const {wsid, workspace} = useParams();
+  console.log(wsid);
 
   const [open, setOpen] = useState(false);
 
@@ -106,9 +108,21 @@ export function DeleteRepo({id}) {
     const response = await fetch(`http://localhost:3000/repo/${id}`, options);
     console.log(response)
     if(response.status == 200) {
-      window.location.reload()
-      setLoading(false)
+      getAllRepos()
     }
+  }
+
+  const getAllRepos = async () => {
+    const options = {
+      credentials: 'include'
+    }
+    const response = await fetch(`http://localhost:3000/repo/workspace?wsid=${wsid}`, options);
+    const data = response.status === 200 ? await response.json() : [];
+    setRepos(data);
+  }
+
+  const stopProp = (e) => {
+    e.stopPropagation();
   }
 
   const xIcon = <FontAwesomeIcon icon ={faXmark} />
@@ -118,7 +132,7 @@ export function DeleteRepo({id}) {
          <ThemeProvider theme={buttonTheme}>
         <div>
         <Button sx={{padding: '3px', display: 'flex', justifyContent: 'flex-end', alignItems: 'flex-start', color: '#545151', minWidth: '10px' }} disableRipple onClick={handleClickOpen}>{xIcon} </Button>
-        <BootstrapDialog PaperProps={{sx: { width: "390px"}}} fullWidth onClose={handleClose} aria-labelledby="customized-dialog-title" open={open} TransitionComponent={Transition}
+        <BootstrapDialog onClick={stopProp} PaperProps={{sx: { width: "390px"}}} fullWidth onClose={handleClose} aria-labelledby="customized-dialog-title" open={open} TransitionComponent={Transition}
             keepMounted >
 
             <DialogTitle sx={{color: 'title.main', paddingBottom: '5px'}} className='delete-modal-text'>Remove Repository</DialogTitle>
@@ -128,7 +142,7 @@ export function DeleteRepo({id}) {
             </DialogContentText>
 
             <DialogActions sx={{display: 'flex', justifyContent: 'center', margin: '16px 5px'}}>
-                    <Button sx={{backgroundColor: 'cancel.main', ':hover': {
+                    <Button onClick={handleClose} sx={{backgroundColor: 'cancel.main', ':hover': {
       bgcolor: 'cancel.secondary'}, fontWeight: 'bold'}} variant="contained">
                     Cancel
                     </Button>

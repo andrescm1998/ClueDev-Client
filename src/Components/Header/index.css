@@ -1,10 +1,9 @@
 header {
-
     display: flex;
     justify-content: space-around;
     align-items: center;
     min-height: 10vh;
-}
+} 
 
 .nav-links {
     width: 100%;
@@ -16,11 +15,11 @@ header {
     top: 0;
     z-index: 2;
     padding-top: 1rem;
+    cursor: pointer;
 }
 
 .nav-links a {
     text-decoration: none;
-
 }
 
 .username {
@@ -29,6 +28,7 @@ header {
 
 .logo {
     font-size: 1.5rem;
+    margin-left: 20px;
 }
 
 .settings {
@@ -43,7 +43,7 @@ header {
     text-decoration: none;
 }
 
-/* #nav-button {
+#nav-button {
     margin-right: 20px;
-} */
+}
 

@@ -18,7 +18,6 @@ const Header = () => {
     const navigate = useNavigate();
     const { pathname } = useLocation();
     const pathnames = pathname.split("/").filter(Boolean);
-    //const pathnames = pathname.split("/").filter(id => isNaN(id) && Boolean);
     
     // Get username of the user currently logged in
     const loggedUser = useSelector(state => state.user.value);
@@ -64,6 +63,11 @@ const Header = () => {
     <>
         <header>
             <nav className="nav-links">
+                {/* Navigation bar */}
+                <NavLink to="/dashboard" style={{color: '#747bff'}} className="logo">
+                    ClueDev
+                </NavLink>
+
                 {/* Breadcrumb navigation*/}
                 <Breadcrumbs>
                 {pathnames.length ? (
@@ -71,21 +75,25 @@ const Header = () => {
                 ) : (
                     <Button onClick={() => navigate(-1)}>{goBack}</Button> 
                 )}
-                {pathnames.map((name, index) => {
-                    const routeTo = `/${pathnames.slice(0, index + 1).join("/")}`;
-                    const isLast = index === pathnames.length - 1;
-                    return isLast ? (
-                    <Typography key={name}>{name}</Typography>
-                    ) : (
-                    <Link key={name} onClick={() => navigate(routeTo)}>
-                        {name}
-                    </Link>
-                    );
-                })}
+                {pathnames.reduce((acc, val, index) => {
+                    if (isNaN(val)) {
+                        const routeTo = `/${pathnames.slice(0, index + 1).join("/")}`;
+                        const isLast = index === pathnames.length - 1;
+                        const crumb = isLast ? (
+                        <Typography key={val} style={{color: '#747bff'}}>{val}</Typography>
+                        ) : (
+                        <Link key={val} onClick={() => navigate(routeTo)} style={{color: '#747bff'}}>
+                            {val}
+                        </Link>
+                        );
+                        return acc.concat(crumb)
+                    } else {
+                        return acc
+                    }
+                }, [])}
                 </Breadcrumbs>
 
-                {/* Navigation bar */}
-                <NavLink to="/dashboard" style={{color: '#747bff'}} className="logo">ClueDev</NavLink>
+                {/* Menu button */}
                 <Button id="nav-button"  
                 aria-controls={open ? 'nav-menu' : undefined}
                 aria-haspopup="true"
@@ -93,7 +101,7 @@ const Header = () => {
                 onClick={handleClick}
                 sx={{color: '#747bff'}}
                 >{dots}</Button>
-
+              
                 {/* Dropdown menu on navigation bar */}
                 <Menu
                     id="nav-menu"
@@ -106,11 +114,11 @@ const Header = () => {
                     PaperProps={{
                         style: {
                          borderRadius: "10px",
-                         borderStyle: "solid",
-                         borderWidth: "1px",
-                         borderColor: "#AAA6A6",
-                         backgroundColor: "#F8F8F8",
-                         boxShadow:"none"
+                        //  borderStyle: "solid",
+                        //  borderWidth: "1px",
+                        //  borderColor: "#AAA6A6",
+                        //  backgroundColor: "#F8F8F8",
+                        //  boxShadow:"none"
                         }
                     }}
                     >

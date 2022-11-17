@@ -54,7 +54,7 @@ const Repositories = () => {
                 <section className='workspace-list'>
                     { repos.length === 0 && <p>There are no repositories, click the plus icon to add a new repository</p> }
                     <section className='workspaces-container'>
-                        { repos.map(repo => <RepositoryCard key={repo.id} data={repo} />)}
+                        { repos.map(repo => <RepositoryCard key={repo.id} data={repo} setRepos={setRepos} />)}
                          {/* <RepositoryCard /> 
                          <RepositoryCard /> 
                          <RepositoryCard /> 
