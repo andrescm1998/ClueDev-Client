@@ -7,7 +7,7 @@ import { People } from '../People';
 import io from 'socket.io-client';
 import { useSelector } from 'react-redux';
 import FolderBackButton from '../FolderBackButton';
-import loadSvg from '../../assets/loading.svg'
+import loadSvg from '../../assets/loading2.svg'
 
 export const NewMap = () => {
 
@@ -107,7 +107,7 @@ export const NewMap = () => {
                 </>}
                 {peopleSelected && <><People /><People /></>}
             </section>
-            {loading ? <><img src={loadSvg} alt="load SVG" /></> : <></> }
+            {loading ? <><img className='svg' src={loadSvg} alt="load SVG" /></> : <></> }
 
         </main>
     )

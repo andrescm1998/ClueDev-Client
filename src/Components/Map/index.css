@@ -76,6 +76,10 @@ hr {
     flex-direction: row;
 }
 
+.svg {
+    margin-top: 5em;
+}
+
 /* tablet view */
 @media only screen and (max-width: 900px) {
     .map-header {
