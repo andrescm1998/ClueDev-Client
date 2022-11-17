@@ -9,11 +9,12 @@ import './index.css'
 import { useDispatch } from 'react-redux';
 import { setUser } from '../../store/user';
 import { setWs } from '../../store/workspaces';
+import { Loader } from '../Loading'
 
 const Dashboard = () => {
     const [workspaces, setWorkspaces] = useState([])
     const dispatch = useDispatch();
-    const [loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
         setLoading(true);
@@ -74,7 +75,7 @@ const Dashboard = () => {
               )
         }
     
-        return loading ? <h2><em>loading...</em></h2> : showWorkspaces();
+        return loading ? <Loader />: showWorkspaces();
 
 
 }
