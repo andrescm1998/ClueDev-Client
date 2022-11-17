@@ -65,34 +65,45 @@ const Header = () => {
         <header>
             <nav className="nav-links">
                 {/* Breadcrumb navigation*/}
-                <Breadcrumbs>
+                <Breadcrumbs className="nav-left">
                 {pathnames.length ? (
                     <Link onClick={() => navigate("/dashboard")} style={{color: '#747bff'}} className="username">{loggedUser.ghUsername}</Link>
                 ) : (
                     <Button onClick={() => navigate(-1)}>{goBack}</Button> 
                 )}
-                {pathnames.map((name, index) => {
-                    const routeTo = `/${pathnames.slice(0, index + 1).join("/")}`;
-                    const isLast = index === pathnames.length - 1;
-                    return isLast ? (
-                    <Typography key={name}>{name}</Typography>
-                    ) : (
-                    <Link key={name} onClick={() => navigate(routeTo)}>
-                        {name}
-                    </Link>
-                    );
-                })}
+                {pathnames.reduce((acc, val, index) => {
+                    if (isNaN(val)) {
+                        const routeTo = `/${pathnames.slice(0, index + 1).join("/")}`;
+                        const isLast = index === pathnames.length - 1;
+                        const crumb = isLast ? (
+                        <Typography key={val}>{val}</Typography>
+                        ) : (
+                        <Link key={val} onClick={() => navigate(routeTo)} style={{color: '#747bff'}}>
+                            {val}
+                        </Link>
+                        );
+                        return acc.concat(crumb)
+                    } else {
+                        return acc
+                    }
+                }, [])}
                 </Breadcrumbs>
 
                 {/* Navigation bar */}
-                <NavLink to="/dashboard" style={{color: '#747bff'}} className="logo">ClueDev</NavLink>
-                <Button id="nav-button"  
-                aria-controls={open ? 'nav-menu' : undefined}
-                aria-haspopup="true"
-                aria-expanded={open ? 'true' : undefined}
-                onClick={handleClick}
-                sx={{color: '#747bff'}}
-                >{dots}</Button>
+                <div className="nav-center">
+                    <NavLink to="/dashboard" style={{color: '#747bff'}} className="logo">
+                        ClueDev
+                    </NavLink>
+                </div>
+                <div className="nav-right">
+                    <Button id="nav-button"  
+                    aria-controls={open ? 'nav-menu' : undefined}
+                    aria-haspopup="true"
+                    aria-expanded={open ? 'true' : undefined}
+                    onClick={handleClick}
+                    sx={{color: '#747bff'}}
+                    >{dots}</Button>
+                </div>
 
                 {/* Dropdown menu on navigation bar */}
                 <Menu
@@ -106,11 +117,11 @@ const Header = () => {
                     PaperProps={{
                         style: {
                          borderRadius: "10px",
-                         borderStyle: "solid",
-                         borderWidth: "1px",
-                         borderColor: "#AAA6A6",
-                         backgroundColor: "#F8F8F8",
-                         boxShadow:"none"
+                        //  borderStyle: "solid",
+                        //  borderWidth: "1px",
+                        //  borderColor: "#AAA6A6",
+                        //  backgroundColor: "#F8F8F8",
+                        //  boxShadow:"none"
                         }
                     }}
                     >
