@@ -20,6 +20,7 @@ import Slide from '@mui/material/Slide';
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 
 
+
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
   });
@@ -86,6 +87,7 @@ const buttonTheme = createTheme({
 
 export function DeleteRepo({id}) {
 
+
   const [open, setOpen] = useState(false);
 
   const handleClickOpen = (e) => {
@@ -105,13 +107,15 @@ export function DeleteRepo({id}) {
     console.log(response)
     if(response.status == 200) {
       window.location.reload()
+      setLoading(false)
     }
   }
 
   const xIcon = <FontAwesomeIcon icon ={faXmark} />
 
   return (
-    <ThemeProvider theme={buttonTheme}>
+    <div>
+         <ThemeProvider theme={buttonTheme}>
         <div>
         <Button sx={{padding: '3px', display: 'flex', justifyContent: 'flex-end', alignItems: 'flex-start', color: '#545151', minWidth: '10px' }} disableRipple onClick={handleClickOpen}>{xIcon} </Button>
         <BootstrapDialog PaperProps={{sx: { width: "390px"}}} fullWidth onClose={handleClose} aria-labelledby="customized-dialog-title" open={open} TransitionComponent={Transition}
@@ -135,6 +139,11 @@ export function DeleteRepo({id}) {
             </DialogActions>
         </BootstrapDialog>
         </div>
+
     </ThemeProvider>
+
+    </div>
+   
+
   );
 }

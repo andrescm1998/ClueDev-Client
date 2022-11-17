@@ -10,9 +10,7 @@ export const Loader = () => {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        marginTop: 80
-        
-    
+        marginTop: '7.3em'
 
     }
     return(
