@@ -1,17 +1,20 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import './index.css'
 
 function Redirect() {
 
   const [params] = useSearchParams();
-    const [data, setData] = useState([]);
+  const user = useSelector(state => state.user.value);
+  console.log('User: ', user)
     const code = params.get('code');
     const navigate = useNavigate();
+    // const [isFound, setIsFound] = useState(false);
 
 
   async function sendCode() {
-
+    console.log('Sending code....')
     const options = {
       method: 'POST',
       credentials: 'include',
@@ -34,7 +37,12 @@ function Redirect() {
   }
 
   useEffect(() => {
-    sendCode();
+    if(user.ghUsername){
+      navigate('/dashboard')
+    } else {
+      sendCode()
+    }
+
 }, [])
 
 

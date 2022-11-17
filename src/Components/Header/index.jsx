@@ -1,28 +1,32 @@
 import * as React from "react";
 import {useState, useEffect} from 'react'
-import { NavLink, Outlet, useNavigate } from "react-router-dom";
+import { NavLink, Outlet, useNavigate, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
-import { Button, Menu, MenuItem } from '@mui/material'
+import { Button, Menu, MenuItem, Breadcrumbs, Link, Typography } from '@mui/material'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEllipsis, faGear, faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons";
+import { faEllipsis, faGear, faArrowRightFromBracket, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { setUser } from '../../store/user';
-// import Breadcrumb from "./breadcrumb";
 import './index.css'
 
 const dots = <FontAwesomeIcon icon ={faEllipsis} />
 const settings = <FontAwesomeIcon icon ={faGear} />
 const logout = <FontAwesomeIcon icon ={faArrowRightFromBracket} />
+const goBack = <FontAwesomeIcon icon ={faArrowLeft} />
 
 const Header = () => {
 
     const navigate = useNavigate();
+    const { pathname } = useLocation();
+    const pathnames = pathname.split("/").filter(Boolean);
+    //const pathnames = pathname.split("/").filter(id => isNaN(id) && Boolean);
     
     // Get username of the user currently logged in
     const loggedUser = useSelector(state => state.user.value);
     const dispatch = useDispatch();
 
+    // States for dropdown menu
     const [ anchorEl, setAnchorEl ] = useState(null);
-    const open = Boolean(anchorEl);
+    let open = Boolean(anchorEl);
 
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -33,7 +37,7 @@ const Header = () => {
     }
 
     const Logout = async () => {
-        setOpen(null);
+        open = null;
         const options = {
             credentials: 'include'
           }
@@ -60,7 +64,27 @@ const Header = () => {
     <>
         <header>
             <nav className="nav-links">
-                <NavLink to="/dashboard" style={{color: '#747bff'}} className="username">{loggedUser.ghUsername}</NavLink>
+                {/* Breadcrumb navigation*/}
+                <Breadcrumbs>
+                {pathnames.length ? (
+                    <Link onClick={() => navigate("/dashboard")} style={{color: '#747bff'}} className="username">{loggedUser.ghUsername}</Link>
+                ) : (
+                    <Button onClick={() => navigate(-1)}>{goBack}</Button> 
+                )}
+                {pathnames.map((name, index) => {
+                    const routeTo = `/${pathnames.slice(0, index + 1).join("/")}`;
+                    const isLast = index === pathnames.length - 1;
+                    return isLast ? (
+                    <Typography key={name}>{name}</Typography>
+                    ) : (
+                    <Link key={name} onClick={() => navigate(routeTo)}>
+                        {name}
+                    </Link>
+                    );
+                })}
+                </Breadcrumbs>
+
+                {/* Navigation bar */}
                 <NavLink to="/dashboard" style={{color: '#747bff'}} className="logo">ClueDev</NavLink>
                 <Button id="nav-button"  
                 aria-controls={open ? 'nav-menu' : undefined}
@@ -70,6 +94,7 @@ const Header = () => {
                 sx={{color: '#747bff'}}
                 >{dots}</Button>
 
+                {/* Dropdown menu on navigation bar */}
                 <Menu
                     id="nav-menu"
                     anchorEl={anchorEl}
@@ -96,9 +121,6 @@ const Header = () => {
                 </Menu>
             </nav>
         </header>
-
-        {/* <Breadcrumb /> */}
-
         <Outlet />
     </>
     )

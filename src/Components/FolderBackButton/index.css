@@ -1,7 +1,8 @@
 button {
     border: none;
+    border-radius: 15px;
     cursor: pointer;
-    /* margin: 0; */
+    margin-left: 5px;
     /* padding: 0; */
 }
 
