@@ -75,7 +75,7 @@ const Header = () => {
                         const routeTo = `/${pathnames.slice(0, index + 1).join("/")}`;
                         const isLast = index === pathnames.length - 1;
                         const crumb = isLast ? (
-                        <Typography key={val}>{val}</Typography>
+                        <Typography key={val} style={{color: '#747bff'}}>{val}</Typography>
                         ) : (
                         <Link key={val} onClick={() => navigate(routeTo)} style={{color: '#747bff'}}>
                             {val}
