@@ -18,7 +18,6 @@ const Header = () => {
     const navigate = useNavigate();
     const { pathname } = useLocation();
     const pathnames = pathname.split("/").filter(Boolean);
-    //const pathnames = pathname.split("/").filter(id => isNaN(id) && Boolean);
     
     // Get username of the user currently logged in
     const loggedUser = useSelector(state => state.user.value);
