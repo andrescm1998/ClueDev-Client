@@ -4,6 +4,8 @@ import  { RepositoryCard } from '../RepositoryCard';
 import AttachRepoModal from '../AttachRepoModal';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { Loader } from '../Loading'
+
 
 
 
@@ -11,7 +13,7 @@ const Repositories = () => {
     const { ws } = useSelector((state) => state.ws.value)
     const [repos, setRepos] = useState([]);
     const { workspace, wsid } = useParams();
-    const [loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState(true)
 
 
     useEffect(() => {
@@ -63,7 +65,7 @@ const Repositories = () => {
             </main>
     </>
     }
-    return loading ? <h2><em>loading...</em></h2> : showRepositories();
+    return loading ? <Loader /> : showRepositories();
 
 }
 
