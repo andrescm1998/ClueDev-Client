@@ -6,7 +6,7 @@ import { faFile } from "@fortawesome/free-solid-svg-icons";
 import { Link, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { setTreeUrl } from '../../store/treeUrl'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Avatar from '@mui/material/Avatar';
 import AvatarGroup from '@mui/material/AvatarGroup';
 
@@ -26,8 +26,17 @@ export const NewFile = ({ id, data, socket, setFolderClick, repoid }) => {
 
     const [counters, setCounters] = useState([]);
     const [hasCounter, setHasCounter] = useState(false);
+    const [notify, setNotify] = useState(false);
 
-    console.log(counters, hasCounter)
+    notify ? alert('conflict') : null
+
+    socket.on('notification', (conflicts) => {
+        for (const conflict of conflicts) {
+            if (conflict.userId === user.id && conflict.sha === data.sha) {
+                setNotify(true)
+            }
+        }
+    })
 
     socket.on('updateCounters', (counters) => {
         let test = false
