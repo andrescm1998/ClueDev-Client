@@ -28,7 +28,10 @@ export const NewFile = ({ id, data, socket, setFolderClick, repoid }) => {
     const [hasCounter, setHasCounter] = useState(false);
     const [notify, setNotify] = useState(false);
 
-    notify ? alert('conflict') : null
+    if (notify) {
+        alert('conflict')
+        setNotify(false)
+    }
 
     socket.on('notification', (conflicts) => {
         for (const conflict of conflicts) {
